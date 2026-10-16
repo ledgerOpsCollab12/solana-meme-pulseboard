@@ -2,4 +2,4 @@
 - [x] Recreate the three reference interfaces beside the headline and rotate them in order every three seconds.
 - [x] Verify the preview cycle and desktop/mobile layout.
 - [x] Prevent mixed React instances when preview controls load and verify the page after reload.
-- [ ] Update the second section copy and connect each problem to its solution; verify desktop and mobile layout.
+- [x] Update the second section copy and connect each problem to its solution; verify desktop and mobile layout.
