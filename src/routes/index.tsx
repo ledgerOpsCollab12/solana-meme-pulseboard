@@ -37,7 +37,7 @@ function randomMove(): Move {
   return {
     id: idc++, trader: t.name, coin, usd,
     side: Math.random() > 0.45 ? "COMPRA" : "VENTA",
-    qty: usd / COINS[coin],
+    qty: usd / COINS[coin]!,
     time: new Date().toLocaleTimeString("es-MX"),
   };
 }
