@@ -59,6 +59,15 @@
 
 .hero-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr); gap: 40px; align-items: center; padding: 70px 0 64px; }
 .hero-copy { min-width: 0; }
+.problem-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.problem-solution-column { display: grid; grid-template-rows: subgrid; grid-row: span 3; min-width: 0; }
+.solution-connector { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.solution-arrow { color: var(--accent); font-size: 28px; line-height: 1; }
+.solution-card { border-top: 2px solid var(--accent); }
+@media (max-width: 767px) {
+  .problem-solution-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .problem-solution-column { display: flex; flex-direction: column; gap: 12px; }
+}
 .wallet-preview-wrap { min-width: 0; }
 .wallet-preview { height: 420px; position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: var(--background); box-shadow: var(--glow); font-family: var(--font-display); font-size: 9px; }
 .preview-topbar { height: 42px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; gap: 8px; }

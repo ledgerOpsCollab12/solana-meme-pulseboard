@@ -29,13 +29,17 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
-const IDEAS: [string, string, string, string][] = [
+const IDEAS: [string, string, string, string, string, string][] = [
   ["01", "SUERTE NO ES MÉTODO", "Un leaderboard te miente",
-    "Cualquiera le atina a un token que se dispara de la noche a la mañana. Una ganancia enorme no prueba consistencia — y copiar a quien solo tuvo suerte es, casi siempre, perder dinero."],
+    "Cualquiera le atina a un token que se dispara de la noche a la mañana. Una ganancia enorme no prueba consistencia — y copiar a quien solo tuvo suerte es, casi siempre, perder dinero.",
+    "Permitimos que filtres wallets no solo por PnL, sino por win rate, ROI, cantidad invertida, etc. Todos estos datos te permiten seguir a las cuentas más consistentes y entender qué características comparten entre ellas.", ""],
   ["02", "VELOCIDAD", "Si llegas tarde, pierdes",
-    "Los bots de alta frecuencia entran y salen en milisegundos. Para que el dato sirva, tu orden tiene que moverse al mismo tiempo que la de ellos: por eso el feed se actualiza al segundo, sin retrasos."],
-  ["03", "CLASIFICACIÓN", "Sabe a quién seguir",
-    "Clasificamos cada wallet por comportamiento, consistencia y otras señales — no solo por su ganancia total. Somos el primero en hacerlo así."],
+    "Los bots operan a velocidades que un trader con herramientas limitadas no puede imitar.",
+    "Clasificamos las cuentas con comportamiento de humano y de bot. Permitimos visualizar el número de trades y acceder a su historial de movimientos para que sepas si puedes imitar sus movimientos sin necesidad de un bot altamente preciso.",
+    "Estamos trabajando en nuestra próxima funcionalidad: integrar un bot flexible y de baja latencia que puedas utilizar."],
+  ["03", "CLASIFICACIÓN", "Entiende a quién sigues",
+    "En el copy trading no es suficiente con seguir a una wallet ganadora, sino entender su estrategia para que las emociones no te ganen en las turbulencias. Entender su estrategia te permite asumir un riesgo controlado y, sobre todo, saber cómo seguirla.",
+    "Una vez que elijas las wallets que quieres trackear, agrégalas a un panel donde veas sus movimientos en tiempo real. Esto te permite analizar con qué frecuencia operan, ver sus ganancias en tiempo real, conocer el tipo de tokens en los que invierten y entender cómo debes operar para copiarlas de la mejor manera posible.", ""],
 ];
 
 type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string; qty: number; usd: number; time: string };
@@ -95,17 +99,38 @@ function Index() {
         <WalletPreview />
       </section>
 
-      <section className="border-t py-16">
-        <h2 className="max-w-3xl text-2xl font-bold leading-snug md:text-4xl">
-          No mostramos un leaderboard.
-          <span className="text-muted-foreground"> Integramos las herramientas para que un trader normal le saque provecho.</span>
+      <section className="border-t py-16" aria-labelledby="market-title">
+        <h2 id="market-title" className="max-w-5xl text-2xl font-bold leading-snug md:text-4xl">
+          El mercado de las memecoins tiene un volumen de billones de dólares al día, existen cuentas con ganancias, lo que las separa de las perdedoras es el acceso a <span className="text-accent">herramientas de calidad.</span>
         </h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {IDEAS.map(([n, tag, t, d]) => (
-            <div key={n} className="rounded-lg border bg-card p-6">
+        <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
+          Somos el primer software pensado para un tracking de calidad de wallets.
+        </p>
+        <h3 className="mt-12 text-xl font-semibold">
+          Si eres un trader de memecoins seguramente sabes lo siguiente:
+        </h3>
+        <div className="problem-solution-grid mt-6">
+          {IDEAS.map(([n, tag, t, d, solution, notice]) => (
+            <div key={n} className="problem-solution-column">
+            <article className="problem-card rounded-lg border bg-card p-6">
               <span className="font-mono text-xs text-accent">{n} · {tag}</span>
               <h3 className="mt-3 text-lg font-semibold">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+            </article>
+            <div className="solution-connector">
+              <span className="solution-arrow" aria-hidden="true">↓</span>
+              <h4 className="font-mono text-xs font-semibold uppercase text-accent">Nuestra solución</h4>
+              <span className="solution-arrow" aria-hidden="true">↓</span>
+            </div>
+            <article className="solution-card rounded-lg border bg-card p-6" aria-label={`Nuestra solución: ${t}`}>
+              <p className="text-sm leading-relaxed">{solution}</p>
+              {notice && (
+                <aside className="mt-5 border-t pt-4">
+                  <span className="font-mono text-xs text-accent">EN DESARROLLO</span>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{notice}</p>
+                </aside>
+              )}
+            </article>
             </div>
           ))}
         </div>
