@@ -27,6 +27,15 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
+const IDEAS: [string, string, string, string][] = [
+  ["01", "SUERTE NO ES MÉTODO", "Un leaderboard te miente",
+    "Cualquiera le atina a un token que se dispara de la noche a la mañana. Una ganancia enorme no prueba consistencia — y copiar a quien solo tuvo suerte es, casi siempre, perder dinero."],
+  ["02", "VELOCIDAD", "Si llegas tarde, pierdes",
+    "Los bots de alta frecuencia entran y salen en milisegundos. Para que el dato sirva, tu orden tiene que moverse al mismo tiempo que la de ellos: por eso el feed se actualiza al segundo, sin retrasos."],
+  ["03", "CLASIFICACIÓN", "Sabe a quién seguir",
+    "Clasificamos cada wallet por comportamiento, consistencia y otras señales — no solo por su ganancia total. Somos el primero en hacerlo así."],
+];
+
 type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string; qty: number; usd: number; time: string };
 
 let idc = 0;
@@ -72,15 +81,31 @@ function Index() {
           <span className="h-2 w-2 rounded-full bg-gain animate-live" /> EN VIVO · BLOCKCHAIN DE SOLANA
         </span>
         <h1 className="mt-6 text-left text-4xl font-bold leading-[1.05] md:text-7xl">
-          Los que más ganan<br />
-          ya <span className="text-accent">compraron</span>.
+          En tiempo real,<br />
+          qué compran los que <span className="text-accent">más ganan</span>.
         </h1>
         <p className="mt-5 max-w-xl text-left text-lg text-muted-foreground">
-          El primer software que te muestra, gratis y en tiempo real, qué están moviendo las cuentas más rentables en memecoins de Solana.
+          El primer software que clasifica las wallets más rentables de memecoins en Solana — para que un trader normal les saque provecho. Gratis.
         </p>
         <a href="#feed" className="glow mt-8 inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
           Ver movimientos en vivo
         </a>
+      </section>
+
+      <section className="border-t py-16">
+        <h2 className="max-w-3xl text-2xl font-bold leading-snug md:text-4xl">
+          No mostramos un leaderboard.
+          <span className="text-muted-foreground"> Integramos las herramientas para que un trader normal le saque provecho.</span>
+        </h2>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {IDEAS.map(([n, tag, t, d]) => (
+            <div key={n} className="rounded-lg border bg-card p-6">
+              <span className="font-mono text-xs text-accent">{n} · {tag}</span>
+              <h3 className="mt-3 text-lg font-semibold">{t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section id="feed" className="grid gap-6 lg:grid-cols-3">
@@ -121,18 +146,6 @@ function Index() {
         </div>
       </section>
 
-      <section className="grid gap-6 py-16 md:grid-cols-3">
-        {[
-          ["Datos al segundo", "Cada compra y venta aparece apenas se confirma en la blockchain de Solana."],
-          ["Solo las mejores cuentas", "Filtramos wallets por rentabilidad y consistencia comprobada en memecoins."],
-          ["Alertas inteligentes", "Recibe avisos cuando una ballena mueve más de $1M en una sola operación."],
-        ].map(([t, d]) => (
-          <div key={t} className="rounded-lg border p-6">
-            <h3 className="font-semibold text-primary">{t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{d}</p>
-          </div>
-        ))}
-      </section>
 
       <footer className="border-t pt-6 text-center text-xs text-muted-foreground">
         Datos de demostración. No constituye asesoría financiera.
