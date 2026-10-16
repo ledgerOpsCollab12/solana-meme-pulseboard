@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WhaleWatch — Movimientos en vivo de los mejores traders cripto" },
-      { name: "description", content: "Visualiza en tiempo real las compras y ventas de las cuentas más rentables en criptomonedas." },
-      { property: "og:title", content: "WhaleWatch — Traders cripto en tiempo real" },
-      { property: "og:description", content: "Sigue cada movimiento de las ballenas más rentables del mercado cripto." },
+      { title: "WhaleWatch — Las mejores cuentas de memecoins en Solana, en tiempo real" },
+      { name: "description", content: "El primer software pensado para que los traders saquen provecho de los movimientos de las cuentas más rentables en memecoins sobre la blockchain de Solana. Gratis." },
+      { property: "og:title", content: "WhaleWatch — Trading de memecoins en Solana, en tiempo real" },
+      { property: "og:description", content: "Sigue gratis cada movimiento de las cuentas con mayores ganancias en memecoins de Solana." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -19,13 +19,13 @@ export const Route = createFileRoute("/")({
 });
 
 const TRADERS = [
-  { name: "0xAlpha.eth", pnl: 48.2, win: 81 },
+  { name: "degenwhale.sol", pnl: 48.2, win: 81 },
   { name: "SatoshiGhost", pnl: 37.9, win: 76 },
-  { name: "WhaleKing_88", pnl: 29.4, win: 72 },
-  { name: "DeFiSensei", pnl: 22.1, win: 69 },
-  { name: "LunaHunter", pnl: 17.6, win: 66 },
+  { name: "pumpking_88.sol", pnl: 29.4, win: 72 },
+  { name: "MemeSensei", pnl: 22.1, win: 69 },
+  { name: "lunahunter.sol", pnl: 17.6, win: 66 },
 ];
-const COINS: Record<string, number> = { BTC: 67250, ETH: 3480, SOL: 172, BNB: 590, XRP: 0.58, DOGE: 0.16 };
+const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
 type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string; qty: number; usd: number; time: string };
 
@@ -67,12 +67,15 @@ function Index() {
         </span>
       </nav>
 
-      <section className="py-16 text-center">
-        <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-          Mira lo que hacen <span className="text-primary">las ballenas</span>,<br />en el momento en que lo hacen.
+      <section className="max-w-3xl py-16 md:py-24">
+        <span className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> EN VIVO · BLOCKCHAIN DE SOLANA
+        </span>
+        <h1 className="mt-6 text-left text-4xl font-bold leading-tight md:text-6xl">
+          El <span className="text-primary">primer software</span> pensado para que los traders saquen provecho de las cuentas que más ganan en <span className="text-accent">memecoins</span>.
         </h1>
-        <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-          Rastreamos las cuentas más rentables del mercado cripto y te mostramos cada compra y venta en tiempo real.
+        <p className="mt-5 max-w-xl text-left text-lg text-muted-foreground">
+          Visualiza gratis, en tiempo real, cada compra y venta de las cuentas más rentables invirtiendo en memecoins sobre la blockchain de Solana — y opera con la misma información que ellas.
         </p>
         <a href="#feed" className="glow mt-8 inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
           Ver movimientos en vivo
@@ -119,9 +122,9 @@ function Index() {
 
       <section className="grid gap-6 py-16 md:grid-cols-3">
         {[
-          ["Datos al segundo", "Cada transacción aparece apenas ocurre en la blockchain."],
-          ["Solo los mejores", "Filtramos cuentas por rentabilidad y consistencia comprobada."],
-          ["Alertas inteligentes", "Recibe avisos cuando una ballena mueve más de $1M."],
+          ["Datos al segundo", "Cada compra y venta aparece apenas se confirma en la blockchain de Solana."],
+          ["Solo las mejores cuentas", "Filtramos wallets por rentabilidad y consistencia comprobada en memecoins."],
+          ["Alertas inteligentes", "Recibe avisos cuando una ballena mueve más de $1M en una sola operación."],
         ].map(([t, d]) => (
           <div key={t} className="rounded-lg border p-6">
             <h3 className="font-semibold text-primary">{t}</h3>
