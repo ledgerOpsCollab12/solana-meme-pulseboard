@@ -104,37 +104,43 @@ function Index() {
 
       <section className="border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
-          Somos el primer software pensado para un <span className="text-accent">tracking de calidad</span> de wallets.
+          The first software built for <span className="text-accent">quality wallet tracking</span>.
         </h2>
         <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
-          El mercado de las memecoins tiene un volumen de billones de dólares al día, existen cuentas con ganancias, lo que las separa de las perdedoras es el acceso a herramientas de calidad.
+          The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.
         </p>
         <h3 className="mt-12 text-xl font-semibold">
-          Si eres un trader de memecoins seguramente sabes lo siguiente:
+          If you trade memecoins, you already know this:
         </h3>
         <div className="problem-solution-grid mt-6">
-          {IDEAS.map(([n, tag, t, d, solution, notice]) => (
-            <div key={n} className="problem-solution-column">
-            <article className="problem-card rounded-lg border bg-card p-6">
+          {IDEAS.map(([n, tag, t, d]) => (
+            <article key={n} className="problem-card rounded-lg border bg-card p-6">
               <span className="font-mono text-xs text-accent">{n} · {tag}</span>
               <h3 className="mt-3 text-lg font-semibold">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
             </article>
-            <div className="solution-connector">
-              <span className="solution-arrow" aria-hidden="true">↓</span>
-              <h4 className="font-mono text-xs font-semibold uppercase text-accent">Nuestra solución</h4>
-              <span className="solution-arrow" aria-hidden="true">↓</span>
-            </div>
-            <article className="solution-card rounded-lg border bg-card p-6" aria-label={`Nuestra solución: ${t}`}>
-              <p className="text-sm leading-relaxed">{solution}</p>
+          ))}
+          <div className="solution-band">
+            <h3 className="solution-band-title">Our solution</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Three tools that turn raw wallet data into a strategy you can actually run.</p>
+          </div>
+          <div className="solution-arrows" aria-hidden="true">
+            <span className="solution-arrow">↓</span>
+            <span className="solution-arrow">↓</span>
+            <span className="solution-arrow">↓</span>
+          </div>
+          {IDEAS.map(([n, , , , solution, notice, solutionTitle]) => (
+            <article key={n} className="solution-card rounded-lg border bg-card p-6" aria-label={`Our solution: ${solutionTitle}`}>
+              <span className="font-mono text-xs text-accent">{n}</span>
+              <h4 className="mt-2 text-base font-semibold leading-snug">{solutionTitle}</h4>
+              <p className="mt-3 text-sm leading-relaxed">{solution}</p>
               {notice && (
                 <aside className="mt-5 border-t pt-4">
-                  <span className="font-mono text-xs text-accent">EN DESARROLLO</span>
+                  <span className="font-mono text-xs text-accent">IN DEVELOPMENT</span>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{notice}</p>
                 </aside>
               )}
             </article>
-            </div>
           ))}
         </div>
       </section>
@@ -142,15 +148,15 @@ function Index() {
       <section id="feed" className="grid gap-6 lg:grid-cols-3">
         <div className="rounded-lg border bg-card p-5 lg:col-span-2">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-semibold">Movimientos en tiempo real</h2>
-            <span className="font-mono text-xs text-muted-foreground">Volumen sesión: ${fmt(volume)}</span>
+            <h2 className="font-semibold">Real-time movements</h2>
+            <span className="font-mono text-xs text-muted-foreground">Session volume: ${fmt(volume)}</span>
           </div>
           <div className="space-y-1 font-mono text-sm">
             {moves.map((m) => (
               <div key={m.id} className="animate-flash grid grid-cols-[70px_1fr_80px_1fr] items-center gap-2 rounded px-2 py-2 md:grid-cols-[80px_1fr_80px_1fr_1fr]">
                 <span className="text-xs text-muted-foreground">{m.time}</span>
                 <span className="truncate">{m.trader}</span>
-                <span className={m.side === "COMPRA" ? "text-gain" : "text-loss"}>{m.side}</span>
+                <span className={m.side === "BUY" ? "text-gain" : "text-loss"}>{m.side}</span>
                 <span className="hidden md:block">{fmt(m.qty)} {m.coin}</span>
                 <span className="text-right">${fmt(m.usd)}</span>
               </div>
@@ -167,7 +173,7 @@ function Index() {
                   <span className="font-mono text-accent">#{i + 1}</span>
                   <span>
                     <span className="block text-sm font-semibold">{t.name}</span>
-                    <span className="text-xs text-muted-foreground">{t.win}% aciertos</span>
+                    <span className="text-xs text-muted-foreground">{t.win}% win rate</span>
                   </span>
                 </span>
                 <span className="font-mono text-gain">+${t.pnl}M</span>
@@ -179,7 +185,7 @@ function Index() {
 
 
       <footer className="border-t pt-6 text-center text-xs text-muted-foreground">
-        Datos de demostración. No constituye asesoría financiera.
+        Demo data. Not financial advice.
       </footer>
     </main>
   );
