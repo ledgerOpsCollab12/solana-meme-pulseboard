@@ -122,9 +122,9 @@ function Index() {
 
       <section className="grid gap-6 py-16 md:grid-cols-3">
         {[
-          ["Datos al segundo", "Cada transacción aparece apenas ocurre en la blockchain."],
-          ["Solo los mejores", "Filtramos cuentas por rentabilidad y consistencia comprobada."],
-          ["Alertas inteligentes", "Recibe avisos cuando una ballena mueve más de $1M."],
+          ["Datos al segundo", "Cada compra y venta aparece apenas se confirma en la blockchain de Solana."],
+          ["Solo las mejores cuentas", "Filtramos wallets por rentabilidad y consistencia comprobada en memecoins."],
+          ["Alertas inteligentes", "Recibe avisos cuando una ballena mueve más de $1M en una sola operación."],
         ].map(([t, d]) => (
           <div key={t} className="rounded-lg border p-6">
             <h3 className="font-semibold text-primary">{t}</h3>
