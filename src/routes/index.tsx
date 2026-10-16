@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WhaleWatch — Las wallets con mayores ganancias en memecoins, en tiempo real" },
-      { name: "description", content: "Mira en tiempo real los movimientos de las wallets con mayores ganancias en trading de memecoins sobre Solana. Insights y herramientas para segmentarlas y construir una estrategia realista, gratis." },
-      { property: "og:title", content: "WhaleWatch — Las wallets con mayores ganancias en memecoins, en tiempo real" },
-      { property: "og:description", content: "No es suficiente con seguir wallets rentables. Te damos insights y herramientas para segmentarlas por consistencia, comportamiento y riesgo, y construir tu propia estrategia." },
+      { title: "WhaleWatch — Watch the most profitable memecoin wallets in real time" },
+      { name: "description", content: "A leaderboard of the highest-PnL wallets isn’t enough. WhaleWatch gives you insights and tools to segment wallets by consistency and behavior, so you can build a realistic strategy — free." },
+      { property: "og:title", content: "WhaleWatch — Watch the most profitable memecoin wallets in real time" },
+      { property: "og:description", content: "Most top wallets aren’t consistent, are bots you can’t keep up with, or fake volume. Get insights and tools to build a realistic strategy with limited resources." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -85,12 +85,12 @@ function Index() {
           <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE · SOLANA BLOCKCHAIN · FREE
         </span>
         <h1 className="mt-6 text-left text-4xl font-bold leading-[1.12] lg:text-5xl">
-          Mira en tiempo real los movimientos de las wallets con <span className="text-accent">mayores ganancias</span> en memecoins.
+          Watch the <span className="text-accent">most profitable</span> memecoin wallets move in real time.
         </h1>
         <p className="mt-6 max-w-xl text-left text-base leading-relaxed text-muted-foreground">
-          No solamente te mostramos un leaderboard. En el mercado de las memecoins no basta con seguir a las wallets rentables: muchas no son consistentes, hay cuentas con herramientas como bots de alta frecuencia que no le permiten a un trader normal seguirlas, y muchas simulan volumen para que caigas en una estafa o simplemente ganan cuando sigues sus movimientos. Aquí es donde hacemos la diferencia: te damos insights específicos y herramientas para segmentar las cuentas y construir una estrategia realista siendo un trader con herramientas limitadas.
+          In the memecoin market, access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
         </p>
-        <Button asChild className="glow mt-7 h-12 px-6"><a href="#feed">Ver movimientos en vivo ↗</a></Button>
+        <Button asChild className="glow mt-7 h-12 px-6"><a href="#feed">See live movements ↗</a></Button>
         </div>
         <WalletPreview />
       </section>
