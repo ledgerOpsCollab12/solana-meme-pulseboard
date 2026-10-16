@@ -19,13 +19,13 @@ export const Route = createFileRoute("/")({
 });
 
 const TRADERS = [
-  { name: "0xAlpha.eth", pnl: 48.2, win: 81 },
+  { name: "degenwhale.sol", pnl: 48.2, win: 81 },
   { name: "SatoshiGhost", pnl: 37.9, win: 76 },
-  { name: "WhaleKing_88", pnl: 29.4, win: 72 },
-  { name: "DeFiSensei", pnl: 22.1, win: 69 },
-  { name: "LunaHunter", pnl: 17.6, win: 66 },
+  { name: "pumpking_88.sol", pnl: 29.4, win: 72 },
+  { name: "MemeSensei", pnl: 22.1, win: 69 },
+  { name: "lunahunter.sol", pnl: 17.6, win: 66 },
 ];
-const COINS: Record<string, number> = { BTC: 67250, ETH: 3480, SOL: 172, BNB: 590, XRP: 0.58, DOGE: 0.16 };
+const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
 type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string; qty: number; usd: number; time: string };
 
