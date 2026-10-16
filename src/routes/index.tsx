@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WhaleWatch — Watch the most profitable memecoin wallets in real time" },
+      { title: "WhaleWatch — Real-time transactions of the most profitable wallets in memecoin trading" },
       { name: "description", content: "A leaderboard of the highest-PnL wallets isn’t enough. WhaleWatch gives you insights and tools to segment wallets by consistency and behavior, so you can build a realistic strategy — free." },
-      { property: "og:title", content: "WhaleWatch — Watch the most profitable memecoin wallets in real time" },
+      { property: "og:title", content: "WhaleWatch — Real-time transactions of the most profitable wallets in memecoin trading" },
       { property: "og:description", content: "Most top wallets aren’t consistent, are bots you can’t keep up with, or fake volume. Get insights and tools to build a realistic strategy with limited resources." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -85,7 +85,7 @@ function Index() {
           <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE · SOLANA BLOCKCHAIN · FREE
         </span>
         <h1 className="mt-6 text-left text-4xl font-bold leading-[1.12] lg:text-5xl">
-          Watch the <span className="text-accent">most profitable</span> memecoin wallets move in real time.
+          Real-time transactions of the <span className="text-accent">most profitable wallets</span> in memecoin trading.
         </h1>
         <p className="mt-6 max-w-xl text-left text-base leading-relaxed text-muted-foreground">
           In the memecoin market, access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
