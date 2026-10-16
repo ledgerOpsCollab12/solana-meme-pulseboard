@@ -71,11 +71,12 @@ function Index() {
         <span className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
           <span className="h-2 w-2 rounded-full bg-gain animate-live" /> EN VIVO · BLOCKCHAIN DE SOLANA
         </span>
-        <h1 className="mt-6 text-left text-4xl font-bold leading-tight md:text-6xl">
-          El <span className="text-primary">primer software</span> pensado para que los traders saquen provecho de las cuentas que más ganan en <span className="text-accent">memecoins</span>.
+        <h1 className="mt-6 text-left text-4xl font-bold leading-[1.05] md:text-7xl">
+          Los que más ganan<br />
+          ya <span className="text-accent">compraron</span>.
         </h1>
         <p className="mt-5 max-w-xl text-left text-lg text-muted-foreground">
-          Visualiza gratis, en tiempo real, cada compra y venta de las cuentas más rentables invirtiendo en memecoins sobre la blockchain de Solana — y opera con la misma información que ellas.
+          El primer software que te muestra, gratis y en tiempo real, qué están moviendo las cuentas más rentables en memecoins de Solana.
         </p>
         <a href="#feed" className="glow mt-8 inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
           Ver movimientos en vivo
