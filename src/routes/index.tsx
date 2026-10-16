@@ -31,8 +31,8 @@ type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string
 
 let idc = 0;
 function randomMove(): Move {
-  const t = TRADERS[Math.floor(Math.random() * TRADERS.length)];
-  const coin = Object.keys(COINS)[Math.floor(Math.random() * 6)];
+  const t = TRADERS[Math.floor(Math.random() * TRADERS.length)]!;
+  const coin = Object.keys(COINS)[Math.floor(Math.random() * 6)]!;
   const usd = Math.round(50000 + Math.random() * 4950000);
   return {
     id: idc++, trader: t.name, coin, usd,
