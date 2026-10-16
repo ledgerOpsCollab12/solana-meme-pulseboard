@@ -100,11 +100,11 @@ function Index() {
       </section>
 
       <section className="border-t py-16" aria-labelledby="market-title">
-        <h2 id="market-title" className="max-w-5xl text-2xl font-bold leading-snug md:text-4xl">
-          El mercado de las memecoins tiene un volumen de billones de dólares al día, existen cuentas con ganancias, lo que las separa de las perdedoras es el acceso a <span className="text-accent">herramientas de calidad.</span>
+        <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
+          Somos el primer software pensado para un <span className="text-accent">tracking de calidad</span> de wallets.
         </h2>
         <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
-          Somos el primer software pensado para un tracking de calidad de wallets.
+          El mercado de las memecoins tiene un volumen de billones de dólares al día, existen cuentas con ganancias, lo que las separa de las perdedoras es el acceso a herramientas de calidad.
         </p>
         <h3 className="mt-12 text-xl font-semibold">
           Si eres un trader de memecoins seguramente sabes lo siguiente:
