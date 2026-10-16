@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WhaleWatch — Movimientos en vivo de los mejores traders cripto" },
-      { name: "description", content: "Visualiza en tiempo real las compras y ventas de las cuentas más rentables en criptomonedas." },
-      { property: "og:title", content: "WhaleWatch — Traders cripto en tiempo real" },
-      { property: "og:description", content: "Sigue cada movimiento de las ballenas más rentables del mercado cripto." },
+      { title: "WhaleWatch — Las mejores cuentas de memecoins en Solana, en tiempo real" },
+      { name: "description", content: "El primer software pensado para que los traders saquen provecho de los movimientos de las cuentas más rentables en memecoins sobre la blockchain de Solana. Gratis." },
+      { property: "og:title", content: "WhaleWatch — Trading de memecoins en Solana, en tiempo real" },
+      { property: "og:description", content: "Sigue gratis cada movimiento de las cuentas con mayores ganancias en memecoins de Solana." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
