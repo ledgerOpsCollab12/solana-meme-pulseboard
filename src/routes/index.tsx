@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { WalletPreview } from "@/components/wallet-preview";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WhaleWatch — Las mejores cuentas de memecoins en Solana, en tiempo real" },
-      { name: "description", content: "El primer software pensado para que los traders saquen provecho de los movimientos de las cuentas más rentables en memecoins sobre la blockchain de Solana. Gratis." },
-      { property: "og:title", content: "WhaleWatch — Trading de memecoins en Solana, en tiempo real" },
-      { property: "og:description", content: "Sigue gratis cada movimiento de las cuentas con mayores ganancias en memecoins de Solana." },
+      { title: "WhaleWatch — Profitable memecoin wallets, in real time" },
+      { name: "description", content: "Track the most profitable memecoin trading wallets on Solana for free. Understand consistency, behavior, and win rate before building your strategy." },
+      { property: "og:title", content: "WhaleWatch — Profitable memecoin wallets, in real time" },
+      { property: "og:description", content: "Real-time wallet movements, insights, and tools to understand how profitable memecoin traders trade." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -40,13 +42,14 @@ type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string
 
 let idc = 0;
 function randomMove(): Move {
-  const t = TRADERS[Math.floor(Math.random() * TRADERS.length)]!;
-  const coin = Object.keys(COINS)[Math.floor(Math.random() * 6)]!;
+  const t = TRADERS[Math.floor(Math.random() * TRADERS.length)] ?? TRADERS[0];
+  const coin = Object.keys(COINS)[Math.floor(Math.random() * 6)] ?? "BONK";
+  if (!t) throw new Error("No demo traders available");
   const usd = Math.round(50000 + Math.random() * 4950000);
   return {
     id: idc++, trader: t.name, coin, usd,
     side: Math.random() > 0.45 ? "COMPRA" : "VENTA",
-    qty: usd / COINS[coin]!,
+    qty: usd / (COINS[coin] ?? 1),
     time: new Date().toLocaleTimeString("es-MX"),
   };
 }
@@ -68,7 +71,7 @@ function Index() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
       <nav className="flex items-center justify-between">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
         <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
@@ -76,20 +79,20 @@ function Index() {
         </span>
       </nav>
 
-      <section className="max-w-3xl py-16 md:py-24">
+      <section className="hero-layout">
+        <div className="hero-copy">
         <span className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
-          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> EN VIVO · BLOCKCHAIN DE SOLANA
+          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE · SOLANA BLOCKCHAIN · FREE
         </span>
-        <h1 className="mt-6 text-left text-4xl font-bold leading-[1.05] md:text-7xl">
-          En tiempo real,<br />
-          qué compran los que <span className="text-accent">más ganan</span>.
+        <h1 className="mt-6 text-left text-4xl font-bold leading-[1.12] lg:text-5xl">
+          See the movements of the <span className="text-accent">most profitable</span> memecoin trading wallets in real time.
         </h1>
-        <p className="mt-5 max-w-xl text-left text-lg text-muted-foreground">
-          El primer software que clasifica las wallets más rentables de memecoins en Solana — para que un trader normal les saque provecho. Gratis.
+        <p className="mt-6 max-w-xl text-left text-base leading-relaxed text-muted-foreground">
+          We don’t just show you a leaderboard of the most profitable wallets. We give you insights and tools to segment them by consistency, behavior, win rate, and more, along with tools to understand how they trade—so you’re not following wallets blindly, but learning how to build a safer strategy.
         </p>
-        <a href="#feed" className="glow mt-8 inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
-          Ver movimientos en vivo
-        </a>
+        <Button asChild className="glow mt-7 h-12 px-6"><a href="#feed">View live movements ↗</a></Button>
+        </div>
+        <WalletPreview />
       </section>
 
       <section className="border-t py-16">

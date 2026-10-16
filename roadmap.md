@@ -1,0 +1,3 @@
+- [x] Translate the supplied headline and subtitle faithfully into English.
+- [x] Recreate the three reference interfaces beside the headline and rotate them in order every three seconds.
+- [ ] Verify the preview cycle and desktop/mobile layout.
