@@ -29,20 +29,23 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
-const IDEAS: [string, string, string, string, string, string][] = [
-  ["01", "SUERTE NO ES MÉTODO", "Un leaderboard te miente",
-    "Cualquiera le atina a un token que se dispara de la noche a la mañana. Una ganancia enorme no prueba consistencia — y copiar a quien solo tuvo suerte es, casi siempre, perder dinero.",
-    "Permitimos que filtres wallets no solo por PnL, sino por win rate, ROI, cantidad invertida, etc. Todos estos datos te permiten seguir a las cuentas más consistentes y entender qué características comparten entre ellas.", ""],
-  ["02", "VELOCIDAD", "Si llegas tarde, pierdes",
-    "Los bots operan a velocidades que un trader con herramientas limitadas no puede imitar.",
-    "Clasificamos las cuentas con comportamiento de humano y de bot. Permitimos visualizar el número de trades y acceder a su historial de movimientos para que sepas si puedes imitar sus movimientos sin necesidad de un bot altamente preciso.",
-    "Estamos trabajando en nuestra próxima funcionalidad: integrar un bot flexible y de baja latencia que puedas utilizar."],
-  ["03", "CLASIFICACIÓN", "Entiende a quién sigues",
-    "En el copy trading no es suficiente con seguir a una wallet ganadora, sino entender su estrategia para que las emociones no te ganen en las turbulencias. Entender su estrategia te permite asumir un riesgo controlado y, sobre todo, saber cómo seguirla.",
-    "Una vez que elijas las wallets que quieres trackear, agrégalas a un panel donde veas sus movimientos en tiempo real. Esto te permite analizar con qué frecuencia operan, ver sus ganancias en tiempo real, conocer el tipo de tokens en los que invierten y entender cómo debes operar para copiarlas de la mejor manera posible.", ""],
+const IDEAS: [string, string, string, string, string, string, string][] = [
+  ["01", "LUCK ISN'T A METHOD", "A leaderboard lies to you",
+    "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
+    "Filter wallets not just by PnL, but by win rate, ROI, capital deployed and more. These signals let you follow the most consistent accounts and see what they have in common.", "",
+    "Wallet quality filters"],
+  ["02", "SPEED", "Arrive late and you lose",
+    "Bots trade at speeds a trader with limited tools simply can't match.",
+    "We classify accounts by bot-like and human behavior. See trade counts and full movement history so you know whether you can copy a wallet without needing a low-latency bot.",
+    "In development: a flexible, low-latency bot you can run yourself.",
+    "Bot & human behavior classification"],
+  ["03", "CLASSIFICATION", "Know who you're following",
+    "Copy trading isn't just about following a winning wallet — it's about understanding its strategy so emotions don't take over during the drawdowns. That keeps your risk controlled and tells you exactly how to follow it.",
+    "Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way.", "",
+    "Real-time alerts from profitable wallets"],
 ];
 
-type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string; qty: number; usd: number; time: string };
+type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
 
 let idc = 0;
 function randomMove(): Move {
@@ -52,9 +55,9 @@ function randomMove(): Move {
   const usd = Math.round(50000 + Math.random() * 4950000);
   return {
     id: idc++, trader: t.name, coin, usd,
-    side: Math.random() > 0.45 ? "COMPRA" : "VENTA",
+    side: Math.random() > 0.45 ? "BUY" : "SELL",
     qty: usd / (COINS[coin] ?? 1),
-    time: new Date().toLocaleTimeString("es-MX"),
+    time: new Date().toLocaleTimeString("en-US"),
   };
 }
 const fmt = (n: number) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 2 : 0 });
@@ -79,7 +82,7 @@ function Index() {
       <nav className="flex items-center justify-between">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
         <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> EN VIVO
+          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE
         </span>
       </nav>
 
