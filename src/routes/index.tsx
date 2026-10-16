@@ -30,7 +30,7 @@ const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, M
 const IDEAS: [string, string, string, string][] = [
   ["01", "SUERTE NO ES MÉTODO", "Un leaderboard te miente",
     "Cualquiera le atina a un token que se dispara de la noche a la mañana. Una ganancia enorme no prueba consistencia — y copiar a quien solo tuvo suerte es, casi siempre, perder dinero."],
-  ["02", "VELOCIDAD", "Si llegas tarde, ya no es tu trade",
+  ["02", "VELOCIDAD", "Si llegas tarde, pierdes",
     "Los bots de alta frecuencia entran y salen en milisegundos. Para que el dato sirva, tu orden tiene que moverse al mismo tiempo que la de ellos: por eso el feed se actualiza al segundo, sin retrasos."],
   ["03", "CLASIFICACIÓN", "Sabe a quién seguir",
     "Clasificamos cada wallet por comportamiento, consistencia y otras señales — no solo por su ganancia total. Somos el primero en hacerlo así."],
