@@ -29,20 +29,23 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
-const IDEAS: [string, string, string, string, string, string][] = [
-  ["01", "SUERTE NO ES MÉTODO", "Un leaderboard te miente",
-    "Cualquiera le atina a un token que se dispara de la noche a la mañana. Una ganancia enorme no prueba consistencia — y copiar a quien solo tuvo suerte es, casi siempre, perder dinero.",
-    "Permitimos que filtres wallets no solo por PnL, sino por win rate, ROI, cantidad invertida, etc. Todos estos datos te permiten seguir a las cuentas más consistentes y entender qué características comparten entre ellas.", ""],
-  ["02", "VELOCIDAD", "Si llegas tarde, pierdes",
-    "Los bots operan a velocidades que un trader con herramientas limitadas no puede imitar.",
-    "Clasificamos las cuentas con comportamiento de humano y de bot. Permitimos visualizar el número de trades y acceder a su historial de movimientos para que sepas si puedes imitar sus movimientos sin necesidad de un bot altamente preciso.",
-    "Estamos trabajando en nuestra próxima funcionalidad: integrar un bot flexible y de baja latencia que puedas utilizar."],
-  ["03", "CLASIFICACIÓN", "Entiende a quién sigues",
-    "En el copy trading no es suficiente con seguir a una wallet ganadora, sino entender su estrategia para que las emociones no te ganen en las turbulencias. Entender su estrategia te permite asumir un riesgo controlado y, sobre todo, saber cómo seguirla.",
-    "Una vez que elijas las wallets que quieres trackear, agrégalas a un panel donde veas sus movimientos en tiempo real. Esto te permite analizar con qué frecuencia operan, ver sus ganancias en tiempo real, conocer el tipo de tokens en los que invierten y entender cómo debes operar para copiarlas de la mejor manera posible.", ""],
+const IDEAS: [string, string, string, string, string, string, string][] = [
+  ["01", "LUCK ISN'T A METHOD", "A leaderboard lies to you",
+    "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
+    "Filter wallets not just by PnL, but by win rate, ROI, capital deployed and more. These signals let you follow the most consistent accounts and see what they have in common.", "",
+    "Wallet quality filters"],
+  ["02", "SPEED", "Arrive late and you lose",
+    "Bots trade at speeds a trader with limited tools simply can't match.",
+    "We classify accounts by bot-like and human behavior. See trade counts and full movement history so you know whether you can copy a wallet without needing a low-latency bot.",
+    "In development: a flexible, low-latency bot you can run yourself.",
+    "Bot & human behavior classification"],
+  ["03", "CLASSIFICATION", "Know who you're following",
+    "Copy trading isn't just about following a winning wallet — it's about understanding its strategy so emotions don't take over during the drawdowns. That keeps your risk controlled and tells you exactly how to follow it.",
+    "Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way.", "",
+    "Real-time alerts from profitable wallets"],
 ];
 
-type Move = { id: number; trader: string; side: "COMPRA" | "VENTA"; coin: string; qty: number; usd: number; time: string };
+type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
 
 let idc = 0;
 function randomMove(): Move {
@@ -52,9 +55,9 @@ function randomMove(): Move {
   const usd = Math.round(50000 + Math.random() * 4950000);
   return {
     id: idc++, trader: t.name, coin, usd,
-    side: Math.random() > 0.45 ? "COMPRA" : "VENTA",
+    side: Math.random() > 0.45 ? "BUY" : "SELL",
     qty: usd / (COINS[coin] ?? 1),
-    time: new Date().toLocaleTimeString("es-MX"),
+    time: new Date().toLocaleTimeString("en-US"),
   };
 }
 const fmt = (n: number) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 2 : 0 });
@@ -79,7 +82,7 @@ function Index() {
       <nav className="flex items-center justify-between">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
         <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> EN VIVO
+          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE
         </span>
       </nav>
 
@@ -101,37 +104,43 @@ function Index() {
 
       <section className="border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
-          Somos el primer software pensado para un <span className="text-accent">tracking de calidad</span> de wallets.
+          The first software built for <span className="text-accent">quality wallet tracking</span>.
         </h2>
         <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
-          El mercado de las memecoins tiene un volumen de billones de dólares al día, existen cuentas con ganancias, lo que las separa de las perdedoras es el acceso a herramientas de calidad.
+          The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.
         </p>
         <h3 className="mt-12 text-xl font-semibold">
-          Si eres un trader de memecoins seguramente sabes lo siguiente:
+          If you trade memecoins, you already know this:
         </h3>
         <div className="problem-solution-grid mt-6">
-          {IDEAS.map(([n, tag, t, d, solution, notice]) => (
-            <div key={n} className="problem-solution-column">
-            <article className="problem-card rounded-lg border bg-card p-6">
+          {IDEAS.map(([n, tag, t, d]) => (
+            <article key={n} className="problem-card rounded-lg border bg-card p-6">
               <span className="font-mono text-xs text-accent">{n} · {tag}</span>
               <h3 className="mt-3 text-lg font-semibold">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
             </article>
-            <div className="solution-connector">
-              <span className="solution-arrow" aria-hidden="true">↓</span>
-              <h4 className="font-mono text-xs font-semibold uppercase text-accent">Nuestra solución</h4>
-              <span className="solution-arrow" aria-hidden="true">↓</span>
-            </div>
-            <article className="solution-card rounded-lg border bg-card p-6" aria-label={`Nuestra solución: ${t}`}>
-              <p className="text-sm leading-relaxed">{solution}</p>
+          ))}
+          <div className="solution-band">
+            <h3 className="solution-band-title">Our solution</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Three tools that turn raw wallet data into a strategy you can actually run.</p>
+          </div>
+          <div className="solution-arrows" aria-hidden="true">
+            <span className="solution-arrow">↓</span>
+            <span className="solution-arrow">↓</span>
+            <span className="solution-arrow">↓</span>
+          </div>
+          {IDEAS.map(([n, , , , solution, notice, solutionTitle]) => (
+            <article key={n} className="solution-card rounded-lg border bg-card p-6" aria-label={`Our solution: ${solutionTitle}`}>
+              <span className="font-mono text-xs text-accent">{n}</span>
+              <h4 className="mt-2 text-base font-semibold leading-snug">{solutionTitle}</h4>
+              <p className="mt-3 text-sm leading-relaxed">{solution}</p>
               {notice && (
                 <aside className="mt-5 border-t pt-4">
-                  <span className="font-mono text-xs text-accent">EN DESARROLLO</span>
+                  <span className="font-mono text-xs text-accent">IN DEVELOPMENT</span>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{notice}</p>
                 </aside>
               )}
             </article>
-            </div>
           ))}
         </div>
       </section>
@@ -139,15 +148,15 @@ function Index() {
       <section id="feed" className="grid gap-6 lg:grid-cols-3">
         <div className="rounded-lg border bg-card p-5 lg:col-span-2">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-semibold">Movimientos en tiempo real</h2>
-            <span className="font-mono text-xs text-muted-foreground">Volumen sesión: ${fmt(volume)}</span>
+            <h2 className="font-semibold">Real-time movements</h2>
+            <span className="font-mono text-xs text-muted-foreground">Session volume: ${fmt(volume)}</span>
           </div>
           <div className="space-y-1 font-mono text-sm">
             {moves.map((m) => (
               <div key={m.id} className="animate-flash grid grid-cols-[70px_1fr_80px_1fr] items-center gap-2 rounded px-2 py-2 md:grid-cols-[80px_1fr_80px_1fr_1fr]">
                 <span className="text-xs text-muted-foreground">{m.time}</span>
                 <span className="truncate">{m.trader}</span>
-                <span className={m.side === "COMPRA" ? "text-gain" : "text-loss"}>{m.side}</span>
+                <span className={m.side === "BUY" ? "text-gain" : "text-loss"}>{m.side}</span>
                 <span className="hidden md:block">{fmt(m.qty)} {m.coin}</span>
                 <span className="text-right">${fmt(m.usd)}</span>
               </div>
@@ -164,7 +173,7 @@ function Index() {
                   <span className="font-mono text-accent">#{i + 1}</span>
                   <span>
                     <span className="block text-sm font-semibold">{t.name}</span>
-                    <span className="text-xs text-muted-foreground">{t.win}% aciertos</span>
+                    <span className="text-xs text-muted-foreground">{t.win}% win rate</span>
                   </span>
                 </span>
                 <span className="font-mono text-gain">+${t.pnl}M</span>
@@ -176,7 +185,7 @@ function Index() {
 
 
       <footer className="border-t pt-6 text-center text-xs text-muted-foreground">
-        Datos de demostración. No constituye asesoría financiera.
+        Demo data. Not financial advice.
       </footer>
     </main>
   );
