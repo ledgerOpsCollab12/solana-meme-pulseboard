@@ -98,7 +98,10 @@ function Index() {
     <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
       <nav className="flex items-center justify-between">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
-        <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Send a recommendation</a></Button>
+          <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
+        </div>
       </nav>
 
       <section className="hero-layout">
@@ -115,7 +118,7 @@ function Index() {
         </div>
         <WalletPreview />
       </section>
-      <Button asChild className="mb-12 min-h-28 w-full whitespace-normal px-6 py-7 text-2xl font-bold md:min-h-36 md:text-3xl"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer"><span>See live movements</span><ArrowUpRight className="size-8 shrink-0 md:size-10" /></a></Button>
+      <Button asChild variant="outline" className="mb-12 w-full whitespace-normal border-2 border-foreground/80 bg-card px-6 py-5 text-lg font-bold text-foreground shadow-[4px_4px_0_0_var(--accent)] transition-transform hover:-translate-y-0.5 hover:bg-card md:text-xl"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer"><span>See live movements</span><ArrowUpRight className="size-6 shrink-0" /></a></Button>
 
       <section className="overflow-x-clip border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
@@ -166,11 +169,11 @@ function Index() {
       </section>
 
       <section id="api-access" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="api-title">
-        <div><Code2 className="mb-5 size-8 text-primary" /><h2 id="api-title" className="text-3xl font-bold leading-tight">Request API access or a tool tailored to your needs</h2></div>
+        <div><Code2 className="mb-5 size-8 text-primary" /><h2 id="api-title" className="text-3xl font-bold leading-tight">Request API access or a tool tailored to your needs</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>
         <RequestForm kind="api" />
       </section>
-      <section id="recommendations" className="grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="recommendations-title">
-        <div><MessageSquare className="mb-5 size-8 text-primary" /><h2 id="recommendations-title" className="text-3xl font-bold leading-tight">Send a recommendation</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Suggest a feature that you think would improve analysis for our users. If it's a great idea, you may see it integrated soon.</p></div>
+      <section id="decoding" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="decoding-title">
+        <div><MessageSquare className="mb-5 size-8 text-primary" /><h2 id="decoding-title" className="text-3xl font-bold leading-tight">Decoding memecoin market for you</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Most traders don't have the infrastructure to analyze wallet and token data the way they want. We're changing that by letting our community shape what we build. Every month, we'll develop a new feature based on your suggestions. Submit your ideas, and we'll select the best or most requested one. The winning feature will be announced here and shared with you by email.</p></div>
         <RequestForm kind="recommendation" />
       </section>
 
