@@ -7,3 +7,4 @@
 - [x] Add the expanded "Know who you're following" copy (translated to English) to the third problem card; verify desktop and mobile layout.
 - [x] Move that copy inside the third card, replacing its previous text; verify desktop and mobile layout.
 - [x] Remove "In the memecoins market" from the hero subtitle; add the fourth and fifth solution rows ("Token understanding" and "100% data coverage in real time, access to API and custom solutions") in the same format; verify desktop and mobile layout.
+- [x] Switch the page to a white background and replace the yellow accent with blue; verify contrast, desktop and mobile layout.
