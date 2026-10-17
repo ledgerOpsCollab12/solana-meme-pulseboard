@@ -53,9 +53,9 @@
 .site-nav-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; }
 .site-nav-actions a { font-size: 0.82rem; padding-inline: 14px; white-space: nowrap; }
 @media (max-width: 640px) {
-  .site-nav { padding: 12px 10px; }
-  .site-nav-actions { gap: 6px; }
-  .site-nav-actions a { font-size: 0.74rem; padding-inline: 10px; }
+  .site-nav { padding: 16px 14px; }
+  .site-nav-actions { gap: 9px; }
+  .site-nav-actions a { font-size: 0.7rem; padding-inline: 9px; }
 }
 
 
