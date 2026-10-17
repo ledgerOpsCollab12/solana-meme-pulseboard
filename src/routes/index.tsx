@@ -91,12 +91,22 @@ function useReveal() {
   }, []);
 }
 
+function CtaStrip({ idx, title, text, href = PROGRAM_URL, label = "Open the live tracker", external = true }: { idx: string; title: string; text: string; href?: string; label?: string; external?: boolean }) {
+  return (
+    <aside className="ef-card ef-strip" data-reveal-plain>
+      <span className="ef-strip-idx">{idx}</span>
+      <div><h3>{title}</h3><p>{text}</p></div>
+      <a className="ef-btn" href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{label} <ArrowUpRight /></a>
+    </aside>
+  );
+}
+
 function Index() {
   useReveal();
 
   return (
-    <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
-      <nav className="site-nav">
+    <main className="mx-auto max-w-[1360px] px-5 py-6 lg:px-10">
+      <nav className="site-nav ef-card">
         <div className="site-nav-actions">
           <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
           <Button asChild variant="outline"><a href="#api-access"><Sparkles /> Request a tailored feature</a></Button>
@@ -106,78 +116,91 @@ function Index() {
 
       <section className="hero-layout">
         <div className="hero-copy">
-        <span className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
-          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE · SOLANA BLOCKCHAIN · FREE
-        </span>
-        <h1 className="mt-6 text-left text-4xl font-bold leading-[1.12] lg:text-5xl">
-          Real-time transactions of the <span className="text-accent">most profitable wallets</span> in memecoin trading.
-        </h1>
-        <p className="mt-6 max-w-xl text-left text-base leading-relaxed text-muted-foreground">
-          Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
-        </p>
+          <span className="ef-tag"><span className="h-2 w-2 rounded-full bg-gain animate-live" /> <b>WW/00</b> Live · Solana · Free</span>
+          <h1 className="ef-h1 mt-6">Real-time transactions of the <em>most profitable wallets</em> in memecoin trading.</h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+            Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a className="ef-btn" href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">See live movements <ArrowUpRight /></a>
+            <a className="ef-btn ef-btn-ghost" href="#api-access">API access</a>
+          </div>
+          <div className="ef-facts">
+            <div><strong>100%</strong><span>Data coverage</span></div>
+            <div><strong>6 AMMs</strong><span>Pump.fun → Orca</span></div>
+            <div><strong>$0</strong><span>Free access</span></div>
+          </div>
         </div>
         <WalletPreview />
       </section>
-      <Button asChild variant="outline" className="mb-12 w-full whitespace-normal border-2 border-foreground/80 bg-card px-6 py-5 text-lg font-bold text-foreground shadow-[4px_4px_0_0_var(--accent)] transition-transform hover:-translate-y-0.5 hover:bg-card md:text-xl"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer"><span>See live movements</span><ArrowUpRight className="size-6 shrink-0" /></a></Button>
 
-      <section className="overflow-x-clip border-t py-16" aria-labelledby="market-title">
-        <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
-          The first software built for <span className="text-accent">quality wallet tracking</span>.
-        </h2>
+      <CtaStrip idx="CTA/01" title="The wallets are moving right now." text="Every second you read, top wallets are entering positions. Watch them live." />
+
+      <section className="overflow-x-clip py-20" aria-labelledby="market-title">
+        <span className="ef-tag"><b>WW/01</b> The problem</span>
+        <h2 id="market-title" className="ef-h2 mt-5 max-w-4xl">The first software built for <span className="text-accent">quality wallet tracking</span>.</h2>
         <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
           The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.
         </p>
-        <div className="problem-timeline mt-12">
+        <div className="ef-problems">
           {PROBLEMS.map((p) => (
-            <article key={p.n} className="problem-item" data-reveal>
-              <div className="problem-body rounded-lg border bg-card p-6">
-                <h3 className="problem-title">
-                  <span className="problem-num" aria-hidden="true">{Number(p.n)}</span>
-                  <span>{p.title}</span>
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-              </div>
-            </article>
-          ))}
-          <div className="solution-band">
-            <h3 className="solution-band-title">Our solution</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Three tools that turn raw wallet data into a strategy you can actually run.</p>
-          </div>
-        </div>
-        <div className="solution-rows">
-          {SOLUTIONS.map((s) => (
-            <article key={s.n} className="solution-row" aria-label={`Our solution: ${s.title}`}>
-              <div className="solution-row-copy">
-                <span className="font-mono text-xs text-accent">{s.n}</span>
-                <h4 className="mt-2 text-2xl font-bold leading-snug">{s.title}</h4>
-                {s.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="mt-4 text-base leading-relaxed text-muted-foreground">{paragraph}</p>
-                ))}
-                {s.notice && (
-                  <p className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed">
-                    <span className="block font-mono text-xs text-accent">IN DEVELOPMENT</span>
-                    {s.notice}
-                  </p>
-                )}
-              </div>
-              <div className="solution-video" aria-label={`Video placeholder: ${s.title}`}>
-                <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · {s.title}</span>
+            <article key={p.n} className="ef-card ef-card-hover ef-problem problem-item" data-reveal>
+              <div className="problem-body ef-problem-inner">
+                <div className="ef-problem-head"><span className="ef-problem-num">{p.n}</span><b>RISK / P-{p.n}</b></div>
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
               </div>
             </article>
           ))}
         </div>
+
+        <div className="mt-10"><CtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
+
+        <div className="ef-divider"><span className="ef-tag"><b>WW/02</b> Our solution</span></div>
+        <h2 className="ef-h2 text-center">Our solution</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">Five tools that turn raw wallet data into a strategy you can actually run.</p>
+
+        <div className="mt-12 flex flex-col gap-6">
+          {SOLUTIONS.map((s, i) => (
+            <div key={s.n} className="flex flex-col gap-6">
+              <article className="ef-card ef-solution" aria-label={`Our solution: ${s.title}`}>
+                <div className="ef-solution-copy">
+                  <span className="ef-solution-tag">MODULE S-{s.n}</span>
+                  <h4 className="mt-4 text-2xl font-bold leading-snug tracking-tight lg:text-[1.7rem]">{s.title}</h4>
+                  {s.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="mt-4 text-base leading-relaxed text-muted-foreground">{paragraph}</p>
+                  ))}
+                  {s.notice && (
+                    <p className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed">
+                      <span className="block font-mono text-xs text-accent">IN DEVELOPMENT</span>
+                      {s.notice}
+                    </p>
+                  )}
+                </div>
+                <div className="ef-video" aria-label={`Video placeholder: ${s.title}`}>
+                  <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · S-{s.n}</span>
+                </div>
+              </article>
+              {i === 2 && <CtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10"><CtaStrip idx="CTA/04" title="Need the raw data?" text="Real-time API and tools built for your strategy." href="#api-access" label="Request API access" external={false} /></div>
       </section>
 
-      <section id="api-access" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="api-title">
-        <div><Code2 className="mb-5 size-8 text-primary" /><h2 id="api-title" className="text-3xl font-bold leading-tight">Request API access or a tool tailored to your needs</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>
+      <section id="api-access" className="ef-card ef-form-section scroll-mt-8" aria-labelledby="api-title">
+        <div><span className="ef-tag"><b>WW/03</b> API & custom</span><h2 id="api-title" className="mt-5 text-3xl font-bold leading-tight tracking-tight">Request API access or a tool tailored to your needs</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>
         <RequestForm kind="api" />
       </section>
-      <section id="decoding" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="decoding-title">
-        <div><MessageSquare className="mb-5 size-8 text-primary" /><h2 id="decoding-title" className="text-3xl font-bold leading-tight">Decoding memecoin market for you</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Most traders don't have the infrastructure to analyze wallet and token data the way they want. We're changing that by letting our community shape what we build. Every month, we'll develop a new feature based on your suggestions. Submit your ideas, and we'll select the best or most requested one. The winning feature will be announced here and shared with you by email.</p></div>
+      <section id="decoding" className="ef-card ef-form-section mt-8 scroll-mt-8" aria-labelledby="decoding-title">
+        <div><span className="ef-tag"><b>WW/04</b> Community</span><h2 id="decoding-title" className="mt-5 text-3xl font-bold leading-tight tracking-tight">Decoding memecoin market for you</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Most traders don't have the infrastructure to analyze wallet and token data the way they want. We're changing that by letting our community shape what we build. Every month, we'll develop a new feature based on your suggestions. Submit your ideas, and we'll select the best or most requested one. The winning feature will be announced here and shared with you by email.</p></div>
         <RequestForm kind="recommendation" />
       </section>
 
-      <footer className="border-t pt-6 text-center text-xs text-muted-foreground">
+      <div className="mt-10"><CtaStrip idx="CTA/05" title="Still reading? The wallets aren’t." text="Free, real-time, on Solana." /></div>
+
+      <footer className="mt-10 border-t pt-6 text-center text-xs text-muted-foreground">
         Demo data. Not financial advice.
       </footer>
     </main>

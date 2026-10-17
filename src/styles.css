@@ -73,7 +73,7 @@
 .hero-copy { min-width: 0; }
 .problem-timeline { display: flex; flex-direction: column; gap: 28px; position: relative; }
 .problem-item { position: relative; }
-.problem-body { position: relative; border-left: 3px solid var(--accent); }
+.problem-body { position: relative; }
 .problem-title { display: flex; align-items: center; gap: 12px; font-size: 1.3rem; font-weight: 700; line-height: 1.3; color: var(--foreground); }
 .problem-num { flex: none; display: grid; place-items: center; width: 2.1em; height: 2.1em; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent); font-family: var(--font-mono); font-size: 0.6em; font-weight: 700; line-height: 1; }
 [data-reveal] .problem-body { opacity: 0; transform: translateY(34px); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; }
