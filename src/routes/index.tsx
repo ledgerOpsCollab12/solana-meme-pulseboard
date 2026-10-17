@@ -124,22 +124,24 @@ function Index() {
             <h3 className="solution-band-title">Our solution</h3>
             <p className="mt-2 text-sm text-muted-foreground">Three tools that turn raw wallet data into a strategy you can actually run.</p>
           </div>
-          <div className="solution-arrows" aria-hidden="true">
-            <span className="solution-arrow">↓</span>
-            <span className="solution-arrow">↓</span>
-            <span className="solution-arrow">↓</span>
-          </div>
+        </div>
+        <div className="solution-rows">
           {IDEAS.map(([n, , , , solution, notice, solutionTitle]) => (
-            <article key={n} className="solution-card rounded-lg border bg-card p-6" aria-label={`Our solution: ${solutionTitle}`}>
-              <span className="font-mono text-xs text-accent">{n}</span>
-              <h4 className="mt-2 text-base font-semibold leading-snug">{solutionTitle}</h4>
-              <p className="mt-3 text-sm leading-relaxed">{solution}</p>
-              {notice && (
-                <aside className="mt-5 border-t pt-4">
-                  <span className="font-mono text-xs text-accent">IN DEVELOPMENT</span>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{notice}</p>
-                </aside>
-              )}
+            <article key={n} className="solution-row" aria-label={`Our solution: ${solutionTitle}`}>
+              <div className="solution-row-copy">
+                <span className="font-mono text-xs text-accent">{n}</span>
+                <h4 className="mt-2 text-2xl font-bold leading-snug">{solutionTitle}</h4>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">{solution}</p>
+                {notice && (
+                  <p className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed">
+                    <span className="block font-mono text-xs text-accent">IN DEVELOPMENT</span>
+                    {notice}
+                  </p>
+                )}
+              </div>
+              <div className="solution-video" aria-label={`Video placeholder: ${solutionTitle}`}>
+                <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · {solutionTitle}</span>
+              </div>
             </article>
           ))}
         </div>
