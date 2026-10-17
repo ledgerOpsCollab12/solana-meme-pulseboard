@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, CheckCircle2, Clock, Loader2 } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -34,7 +34,7 @@ export function RequestForm({ kind }: { kind: "api" | "recommendation" }) {
       setErrors({ form: "Your request couldn't be saved. Please try again." });
     } finally { setPending(false); }
   }
-  if (success) return <div role="status" className="flex items-start gap-3 border-l-2 border-primary bg-card p-6"><CheckCircle2 className="shrink-0 text-primary" /><div><p className="font-semibold">{kind === "api" ? "Request received." : "Recommendation received."}</p><p className="mt-2 text-sm text-muted-foreground">Thank you — your submission has been saved.</p><Button variant="link" className="mt-3 px-0" onClick={() => setSuccess(false)}>Send another</Button></div></div>;
+  if (success) return <div role="status" className="flex items-start gap-3 border-l-2 border-primary bg-card p-6"><CheckCircle2 className="shrink-0 text-primary" /><div><p className="font-semibold">{kind === "api" ? "Request received." : "Recommendation received."}</p><p className="mt-2 text-sm text-muted-foreground">Thank you — your submission has been saved.</p><Button variant="link" className="mt-3 px-0" onClick={() => setSuccess(false)}>Send another</Button><div className="mt-4"><span className={buttonVariants({ variant: "outline", size: "sm", className: "cursor-default select-none text-muted-foreground" })}><Clock />Response time - 24 hours</span></div></div></div>;
   return <form onSubmit={onSubmit} noValidate className="space-y-5" aria-label={kind === "api" ? "API access request" : "Feature recommendation"}>
     <div className="grid gap-5 sm:grid-cols-2">
       {(["name", "email"] as const).map(field => <div key={field} className="space-y-2"><Label htmlFor={`${kind}-${field}`}>{field === "name" ? "Name" : "Email"}</Label><Input id={`${kind}-${field}`} name={field} type={field === "email" ? "email" : "text"} autoComplete={field} maxLength={field === "name" ? 100 : 255} required aria-invalid={Boolean(errors[field])} aria-describedby={errors[field] ? `${kind}-${field}-error` : undefined} className="h-12 bg-background" />{errors[field] && <p id={`${kind}-${field}-error`} className="text-sm text-destructive">{errors[field]}</p>}</div>)}
@@ -44,5 +44,6 @@ export function RequestForm({ kind }: { kind: "api" | "recommendation" }) {
     <div hidden aria-hidden="true"><input name="website" tabIndex={-1} autoComplete="off" /></div>
     {errors.form && <p role="alert" className="text-sm text-destructive">{errors.form}</p>}
     <Button type="submit" disabled={pending} className="h-12 w-full sm:w-auto sm:px-8">{pending ? <Loader2 className="animate-spin" /> : <ArrowUpRight />}{pending ? "Sending…" : kind === "api" ? "Send request" : "Send recommendation"}</Button>
+    <div className="flex justify-center"><span className={buttonVariants({ variant: "outline", size: "sm", className: "cursor-default select-none text-muted-foreground" })}><Clock />Response time - 24 hours</span></div>
   </form>;
 }
