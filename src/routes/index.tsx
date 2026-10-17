@@ -127,11 +127,12 @@ function Index() {
         <div className="problem-timeline mt-6">
           {IDEAS.map(([n, , t, d], i) => (
             <article key={n} className={`problem-item ${i % 2 ? "is-left" : "is-right"}`} data-reveal>
-              <div className="problem-rail">
-                <span className="problem-num" aria-hidden="true">{Number(n)}</span>
-              </div>
+              <div className="problem-rail" aria-hidden="true" />
               <div className="problem-body rounded-lg border bg-card p-6">
-                <h3 className="problem-title">{t}</h3>
+                <h3 className="problem-title">
+                  <span className="problem-num" aria-hidden="true">{Number(n)}</span>
+                  <span>{t}</span>
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d}</p>
               </div>
             </article>
