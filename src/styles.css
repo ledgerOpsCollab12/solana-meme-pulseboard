@@ -28,12 +28,12 @@
   --primary: oklch(0.52 0.2 258);
   --primary-foreground: oklch(0.99 0.005 250);
   --muted: oklch(0.95 0.01 250);
-  --muted-foreground: oklch(0.5 0.02 255);
+  --muted-foreground: oklch(0.45 0.02 258);
   --accent: oklch(0.52 0.2 258);
   --destructive: oklch(0.53 0.19 25);
   --gain: oklch(0.55 0.16 150);
   --loss: oklch(0.53 0.19 25);
-  --border: oklch(0.88 0.012 250);
+  --border: oklch(0.84 0.015 250);
   --glow: 0 18px 42px -26px color-mix(in oklab, var(--primary) 55%, transparent);
 }
 
@@ -75,7 +75,7 @@
 .solution-rows { display: flex; flex-direction: column; gap: 72px; margin-top: 48px; }
 .solution-row { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
 .solution-row:nth-child(even) .solution-row-copy { order: 2; }
-.solution-video { aspect-ratio: 16 / 9; border: 1px dashed var(--border); border-radius: 10px; background: var(--card); display: grid; place-items: center; box-shadow: var(--glow); }
+.solution-video { aspect-ratio: 16 / 9; border: 1px dashed color-mix(in oklab, var(--border) 55%, var(--muted-foreground)); border-radius: 10px; background: var(--card); display: grid; place-items: center; box-shadow: var(--glow); }
 @media (max-width: 767px) {
   .solution-band { margin-top: 12px; }
   .solution-rows { gap: 48px; margin-top: 32px; }
