@@ -43,6 +43,9 @@ const IDEAS: [string, string, string, string, string, string, string][] = [
     "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
     "Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way.", "",
     "Real-time alerts from profitable wallets"],
+  ["04", "SPECIALIZED LOGIC", "Existing wallet trackers lack memecoin logic",
+    "Solana wallet trackers already exist, but none are built for how memecoins actually trade. Ours is the first tool designed specifically for this market.",
+    "", "", ""],
 ];
 
 type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
@@ -121,10 +124,7 @@ function Index() {
         <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
           The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.
         </p>
-        <h3 className="mt-12 text-xl font-semibold">
-          If you trade memecoins, you already know this:
-        </h3>
-        <div className="problem-timeline mt-6">
+        <div className="problem-timeline mt-12">
           {IDEAS.map(([n, , t, d]) => (
             <article key={n} className="problem-item" data-reveal>
               <div className="problem-body rounded-lg border bg-card p-6">
@@ -142,7 +142,7 @@ function Index() {
           </div>
         </div>
         <div className="solution-rows">
-          {IDEAS.map(([n, , , , solution, notice, solutionTitle]) => (
+          {IDEAS.filter(([, , , , solution]) => solution).map(([n, , , , solution, notice, solutionTitle]) => (
             <article key={n} className="solution-row" aria-label={`Our solution: ${solutionTitle}`}>
               <div className="solution-row-copy">
                 <span className="font-mono text-xs text-accent">{n}</span>
