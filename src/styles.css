@@ -49,6 +49,20 @@
 
 @utility glow { box-shadow: var(--glow); }
 
+.site-nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.site-nav > span:first-child { justify-self: start; }
+.site-nav-actions { grid-column: 2; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; }
+.site-nav-actions button { font-size: 0.82rem; padding-inline: 14px; white-space: nowrap; }
+@media (max-width: 1100px) {
+  .site-nav { grid-template-columns: 1fr; justify-items: center; gap: 12px; }
+  .site-nav > span:first-child { justify-self: center; }
+  .site-nav-actions { grid-column: 1; }
+}
+@media (max-width: 640px) {
+  .site-nav-actions button { font-size: 0.74rem; padding-inline: 10px; }
+}
+
+
 @keyframes flash-in {
   from { opacity: 0; transform: translateY(-8px); background: color-mix(in oklab, var(--primary) 12%, transparent); }
   to { opacity: 1; transform: none; background: transparent; }

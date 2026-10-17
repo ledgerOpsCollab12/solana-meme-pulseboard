@@ -11,3 +11,4 @@
 - [x] Enlarge the first-screen program link to memewalletscan.com and remove the final simulated tables.
 - [x] Add English API/custom-tool and recommendation forms with private storage and header navigation.
 - [x] Verify both submissions, validation, and desktop/mobile layout; report email availability (no sending domain configured).
+- [x] Center the header buttons: remove "Send a recommendation", add "Decoding memecoin market for you" and "Request a tailored feature"; both it and "API access" open the API panel.
