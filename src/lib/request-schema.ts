@@ -7,6 +7,7 @@ export const requestSchema = z.object({
   name: safeText(100),
   email: z.string().trim().email("Enter a valid email address.").max(255),
   message: safeText(2000),
+  meeting: z.enum(["yes", "no"]).optional(),
   website: z.string().max(0, "Unable to submit this request.").default(""),
 }).strict();
 

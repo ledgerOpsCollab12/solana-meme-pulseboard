@@ -1,0 +1,2 @@
+ALTER TABLE public.api_requests ADD COLUMN IF NOT EXISTS wants_meeting boolean;
+COMMENT ON COLUMN public.api_requests.wants_meeting IS 'Whether the visitor asked to be contacted to arrange a meeting; null means they did not answer.';
