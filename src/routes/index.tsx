@@ -29,7 +29,7 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
-const IDEAS: [string, string, string, string, string, string, string][] = [
+const IDEAS: [string, string, string, string, string, string, string, string][] = [
   ["01", "LUCK ISN'T A METHOD", "A leaderboard lies to you",
     "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
     "Filter wallets not just by PnL, but by win rate, ROI, capital deployed and more. These signals let you follow the most consistent accounts and see what they have in common.", "",
@@ -42,7 +42,8 @@ const IDEAS: [string, string, string, string, string, string, string][] = [
   ["03", "CLASSIFICATION", "Know who you're following",
     "Copy trading isn't just about following a winning wallet — it's about understanding its strategy so emotions don't take over during the drawdowns. That keeps your risk controlled and tells you exactly how to follow it.",
     "Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way.", "",
-    "Real-time alerts from profitable wallets"],
+    "Real-time alerts from profitable wallets",
+    "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move."],
 ];
 
 type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
@@ -113,11 +114,12 @@ function Index() {
           If you trade memecoins, you already know this:
         </h3>
         <div className="problem-solution-grid mt-6">
-          {IDEAS.map(([n, tag, t, d]) => (
+          {IDEAS.map(([n, tag, t, d, , , , extra]) => (
             <article key={n} className="problem-card rounded-lg border bg-card p-6">
               <span className="font-mono text-xs text-accent">{n} · {tag}</span>
               <h3 className="mt-3 text-lg font-semibold">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              {extra && <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{extra}</p>}
             </article>
           ))}
           <div className="solution-band">
