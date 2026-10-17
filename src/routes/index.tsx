@@ -114,14 +114,14 @@ function Index() {
           If you trade memecoins, you already know this:
         </h3>
         <div className="problem-solution-grid mt-6">
-          {IDEAS.map(([n, tag, t, d, , , , extra]) => (
+          {IDEAS.map(([n, tag, t, d]) => (
             <article key={n} className="problem-card rounded-lg border bg-card p-6">
               <span className="font-mono text-xs text-accent">{n} · {tag}</span>
               <h3 className="mt-3 text-lg font-semibold">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
-              {extra && <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{extra}</p>}
             </article>
           ))}
+          <p className="problem-insight">{IDEAS[2]?.[7]}</p>
           <div className="solution-band">
             <h3 className="solution-band-title">Our solution</h3>
             <p className="mt-2 text-sm text-muted-foreground">Three tools that turn raw wallet data into a strategy you can actually run.</p>
