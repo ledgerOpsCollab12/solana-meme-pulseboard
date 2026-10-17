@@ -73,7 +73,10 @@
 .solution-row:nth-child(even) .solution-row-copy { order: 2; }
 .solution-video { aspect-ratio: 16 / 9; border: 1px dashed var(--border); border-radius: 10px; background: var(--card); display: grid; place-items: center; box-shadow: var(--glow); }
 @media (max-width: 767px) {
-  .problem-solution-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .problem-item { grid-template-columns: 56px minmax(0, 1fr); gap: 12px; }
+  .problem-rail { padding-top: 2px; }
+  .problem-num { width: 46px; height: 46px; border-width: 2px; font-size: 1.25rem; }
+  .problem-item:last-of-type .problem-rail::before { height: 26px; }
   .solution-band { margin-top: 12px; }
   .solution-rows { gap: 48px; margin-top: 32px; }
   .solution-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
