@@ -22,19 +22,21 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.25 0.02 260);
-  --card: oklch(0.975 0.008 250);
-  --primary: oklch(0.52 0.2 258);
+  /* Deep Cobalt / Slate / Sage palette */
+  --background: oklch(0.984 0.003 247.86);       /* #F8FAFC soft mineral gray */
+  --foreground: oklch(0.208 0.042 265.75);       /* #0F172A slate night */
+  --card: oklch(1 0 0);                          /* white cards over mineral bg */
+  --primary: oklch(0.379 0.146 265.5);           /* #1E3A8A deep cobalt */
   --primary-foreground: oklch(0.99 0.005 250);
-  --muted: oklch(0.95 0.01 250);
-  --muted-foreground: oklch(0.45 0.02 258);
-  --accent: oklch(0.52 0.2 258);
+  --muted: oklch(0.968 0.007 247.9);             /* #F1F5F9 slate-100 */
+  --muted-foreground: oklch(0.482 0.039 257.29); /* #475569 slate-600 */
+  --accent: oklch(0.379 0.146 265.5);            /* deep cobalt accent */
   --destructive: oklch(0.53 0.19 25);
-  --gain: oklch(0.55 0.16 150);
+  --gain: oklch(0.508 0.118 165.61);             /* #047857 sage for positive states */
+  --gain-bright: oklch(0.696 0.17 162.48);       /* #10B981 live indicators */
   --loss: oklch(0.53 0.19 25);
-  --border: oklch(0.84 0.015 250);
-  --glow: 0 18px 42px -26px color-mix(in oklab, var(--primary) 55%, transparent);
+  --border: oklch(0.929 0.013 255.51);           /* #E2E8F0 slate border */
+  --glow: 0 18px 42px -26px color-mix(in oklab, var(--primary) 45%, transparent);
 }
 
 @layer base {
@@ -168,9 +170,9 @@
 
 /* ===== Editorial Fintech v2 ===== */
 :root {
-  --ink: oklch(0.2 0.03 262);
+  --ink: oklch(0.208 0.042 265.75);              /* #0F172A slate for primary buttons/headings */
   --ink-foreground: oklch(0.99 0.004 250);
-  --surface: oklch(0.985 0.005 250);
+  --surface: oklch(1 0 0);
   --shadow-card: 0 1px 0 0 oklch(1 0 0 / 0.9) inset, 0 1px 2px oklch(0.25 0.03 260 / 0.06), 0 14px 34px -18px oklch(0.25 0.05 260 / 0.28);
   --shadow-lift: 0 1px 0 0 oklch(1 0 0 / 0.9) inset, 0 2px 4px oklch(0.25 0.03 260 / 0.08), 0 28px 60px -28px oklch(0.3 0.12 258 / 0.42);
   --shine: linear-gradient(135deg, oklch(1 0 0 / 0.95), color-mix(in oklab, var(--primary) 30%, transparent) 45%, oklch(0.88 0.015 250) 100%);
