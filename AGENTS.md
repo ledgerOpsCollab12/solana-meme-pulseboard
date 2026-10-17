@@ -11,3 +11,4 @@
 
 - Keep the reference-based product preview in a separate browser-safe component, with its rotation interval and stage progression in a tested helper, so presentation stays independent of live market data.
 - Pre-optimize the preview's UI dependencies alongside the template's React dependencies to avoid late dependency discovery mixing React module instances in an already-open preview.
+- Landing request forms share a browser-safe Zod schema and a public server function that only inserts into private, service-role-only tables; visitors must never read submissions.

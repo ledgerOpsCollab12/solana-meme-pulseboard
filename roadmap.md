@@ -8,3 +8,6 @@
 - [x] Move that copy inside the third card, replacing its previous text; verify desktop and mobile layout.
 - [x] Remove "In the memecoins market" from the hero subtitle; add the fourth and fifth solution rows ("Token understanding" and "100% data coverage in real time, access to API and custom solutions") in the same format; verify desktop and mobile layout.
 - [x] Switch the page to a white background and replace the yellow accent with blue; verify contrast, desktop and mobile layout.
+- [x] Enlarge the first-screen program link to memewalletscan.com and remove the final simulated tables.
+- [x] Add English API/custom-tool and recommendation forms with private storage and header navigation.
+- [x] Verify both submissions, validation, and desktop/mobile layout; report email availability (no sending domain configured).
