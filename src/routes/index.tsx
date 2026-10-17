@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { ArrowUpRight, Code2, MessageSquare } from "lucide-react";
+import { RequestForm } from "@/components/request-form";
+import { PROGRAM_URL } from "@/lib/request-schema";
 import { WalletPreview } from "@/components/wallet-preview";
 import { Button } from "@/components/ui/button";
 
@@ -19,15 +22,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const TRADERS = [
-  { name: "degenwhale.sol", pnl: 48.2, win: 81 },
-  { name: "SatoshiGhost", pnl: 37.9, win: 76 },
-  { name: "pumpking_88.sol", pnl: 29.4, win: 72 },
-  { name: "MemeSensei", pnl: 22.1, win: 69 },
-  { name: "lunahunter.sol", pnl: 17.6, win: 66 },
-];
-const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
 const PROBLEMS = [
   {
@@ -86,23 +80,6 @@ const SOLUTIONS: Solution[] = [
   },
 ];
 
-type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
-
-let idc = 0;
-function randomMove(): Move {
-  const t = TRADERS[Math.floor(Math.random() * TRADERS.length)] ?? TRADERS[0];
-  const coin = Object.keys(COINS)[Math.floor(Math.random() * 6)] ?? "BONK";
-  if (!t) throw new Error("No demo traders available");
-  const usd = Math.round(50000 + Math.random() * 4950000);
-  return {
-    id: idc++, trader: t.name, coin, usd,
-    side: Math.random() > 0.45 ? "BUY" : "SELL",
-    qty: usd / (COINS[coin] ?? 1),
-    time: new Date().toLocaleTimeString("en-US"),
-  };
-}
-const fmt = (n: number) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 2 : 0 });
-
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll("[data-reveal]");
@@ -116,27 +93,14 @@ function useReveal() {
 
 function Index() {
   useReveal();
-  const [moves, setMoves] = useState<Move[]>([]);
-  const [volume, setVolume] = useState(0);
-
-  useEffect(() => {
-    const init = Array.from({ length: 8 }, randomMove);
-    setMoves(init);
-    const iv = setInterval(() => {
-      const m = randomMove();
-      setMoves((p) => [m, ...p].slice(0, 14));
-      setVolume((v) => v + m.usd);
-    }, 1800);
-    return () => clearInterval(iv);
+  return () => clearInterval(iv);
   }, []);
 
   return (
     <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
       <nav className="flex items-center justify-between">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
-        <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-          <span className="h-2 w-2 rounded-full bg-gain animate-live" /> LIVE
-        </span>
+        <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
       </nav>
 
       <section className="hero-layout">
@@ -150,10 +114,10 @@ function Index() {
         <p className="mt-6 max-w-xl text-left text-base leading-relaxed text-muted-foreground">
           Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
         </p>
-        <Button asChild className="glow mt-7 h-12 px-6"><a href="#feed">See live movements ↗</a></Button>
         </div>
         <WalletPreview />
       </section>
+      <Button asChild className="mb-12 min-h-28 w-full whitespace-normal px-6 py-7 text-2xl font-bold md:min-h-36 md:text-3xl"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer"><span>See live movements</span><ArrowUpRight className="size-8 shrink-0 md:size-10" /></a></Button>
 
       <section className="overflow-x-clip border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
@@ -203,44 +167,14 @@ function Index() {
         </div>
       </section>
 
-      <section id="feed" className="grid gap-6 lg:grid-cols-3">
-        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-semibold">Real-time movements</h2>
-            <span className="font-mono text-xs text-muted-foreground">Session volume: ${fmt(volume)}</span>
-          </div>
-          <div className="space-y-1 font-mono text-sm">
-            {moves.map((m) => (
-              <div key={m.id} className="animate-flash grid grid-cols-[70px_1fr_80px_1fr] items-center gap-2 rounded px-2 py-2 md:grid-cols-[80px_1fr_80px_1fr_1fr]">
-                <span className="text-xs text-muted-foreground">{m.time}</span>
-                <span className="truncate">{m.trader}</span>
-                <span className={m.side === "BUY" ? "text-gain" : "text-loss"}>{m.side}</span>
-                <span className="hidden md:block">{fmt(m.qty)} {m.coin}</span>
-                <span className="text-right">${fmt(m.usd)}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-lg border bg-card p-5">
-          <h2 className="mb-4 font-semibold">Top traders (30d)</h2>
-          <ol className="space-y-3">
-            {TRADERS.map((t, i) => (
-              <li key={t.name} className="flex items-center justify-between rounded bg-muted px-3 py-3">
-                <span className="flex items-center gap-3">
-                  <span className="font-mono text-accent">#{i + 1}</span>
-                  <span>
-                    <span className="block text-sm font-semibold">{t.name}</span>
-                    <span className="text-xs text-muted-foreground">{t.win}% win rate</span>
-                  </span>
-                </span>
-                <span className="font-mono text-gain">+${t.pnl}M</span>
-              </li>
-            ))}
-          </ol>
-        </div>
+      <section id="api-access" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="api-title">
+        <div><Code2 className="mb-5 size-8 text-primary" /><h2 id="api-title" className="text-3xl font-bold leading-tight">Request API access or a tool tailored to your needs</h2></div>
+        <RequestForm kind="api" />
       </section>
-
+      <section id="recommendations" className="grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="recommendations-title">
+        <div><MessageSquare className="mb-5 size-8 text-primary" /><h2 id="recommendations-title" className="text-3xl font-bold leading-tight">Send a recommendation</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Suggest a feature that you think would improve analysis for our users. If it's a great idea, you may see it integrated soon.</p></div>
+        <RequestForm kind="recommendation" />
+      </section>
 
       <footer className="border-t pt-6 text-center text-xs text-muted-foreground">
         Demo data. Not financial advice.
