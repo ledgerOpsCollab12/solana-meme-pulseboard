@@ -112,12 +112,17 @@ function Index() {
         <h3 className="mt-12 text-xl font-semibold">
           If you trade memecoins, you already know this:
         </h3>
-        <div className="problem-solution-grid mt-6">
+        <div className="problem-timeline mt-6">
           {IDEAS.map(([n, tag, t, d]) => (
-            <article key={n} className="problem-card rounded-lg border bg-card p-6">
-              <span className="font-mono text-xs text-accent">{n} · {tag}</span>
-              <h3 className="mt-3 text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+            <article key={n} className="problem-item">
+              <div className="problem-rail">
+                <span className="problem-num" aria-hidden="true">{Number(n)}</span>
+              </div>
+              <div className="problem-body rounded-lg border bg-card p-6">
+                <span className="font-mono text-xs text-accent">{tag}</span>
+                <h3 className="mt-3 text-lg font-semibold">{t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              </div>
             </article>
           ))}
           <div className="solution-band">

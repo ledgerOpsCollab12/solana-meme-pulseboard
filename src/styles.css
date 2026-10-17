@@ -59,15 +59,24 @@
 
 .hero-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr); gap: 40px; align-items: center; padding: 70px 0 64px; }
 .hero-copy { min-width: 0; }
-.problem-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.solution-band { grid-column: 1 / -1; margin-top: 34px; text-align: center; }
+.problem-timeline { display: flex; flex-direction: column; }
+.problem-item { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; align-items: start; }
+.problem-rail { position: relative; display: flex; justify-content: center; padding-top: 8px; }
+.problem-rail::before { content: ""; position: absolute; top: 0; bottom: -20px; left: 50%; width: 2px; transform: translateX(-50%); background: color-mix(in oklab, var(--accent) 35%, var(--border)); }
+.problem-item:last-of-type .problem-rail::before { height: 40px; bottom: auto; }
+.problem-num { position: relative; z-index: 1; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--accent); background: color-mix(in oklab, var(--accent) 10%, var(--background)); color: var(--accent); font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; box-shadow: 0 0 28px -6px color-mix(in oklab, var(--accent) 60%, transparent); }
+.problem-body { position: relative; }
+.solution-band { margin-top: 44px; text-align: center; }
 .solution-band-title { font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 700; letter-spacing: -0.01em; }
 .solution-rows { display: flex; flex-direction: column; gap: 72px; margin-top: 48px; }
 .solution-row { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
 .solution-row:nth-child(even) .solution-row-copy { order: 2; }
 .solution-video { aspect-ratio: 16 / 9; border: 1px dashed var(--border); border-radius: 10px; background: var(--card); display: grid; place-items: center; box-shadow: var(--glow); }
 @media (max-width: 767px) {
-  .problem-solution-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .problem-item { grid-template-columns: 56px minmax(0, 1fr); gap: 12px; }
+  .problem-rail { padding-top: 2px; }
+  .problem-num { width: 46px; height: 46px; border-width: 2px; font-size: 1.25rem; }
+  .problem-item:last-of-type .problem-rail::before { height: 26px; }
   .solution-band { margin-top: 12px; }
   .solution-rows { gap: 48px; margin-top: 32px; }
   .solution-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
