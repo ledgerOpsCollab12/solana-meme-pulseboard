@@ -97,7 +97,6 @@ function Index() {
   return (
     <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
       <nav className="site-nav">
-        <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
         <div className="site-nav-actions">
           <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
           <Button asChild variant="outline"><a href="#api-access"><Sparkles /> Request a tailored feature</a></Button>
