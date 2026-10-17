@@ -5,3 +5,4 @@
 - [x] Update the second section copy and connect each problem to its solution; verify desktop and mobile layout.
 - [x] Translate the whole page to English and replace the three "Our solution" labels with one large title whose three arrows point to the titled solution cards; verify desktop and mobile layout.
 - [x] Add the expanded "Know who you're following" copy (translated to English) to the third problem card; verify desktop and mobile layout.
+- [x] Move that copy inside the third card, replacing its previous text; verify desktop and mobile layout.
