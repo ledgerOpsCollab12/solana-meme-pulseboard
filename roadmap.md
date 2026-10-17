@@ -6,3 +6,4 @@
 - [x] Translate the whole page to English and replace the three "Our solution" labels with one large title whose three arrows point to the titled solution cards; verify desktop and mobile layout.
 - [x] Add the expanded "Know who you're following" copy (translated to English) to the third problem card; verify desktop and mobile layout.
 - [x] Move that copy inside the third card, replacing its previous text; verify desktop and mobile layout.
+- [x] Remove "In the memecoins market" from the hero subtitle; add the fourth and fifth solution rows ("Token understanding" and "100% data coverage in real time, access to API and custom solutions") in the same format; verify desktop and mobile layout.
