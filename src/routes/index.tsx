@@ -98,7 +98,10 @@ function Index() {
     <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
       <nav className="flex items-center justify-between">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
-        <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Send a recommendation</a></Button>
+          <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
+        </div>
       </nav>
 
       <section className="hero-layout">
@@ -115,7 +118,7 @@ function Index() {
         </div>
         <WalletPreview />
       </section>
-      <Button asChild className="mb-12 min-h-28 w-full whitespace-normal px-6 py-7 text-2xl font-bold md:min-h-36 md:text-3xl"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer"><span>See live movements</span><ArrowUpRight className="size-8 shrink-0 md:size-10" /></a></Button>
+      <Button asChild variant="outline" className="mb-12 w-full whitespace-normal border-2 border-foreground/80 bg-card px-6 py-5 text-lg font-bold text-foreground shadow-[4px_4px_0_0_var(--accent)] transition-transform hover:-translate-y-0.5 hover:bg-card md:text-xl"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer"><span>See live movements</span><ArrowUpRight className="size-6 shrink-0" /></a></Button>
 
       <section className="overflow-x-clip border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
