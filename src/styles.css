@@ -60,7 +60,6 @@
 .hero-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr); gap: 40px; align-items: center; padding: 70px 0 64px; }
 .hero-copy { min-width: 0; }
 .problem-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.problem-insight { grid-column: 1 / -1; margin-top: 14px; border-left: 2px solid var(--accent); padding-left: 22px; max-width: 62ch; font-size: 1.05rem; line-height: 1.75; }
 .solution-band { grid-column: 1 / -1; margin-top: 34px; text-align: center; }
 .solution-band-title { font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 700; letter-spacing: -0.01em; }
 .solution-rows { display: flex; flex-direction: column; gap: 72px; margin-top: 48px; }

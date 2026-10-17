@@ -29,21 +29,20 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
-const IDEAS: [string, string, string, string, string, string, string, string][] = [
+const IDEAS: [string, string, string, string, string, string, string][] = [
   ["01", "LUCK ISN'T A METHOD", "A leaderboard lies to you",
     "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
     "Filter wallets not just by PnL, but by win rate, ROI, capital deployed and more. These signals let you follow the most consistent accounts and see what they have in common.", "",
-    "Wallet quality filters", ""],
+    "Wallet quality filters"],
   ["02", "SPEED", "Arrive late and you lose",
     "Bots trade at speeds a trader with limited tools simply can't match.",
     "We classify accounts by bot-like and human behavior. See trade counts and full movement history so you know whether you can copy a wallet without needing a low-latency bot.",
     "In development: a flexible, low-latency bot you can run yourself.",
-    "Bot & human behavior classification", ""],
+    "Bot & human behavior classification"],
   ["03", "CLASSIFICATION", "Know who you're following",
-    "Copy trading isn't just about following a winning wallet — it's about understanding its strategy so emotions don't take over during the drawdowns. That keeps your risk controlled and tells you exactly how to follow it.",
+    "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
     "Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way.", "",
-    "Real-time alerts from profitable wallets",
-    "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move."],
+    "Real-time alerts from profitable wallets"],
 ];
 
 type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
@@ -121,7 +120,6 @@ function Index() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
             </article>
           ))}
-          <p className="problem-insight">{IDEAS[2]?.[7]}</p>
           <div className="solution-band">
             <h3 className="solution-band-title">Our solution</h3>
             <p className="mt-2 text-sm text-muted-foreground">Three tools that turn raw wallet data into a strategy you can actually run.</p>
