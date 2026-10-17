@@ -62,7 +62,19 @@ function randomMove(): Move {
 }
 const fmt = (n: number) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 2 : 0 });
 
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll("[data-reveal]");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("revealed"); io.unobserve(e.target); } });
+    }, { threshold: 0.25 });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
 function Index() {
+  useReveal();
   const [moves, setMoves] = useState<Move[]>([]);
   const [volume, setVolume] = useState(0);
 
@@ -102,7 +114,7 @@ function Index() {
         <WalletPreview />
       </section>
 
-      <section className="border-t py-16" aria-labelledby="market-title">
+      <section className="overflow-x-clip border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
           The first software built for <span className="text-accent">quality wallet tracking</span>.
         </h2>
@@ -113,15 +125,14 @@ function Index() {
           If you trade memecoins, you already know this:
         </h3>
         <div className="problem-timeline mt-6">
-          {IDEAS.map(([n, tag, t, d]) => (
-            <article key={n} className="problem-item">
+          {IDEAS.map(([n, , t, d], i) => (
+            <article key={n} className={`problem-item ${i % 2 ? "is-left" : "is-right"}`} data-reveal>
               <div className="problem-rail">
                 <span className="problem-num" aria-hidden="true">{Number(n)}</span>
               </div>
               <div className="problem-body rounded-lg border bg-card p-6">
-                <span className="font-mono text-xs text-accent">{tag}</span>
-                <h3 className="mt-3 text-lg font-semibold">{t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+                <h3 className="problem-title">{t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d}</p>
               </div>
             </article>
           ))}
