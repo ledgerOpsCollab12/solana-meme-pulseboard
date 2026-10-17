@@ -22,19 +22,19 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.14 0.01 160);
-  --foreground: oklch(0.96 0.01 150);
-  --card: oklch(0.18 0.012 160);
-  --primary: oklch(0.82 0.16 85);
-  --primary-foreground: oklch(0.14 0.01 160);
-  --muted: oklch(0.22 0.012 160);
-  --muted-foreground: oklch(0.65 0.02 160);
-  --accent: oklch(0.82 0.16 85);
-  --destructive: oklch(0.65 0.22 25);
-  --gain: oklch(0.82 0.2 150);
-  --loss: oklch(0.68 0.21 25);
-  --border: oklch(0.28 0.015 160);
-  --glow: 0 0 40px -8px color-mix(in oklab, var(--primary) 60%, transparent);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.25 0.02 260);
+  --card: oklch(0.975 0.008 250);
+  --primary: oklch(0.52 0.2 258);
+  --primary-foreground: oklch(0.99 0.005 250);
+  --muted: oklch(0.95 0.01 250);
+  --muted-foreground: oklch(0.5 0.02 255);
+  --accent: oklch(0.52 0.2 258);
+  --destructive: oklch(0.53 0.19 25);
+  --gain: oklch(0.55 0.16 150);
+  --loss: oklch(0.53 0.19 25);
+  --border: oklch(0.88 0.012 250);
+  --glow: 0 18px 42px -26px color-mix(in oklab, var(--primary) 55%, transparent);
 }
 
 @layer base {
@@ -43,14 +43,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
-    background-image: radial-gradient(circle at 20% 0%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 50%);
+    background-image: radial-gradient(circle at 20% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 55%);
   }
 }
 
 @utility glow { box-shadow: var(--glow); }
 
 @keyframes flash-in {
-  from { opacity: 0; transform: translateY(-8px); background: color-mix(in oklab, var(--primary) 18%, transparent); }
+  from { opacity: 0; transform: translateY(-8px); background: color-mix(in oklab, var(--primary) 12%, transparent); }
   to { opacity: 1; transform: none; background: transparent; }
 }
 @utility animate-flash { animation: flash-in 0.9s ease-out; }
