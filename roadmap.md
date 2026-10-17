@@ -13,4 +13,5 @@
 - [x] Verify both submissions, validation, and desktop/mobile layout; report email availability (no sending domain configured).
 - [x] Center the header buttons: remove "Send a recommendation", add "Decoding memecoin market for you" and "Request a tailored feature"; both it and "API access" open the API panel.
 - [x] Drop the header logo/name and put the three buttons inside a bordered box spanning the page width.
-- [ ] Add a non-interactive "Response time - 24 hours" chip below each form.
+- [x] Add a non-interactive "Response time - 24 hours" chip below each form.
+- [x] Add the "Would you like us to contact you to arrange a meeting?" box to the API access form and store the answer.
