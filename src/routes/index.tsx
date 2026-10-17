@@ -125,9 +125,8 @@ function Index() {
           If you trade memecoins, you already know this:
         </h3>
         <div className="problem-timeline mt-6">
-          {IDEAS.map(([n, , t, d], i) => (
-            <article key={n} className={`problem-item ${i % 2 ? "is-left" : "is-right"}`} data-reveal>
-              <div className="problem-rail" aria-hidden="true" />
+          {IDEAS.map(([n, , t, d]) => (
+            <article key={n} className="problem-item" data-reveal>
               <div className="problem-body rounded-lg border bg-card p-6">
                 <h3 className="problem-title">
                   <span className="problem-num" aria-hidden="true">{Number(n)}</span>
