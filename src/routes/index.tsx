@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { ArrowUpRight, Code2, MessageSquare } from "lucide-react";
+import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
 import { WalletPreview } from "@/components/wallet-preview";
@@ -96,10 +96,11 @@ function Index() {
 
   return (
     <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
-      <nav className="flex items-center justify-between">
+      <nav className="site-nav">
         <span className="text-xl font-bold">🐋 Whale<span className="text-primary">Watch</span></span>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Send a recommendation</a></Button>
+        <div className="site-nav-actions">
+          <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
+          <Button asChild variant="outline"><a href="#api-access"><Sparkles /> Request a tailored feature</a></Button>
           <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
         </div>
       </nav>
