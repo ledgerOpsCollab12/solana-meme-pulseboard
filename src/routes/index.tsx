@@ -29,23 +29,61 @@ const TRADERS = [
 ];
 const COINS: Record<string, number> = { BONK: 0.000031, WIF: 2.4, POPCAT: 1.1, MEW: 0.0085, GOAT: 0.62, FARTCOIN: 0.94 };
 
-const IDEAS: [string, string, string, string, string, string, string][] = [
-  ["01", "LUCK ISN'T A METHOD", "A leaderboard lies to you",
-    "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
-    "Filter wallets not just by PnL, but by win rate, ROI, capital deployed and more. These signals let you follow the most consistent accounts and see what they have in common.", "",
-    "Wallet quality filters"],
-  ["02", "SPEED", "Arrive late and you lose",
-    "Bots trade at speeds a trader with limited tools simply can't match.",
-    "We classify accounts by bot-like and human behavior. See trade counts and full movement history so you know whether you can copy a wallet without needing a low-latency bot.",
-    "In development: a flexible, low-latency bot you can run yourself.",
-    "Bot & human behavior classification"],
-  ["03", "CLASSIFICATION", "Know who you're following",
-    "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
-    "Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way.", "",
-    "Real-time alerts from profitable wallets"],
-  ["04", "SPECIALIZED LOGIC", "Existing wallet trackers lack memecoin logic",
-    "Solana wallet trackers already exist, but none are built for how memecoins actually trade. Ours is the first tool designed specifically for this market.",
-    "", "", ""],
+const PROBLEMS = [
+  {
+    n: "01",
+    title: "A leaderboard lies to you",
+    description: "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
+  },
+  {
+    n: "02",
+    title: "Arrive late and you lose",
+    description: "Bots trade at speeds a trader with limited tools simply can't match.",
+  },
+  {
+    n: "03",
+    title: "Know who you're following",
+    description: "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
+  },
+  {
+    n: "04",
+    title: "Existing wallet trackers lack memecoin logic",
+    description: "Solana wallet trackers already exist, but none are built for how memecoins actually trade. Ours is the first tool designed specifically for this market.",
+  },
+];
+
+type Solution = { n: string; title: string; paragraphs: string[]; notice?: string };
+
+const SOLUTIONS: Solution[] = [
+  {
+    n: "01",
+    title: "Wallet quality filters",
+    paragraphs: ["Filter wallets not just by PnL, but by win rate, ROI, capital deployed and more. These signals let you follow the most consistent accounts and see what they have in common."],
+  },
+  {
+    n: "02",
+    title: "Bot & human behavior classification",
+    paragraphs: ["We classify accounts by bot-like and human behavior. See trade counts and full movement history so you know whether you can copy a wallet without needing a low-latency bot."],
+    notice: "In development: a flexible, low-latency bot you can run yourself.",
+  },
+  {
+    n: "03",
+    title: "Real-time alerts from profitable wallets",
+    paragraphs: ["Add the wallets you want to track to a panel with their movements in real time. See how often they trade, watch their gains live, know which tokens they buy, and understand how to copy them the right way."],
+  },
+  {
+    n: "04",
+    title: "Token understanding",
+    paragraphs: ["Set a minimum wallet PnL to discover which tokens have the most open positions held by wallets meeting your threshold. Analyze these tokens, identify their key characteristics, and understand what profitable traders look for when deciding to enter a position."],
+  },
+  {
+    n: "05",
+    title: "100% data coverage in real time, access to API and custom solutions",
+    paragraphs: [
+      "We collect data directly from the Solana blockchain using our own infrastructure, tracking all major AMMs, including Pump.fun, PumpSwap, Raydium, Meteora, Moonit, and Orca. This gives us 100% coverage of trading data from active memecoin wallets.",
+      "Take your analysis to the next level with our API. Request access to the data you need, custom tools, and tailored solutions to power your wallet analysis.",
+    ],
+  },
 ];
 
 type Move = { id: number; trader: string; side: "BUY" | "SELL"; coin: string; qty: number; usd: number; time: string };
@@ -110,7 +148,7 @@ function Index() {
           Real-time transactions of the <span className="text-accent">most profitable wallets</span> in memecoin trading.
         </h1>
         <p className="mt-6 max-w-xl text-left text-base leading-relaxed text-muted-foreground">
-          In the memecoin market, access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
+          Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
         </p>
         <Button asChild className="glow mt-7 h-12 px-6"><a href="#feed">See live movements ↗</a></Button>
         </div>
@@ -125,14 +163,14 @@ function Index() {
           The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.
         </p>
         <div className="problem-timeline mt-12">
-          {IDEAS.map(([n, , t, d]) => (
-            <article key={n} className="problem-item" data-reveal>
+          {PROBLEMS.map((p) => (
+            <article key={p.n} className="problem-item" data-reveal>
               <div className="problem-body rounded-lg border bg-card p-6">
                 <h3 className="problem-title">
-                  <span className="problem-num" aria-hidden="true">{Number(n)}</span>
-                  <span>{t}</span>
+                  <span className="problem-num" aria-hidden="true">{Number(p.n)}</span>
+                  <span>{p.title}</span>
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
               </div>
             </article>
           ))}
@@ -142,21 +180,23 @@ function Index() {
           </div>
         </div>
         <div className="solution-rows">
-          {IDEAS.filter(([, , , , solution]) => solution).map(([n, , , , solution, notice, solutionTitle]) => (
-            <article key={n} className="solution-row" aria-label={`Our solution: ${solutionTitle}`}>
+          {SOLUTIONS.map((s) => (
+            <article key={s.n} className="solution-row" aria-label={`Our solution: ${s.title}`}>
               <div className="solution-row-copy">
-                <span className="font-mono text-xs text-accent">{n}</span>
-                <h4 className="mt-2 text-2xl font-bold leading-snug">{solutionTitle}</h4>
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">{solution}</p>
-                {notice && (
+                <span className="font-mono text-xs text-accent">{s.n}</span>
+                <h4 className="mt-2 text-2xl font-bold leading-snug">{s.title}</h4>
+                {s.paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="mt-4 text-base leading-relaxed text-muted-foreground">{paragraph}</p>
+                ))}
+                {s.notice && (
                   <p className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed">
                     <span className="block font-mono text-xs text-accent">IN DEVELOPMENT</span>
-                    {notice}
+                    {s.notice}
                   </p>
                 )}
               </div>
-              <div className="solution-video" aria-label={`Video placeholder: ${solutionTitle}`}>
-                <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · {solutionTitle}</span>
+              <div className="solution-video" aria-label={`Video placeholder: ${s.title}`}>
+                <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · {s.title}</span>
               </div>
             </article>
           ))}
