@@ -169,11 +169,11 @@ function Index() {
       </section>
 
       <section id="api-access" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="api-title">
-        <div><Code2 className="mb-5 size-8 text-primary" /><h2 id="api-title" className="text-3xl font-bold leading-tight">Request API access or a tool tailored to your needs</h2></div>
+        <div><Code2 className="mb-5 size-8 text-primary" /><h2 id="api-title" className="text-3xl font-bold leading-tight">Request API access or a tool tailored to your needs</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>
         <RequestForm kind="api" />
       </section>
-      <section id="recommendations" className="grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="recommendations-title">
-        <div><MessageSquare className="mb-5 size-8 text-primary" /><h2 id="recommendations-title" className="text-3xl font-bold leading-tight">Send a recommendation</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Suggest a feature that you think would improve analysis for our users. If it's a great idea, you may see it integrated soon.</p></div>
+      <section id="decoding" className="scroll-mt-8 grid gap-10 border-t py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" aria-labelledby="decoding-title">
+        <div><MessageSquare className="mb-5 size-8 text-primary" /><h2 id="decoding-title" className="text-3xl font-bold leading-tight">Decoding memecoin market for you</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Most traders don't have the infrastructure to analyze wallet and token data the way they want. We're changing that by letting our community shape what we build. Every month, we'll develop a new feature based on your suggestions. Submit your ideas, and we'll select the best or most requested one. The winning feature will be announced here and shared with you by email.</p></div>
         <RequestForm kind="recommendation" />
       </section>
 
