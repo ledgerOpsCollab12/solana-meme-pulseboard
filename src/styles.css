@@ -51,12 +51,13 @@
 
 .site-nav { display: flex; width: 100%; justify-content: center; align-items: center; border: 1px solid var(--border); border-radius: 12px; background: var(--card); padding: 14px 16px; box-shadow: var(--glow); }
 .site-nav-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; }
-.site-nav-actions button { font-size: 0.82rem; padding-inline: 14px; white-space: nowrap; }
+.site-nav-actions a { font-size: 0.82rem; padding-inline: 14px; white-space: nowrap; }
 @media (max-width: 640px) {
   .site-nav { padding: 12px 10px; }
   .site-nav-actions { gap: 6px; }
-  .site-nav-actions button { font-size: 0.74rem; padding-inline: 10px; }
+  .site-nav-actions a { font-size: 0.74rem; padding-inline: 10px; }
 }
+
 
 
 
