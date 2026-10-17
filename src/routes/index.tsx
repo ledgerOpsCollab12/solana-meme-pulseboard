@@ -114,7 +114,7 @@ function Index() {
         <WalletPreview />
       </section>
 
-      <section className="border-t py-16" aria-labelledby="market-title">
+      <section className="overflow-x-clip border-t py-16" aria-labelledby="market-title">
         <h2 id="market-title" className="max-w-4xl text-2xl font-bold leading-snug md:text-4xl">
           The first software built for <span className="text-accent">quality wallet tracking</span>.
         </h2>
