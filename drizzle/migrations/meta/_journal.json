@@ -8,6 +8,13 @@
       "when": 1792271080241,
       "tag": "0000_create_landing_requests",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792273014909,
+      "tag": "0001_add_meeting_to_api_requests",
+      "breakpoints": true
     }
   ]
 }
