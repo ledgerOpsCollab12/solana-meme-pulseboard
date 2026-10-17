@@ -6,10 +6,10 @@ export const submitRequest = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => requestSchema.parse(input))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const table = data.kind === "api" ? "api_requests" : "feature_recommendations";
-    const { error } = await supabaseAdmin.from(table).insert({
-      name: data.name, email: data.email, message: data.message,
-    });
+    const row = { name: data.name, email: data.email, message: data.message };
+    const { error } = data.kind === "api"
+      ? await supabaseAdmin.from("api_requests").insert({ ...row, wants_meeting: data.meeting ? data.meeting === "yes" : null })
+      : await supabaseAdmin.from("feature_recommendations").insert(row);
     if (error) return { ok: false as const };
     return { ok: true as const };
   });

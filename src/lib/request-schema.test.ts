@@ -11,4 +11,7 @@ describe("Landing requests", () => {
   it("rejects unknown form kinds", () => expect(requestSchema.safeParse({ ...valid, kind: "other" }).success).toBe(false));
   it("rejects filled honeypots", () => expect(requestSchema.safeParse({ ...valid, website: "spam" }).success).toBe(false));
   it("accepts recommendations and trims fields", () => expect(requestSchema.parse({ ...valid, kind: "recommendation", name: " Visitor " }).name).toBe("Visitor"));
+  it("accepts a meeting answer on API requests", () => expect(requestSchema.safeParse({ ...valid, meeting: "yes" }).success).toBe(true));
+  it("rejects an unknown meeting answer", () => expect(requestSchema.safeParse({ ...valid, meeting: "maybe" }).success).toBe(false));
+  it("keeps the meeting answer optional", () => expect(requestSchema.safeParse({ ...valid, kind: "recommendation" }).data?.meeting).toBeUndefined());
 });
