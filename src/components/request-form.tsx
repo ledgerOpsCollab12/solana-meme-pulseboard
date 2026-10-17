@@ -12,7 +12,7 @@ export function RequestForm({ kind }: { kind: "api" | "recommendation" }) {
   const send = useServerFn(submitRequest);
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string; form?: string }>({});
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (pending) return;

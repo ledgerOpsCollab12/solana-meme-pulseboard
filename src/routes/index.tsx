@@ -93,8 +93,6 @@ function useReveal() {
 
 function Index() {
   useReveal();
-  return () => clearInterval(iv);
-  }, []);
 
   return (
     <main className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10">
