@@ -122,7 +122,7 @@ function Index() {
             Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="ef-btn" href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">See live movements <ArrowUpRight /></a>
+            <button type="button" className="ef-btn">See live movements <ArrowUpRight /></button>
             <a className="ef-btn ef-btn-ghost" href="#api-access">API access</a>
           </div>
           <div className="ef-facts">
