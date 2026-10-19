@@ -207,7 +207,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .ef-h1 em { font-style: normal; color: var(--primary); background: linear-gradient(transparent 70%, color-mix(in oklab, var(--primary) 16%, transparent) 70%); }
 .ef-h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 700; }
 .ef-facts { display: flex; flex-wrap: wrap; gap: 0; margin-top: 30px; border-top: 1px solid var(--border); }
-.ef-facts > div { padding: 14px 22px 0 0; margin-right: 22px; border-right: 1px solid var(--border); }
+.ef-facts > div { padding: 14px 16px 0 0; margin-right: 16px; border-right: 1px solid var(--border); }
 .ef-facts > div:last-child { border-right: 0; }
 .ef-facts strong { display: block; font-size: 1.05rem; }
 .ef-facts span { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted-foreground); }
