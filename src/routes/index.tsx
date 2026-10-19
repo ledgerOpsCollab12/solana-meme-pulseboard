@@ -183,7 +183,7 @@ function Index() {
                   )}
                 </div>
                 {s.n === "01" ? (
-                  <video className="ef-video overflow-hidden object-cover" src={solution01Video.url} autoPlay muted loop playsInline aria-label={`Video: ${s.title}`} />
+                  <video className="ef-video overflow-hidden object-contain bg-card" src={solution01Video.url} autoPlay muted loop playsInline aria-label={`Video: ${s.title}`} />
                 ) : (
                   <div className="ef-video" aria-label={`Video placeholder: ${s.title}`}>
                     <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · S-{s.n}</span>
