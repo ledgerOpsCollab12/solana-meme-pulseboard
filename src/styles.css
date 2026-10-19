@@ -177,7 +177,8 @@
   --shadow-lift: 0 1px 0 0 oklch(1 0 0 / 0.9) inset, 0 2px 4px oklch(0.25 0.03 260 / 0.08), 0 28px 60px -28px oklch(0.3 0.12 258 / 0.42);
   --shine: linear-gradient(135deg, oklch(1 0 0 / 0.95), color-mix(in oklab, var(--primary) 30%, transparent) 45%, oklch(0.88 0.015 250) 100%);
 }
-body { background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 64px 64px; background-attachment: fixed; }
+body::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(color-mix(in oklab, var(--border) 70%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--border) 70%, transparent) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse 38% 420px at 85% 380px, #000, transparent 70%), radial-gradient(ellipse 30% 380px at 8% 1500px, #000, transparent 70%), radial-gradient(ellipse 34% 420px at 92% 3000px, #000, transparent 70%); mask-image: radial-gradient(ellipse 38% 420px at 85% 380px, #000, transparent 70%), radial-gradient(ellipse 30% 380px at 8% 1500px, #000, transparent 70%), radial-gradient(ellipse 34% 420px at 92% 3000px, #000, transparent 70%); }
+body { position: relative; }
 body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 70% 50% at 70% 0%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 70%), linear-gradient(color-mix(in oklab, var(--background) 86%, transparent), var(--background) 90%); }
 
 .ef-card { position: relative; background: linear-gradient(180deg, var(--background), var(--surface)); border-radius: 14px; box-shadow: var(--shadow-card); isolation: isolate; }
@@ -231,3 +232,13 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 @media (max-width: 767px) { .ef-solution { grid-template-columns: 1fr; gap: 20px; padding: 20px; } .ef-solution:nth-child(even) .ef-solution-copy { order: 0; } }
 .ef-form-section { padding: 36px; display: grid; gap: 40px; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); }
 @media (max-width: 1023px) { .ef-form-section { grid-template-columns: 1fr; padding: 22px; gap: 26px; } }
+
+.site-nav { width: 100vw; margin-left: calc(50% - 50vw); margin-top: -24px; border-radius: 0; border-width: 0 0 1px; box-shadow: none; }
+.site-nav-actions .ef-btn { font-size: 0.82rem; padding: 9px 16px; }
+.marquee { position: relative; overflow: hidden; width: 100vw; margin: 28px 0 0 calc(50% - 50vw); border-block: 1px solid var(--border); background: var(--card); padding: 18px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; width: max-content; gap: 44px; animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-weight: 600; color: var(--foreground); }
+.marquee-item img { width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--border); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
