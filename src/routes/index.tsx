@@ -3,15 +3,16 @@ import { useEffect } from "react";
 import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
+import { ProtocolMarquee } from "@/components/protocol-marquee";
 import { WalletPreview } from "@/components/wallet-preview";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WhaleWatch — Real-time transactions of the most profitable wallets in memecoin trading" },
+      { title: "WhaleWatch — Track the most profitable wallets in memecoin trading" },
       { name: "description", content: "A leaderboard of the highest-PnL wallets isn’t enough. WhaleWatch gives you insights and tools to segment wallets by consistency and behavior, so you can build a realistic strategy — free." },
-      { property: "og:title", content: "WhaleWatch — Real-time transactions of the most profitable wallets in memecoin trading" },
+      { property: "og:title", content: "WhaleWatch — Track the most profitable wallets in memecoin trading" },
       { property: "og:description", content: "Most top wallets aren’t consistent, are bots you can’t keep up with, or fake volume. Get insights and tools to build a realistic strategy with limited resources." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,12 +38,12 @@ const PROBLEMS = [
   {
     n: "03",
     title: "Know who you're following",
-    description: "Knowing how to follow a profitable account is what matters. Each one has its own patterns of trading, gains, losses and risk. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
+    description: "Knowing how to follow a profitable account is what matters. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
   },
   {
     n: "04",
     title: "Existing wallet trackers lack memecoin logic",
-    description: "Solana wallet trackers already exist, but none are built for how memecoins actually trade. Ours is the first tool designed specifically for this market.",
+    description: "Solana wallet trackers already exist, but none have the logic to track memecoin wallets correctly. Ours is the first tool designed specifically for this market.",
   },
 ];
 
@@ -106,9 +107,10 @@ function Index() {
 
   return (
     <main className="mx-auto max-w-[1360px] px-5 py-6 lg:px-10">
-      <nav className="site-nav ef-card">
+      <nav className="site-nav">
         <div className="site-nav-actions">
           <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
+          <a className="ef-btn" href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Open the live tracker <ArrowUpRight /></a>
           <Button asChild variant="outline"><a href="#api-access"><Sparkles /> Request a tailored feature</a></Button>
           <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
         </div>
@@ -117,7 +119,7 @@ function Index() {
       <section className="hero-layout">
         <div className="hero-copy">
           <span className="ef-tag"><span className="h-2 w-2 rounded-full bg-gain animate-live" /> <b>WW/00</b> Live · Solana · Free</span>
-          <h1 className="ef-h1 mt-6">Real-time transactions of the <em>most profitable wallets</em> in memecoin trading.</h1>
+          <h1 className="ef-h1 mt-6">Track the <em>most profitable wallets</em> in memecoin trading.</h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
             Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
           </p>
@@ -127,7 +129,8 @@ function Index() {
           </div>
           <div className="ef-facts">
             <div><strong>100%</strong><span>Data coverage</span></div>
-            <div><strong>6 AMMs</strong><span>Pump.fun → Orca</span></div>
+            <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
+            <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
             <div><strong>$0</strong><span>Free access</span></div>
           </div>
         </div>
@@ -135,6 +138,7 @@ function Index() {
       </section>
 
       <CtaStrip idx="CTA/01" title="The wallets are moving right now." text="Every second you read, top wallets are entering positions. Watch them live." />
+      <ProtocolMarquee />
 
       <section className="overflow-x-clip py-20" aria-labelledby="market-title">
         <span className="ef-tag"><b>WW/01</b> The problem</span>
