@@ -6,6 +6,7 @@ import { PROGRAM_URL } from "@/lib/request-schema";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
 import { WalletPreview } from "@/components/wallet-preview";
 import { Button } from "@/components/ui/button";
+import solution01Video from "@/assets/solution-01.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -181,9 +182,13 @@ function Index() {
                     </p>
                   )}
                 </div>
-                <div className="ef-video" aria-label={`Video placeholder: ${s.title}`}>
-                  <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · S-{s.n}</span>
-                </div>
+                {s.n === "01" ? (
+                  <video className="ef-video overflow-hidden object-cover" src={solution01Video.url} autoPlay muted loop playsInline aria-label={`Video: ${s.title}`} />
+                ) : (
+                  <div className="ef-video" aria-label={`Video placeholder: ${s.title}`}>
+                    <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · S-{s.n}</span>
+                  </div>
+                )}
               </article>
               {i === 2 && <CtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />}
             </div>
