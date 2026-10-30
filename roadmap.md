@@ -17,3 +17,4 @@
 - [x] Add the "Would you like us to contact you to arrange a meeting?" box to the API access form and store the answer.
 - [x] Full-width header bar with live-tracker button, subtle grid patches, new title, facts, protocol logo strip and card text edits.
 - [x] Make the hero "See live movements" button inert so it no longer opens the real program site; verify click behavior and layout.
+- [ ] Replace the first solution video with the newly supplied recording, annotated with wallet counts, classifications, each column header and wallet value, and score explanation; verify the exported video and page playback. Waiting for video rendering.
