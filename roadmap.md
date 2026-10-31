@@ -22,3 +22,4 @@
 - [x] Add the requested wallet-metrics caption to the edited hero video when column names appear; verify the caption in browser playback with original audio preserved. The caption covers filter controls, not column names or wallet data.
 - [x] Expand the introductory copy to the full first screen and place the main video full-width below it, before all remaining content; verify desktop/mobile layout with no overflow.
 - [x] Replace the opening with only a large headline and CTA, animate the headline out while the same inert CTA moves into a persistent bottom position, then reveal the subtitle, framed video and facts; verify desktop/mobile scrolling, a single inert CTA, reduced motion, navigation test and error-free playback.
+- [x] Apply the holographic-window design with a same-viewport reveal, corner promotional copy and clear original recording; verify scrolling, playback, navigation and reduced motion.
