@@ -369,8 +369,15 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
   .holo-facts span { font-size: 7px; }
 }
 @media (max-width: 767px) and (max-height: 720px) {
-  .holo-intro { height: calc(200svh + 220px); }
-  .holo-sticky { height: max(100svh, 760px); top: min(0px, calc(100svh - 760px)); }
+  .holo-sticky { height: 100svh; top: 0; }
+  .holo-product { padding-top: 10px; }
+  .holo-heading { display: none; }
+  .holo-copy h2 { font-size: 1.65rem; margin-block: 6px 8px; }
+  .holo-glass { padding: 8px 12px; }
+  .holo-glass p { font-size: .7rem; }
+  .holo-glass p:first-child { font-size: .8rem; }
+  .holo-window .product-frame-bottom { display: none; }
+  .holo-facts { margin-top: 8px; padding-block: 8px; gap: 8px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .holo-intro { height: auto; }
