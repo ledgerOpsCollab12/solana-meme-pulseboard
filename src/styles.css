@@ -314,7 +314,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .holo-copy h2 em { font-style: normal; color: var(--primary); }
 .holo-copy .ef-tag { font-size: 9px; letter-spacing: 0; }
 .holo-copy .ef-tag::after { display: none; }
-.holo-glass { position: relative; width: calc(100% + 64px); border: 1px solid var(--holo-edge); border-left: 3px solid var(--primary); background: var(--holo-glass); backdrop-filter: blur(12px) saturate(115%); box-shadow: var(--holo-shadow); padding: 18px 22px; border-radius: 0 8px 8px 0; }
+.holo-glass { position: relative; width: calc(100% + 38px); border: 1px solid var(--holo-edge); border-left: 3px solid var(--primary); background: var(--holo-glass); backdrop-filter: blur(12px) saturate(115%); box-shadow: var(--holo-shadow); padding: 18px 22px; border-radius: 0 8px 8px 0; }
 .holo-glass::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: var(--holo-reflection); }
 .holo-glass p { position: relative; z-index: 1; font-size: .875rem; line-height: 1.5; color: var(--muted-foreground); }
 .holo-glass p:first-child { font-size: 1.05rem; color: var(--foreground); font-weight: 600; }
@@ -340,7 +340,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
   .holo-intro .intro-headline { font-size: 3.5rem; }
   .holo-composition { grid-template-columns: minmax(0, .43fr) minmax(0, .57fr); gap: 22px; }
   .holo-copy h2 { font-size: 2.75rem; }
-  .holo-glass { width: calc(100% + 36px); padding: 14px; }
+  .holo-glass { width: calc(100% + 26px); padding: 14px; }
   .holo-glass p { font-size: .8rem; }
   .holo-window .product-frame-top > span:nth-child(2) { display: none; }
 }

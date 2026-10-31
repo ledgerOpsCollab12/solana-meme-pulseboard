@@ -59,7 +59,7 @@ export function ScrollIntro() {
             <div className="holo-composition">
               <div className="holo-copy">
                 <span className="ef-tag"><b>BEYOND THE LEADERBOARD</b></span>
-                <h2>Don’t just<br />follow.<br /><em>Understand.</em></h2>
+                <h2>Don’t just <br />follow. <br /><em>Understand.</em></h2>
                 <div className="holo-glass">
                   <p>A leaderboard of the highest-PnL wallets isn’t enough.</p>
                   <p>Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves.</p>
