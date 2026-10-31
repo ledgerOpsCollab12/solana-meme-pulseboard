@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
-import { ProtocolMarquee } from "@/components/protocol-marquee";
+import { ProblemBillboard } from "@/components/problem-billboard";
 import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
@@ -118,26 +118,8 @@ function Index() {
         </div>
       </nav>
 
-      <CtaStrip idx="CTA/01" title="The wallets are moving right now." text="Every second you read, top wallets are entering positions. Watch them live." />
-      <ProtocolMarquee />
-
-      <section className="overflow-x-clip py-20" aria-labelledby="market-title">
-        <span className="ef-tag"><b>WW/01</b> The problem</span>
-        <h2 id="market-title" className="ef-h2 mt-5 max-w-4xl">The first software built for <span className="text-accent">quality wallet tracking</span>.</h2>
-        <p className="mt-5 max-w-3xl text-lg text-muted-foreground">
-          The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.
-        </p>
-        <div className="ef-problems">
-          {PROBLEMS.map((p) => (
-            <article key={p.n} className="ef-card ef-card-hover ef-problem problem-item" data-reveal>
-              <div className="problem-body ef-problem-inner">
-                <div className="ef-problem-head"><span className="ef-problem-num">{p.n}</span><b>RISK / P-{p.n}</b></div>
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+      <ProblemBillboard problems={PROBLEMS} />
+      <section className="overflow-x-clip pb-20" aria-label="WhaleWatch solutions">
 
         <div className="mt-10"><CtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
 
