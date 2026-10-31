@@ -372,6 +372,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
   .holo-sticky { height: 100svh; top: 0; }
   .holo-product { padding-top: 10px; }
   .holo-heading { display: none; }
+  .holo-copy .ef-tag { display: none; }
   .holo-copy h2 { font-size: 1.65rem; margin-block: 6px 8px; }
   .holo-glass { padding: 8px 12px; }
   .holo-glass p { font-size: .7rem; }
