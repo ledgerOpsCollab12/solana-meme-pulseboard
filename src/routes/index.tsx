@@ -121,7 +121,7 @@ function Index() {
         <div className="hero-copy">
           <span className="ef-tag"><span className="h-2 w-2 rounded-full bg-gain animate-live" /> <b>WW/00</b> Live · Solana · Free</span>
           <h1 className="ef-h1 mt-6">Track the <em>most profitable wallets</em> in memecoin trading.</h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+          <p className="hero-description mt-6 text-base leading-relaxed text-muted-foreground">
             Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -135,6 +135,9 @@ function Index() {
             <div><strong>$0</strong><span>Free access</span></div>
           </div>
         </div>
+      </section>
+
+      <section className="hero-video-band" aria-label="WhaleWatch product recording">
         <HeroWalletVideo />
       </section>
 
