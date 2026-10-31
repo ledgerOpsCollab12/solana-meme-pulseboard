@@ -8,9 +8,14 @@ type Problem = { n: string; title: string; description: string };
 export function ProblemBillboard({ problems }: { problems: Problem[] }) {
   const section = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  const [reduced, setReduced] = useState(false);
   useEffect(() => {
     const element = section.current;
     if (!element) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotion = () => setReduced(motion.matches);
+    syncMotion();
+    motion.addEventListener("change", syncMotion);
     let frame = 0;
     const update = () => {
       const scene = element.querySelector<HTMLElement>(".billboard-scene");
@@ -25,7 +30,7 @@ export function ProblemBillboard({ problems }: { problems: Problem[] }) {
     update();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); motion.removeEventListener("change", syncMotion); };
   }, [problems.length]);
 
   const move = (stage: number) => {
@@ -48,7 +53,7 @@ export function ProblemBillboard({ problems }: { problems: Problem[] }) {
           <div className="billboard-mechanism" aria-hidden="true"><Cog /><span>WALLET INTELLIGENCE</span><span>0{active + 1} / 04</span></div>
           <div className="billboard-window">
             {problems.map((problem, index) => (
-              <article key={problem.n} className={`billboard-panel billboard-panel-${index}`} aria-hidden={index !== active} inert={index !== active}>
+              <article key={problem.n} className={`billboard-panel billboard-panel-${index}`} aria-hidden={!reduced && index !== active} inert={!reduced && index !== active}>
                 <div className="billboard-card-top"><span>RISK / P-{problem.n}</span><span>WHALEWATCH</span></div>
                 <h3><span className="billboard-number">{problem.n}</span><span>{problem.title}</span></h3>
                 <p>{problem.description}</p>
