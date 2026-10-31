@@ -3,10 +3,11 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroWalletVideo } from "@/components/hero-wallet-video";
 import { getIntroProgress } from "@/lib/intro-progress";
+import { SignalNetwork } from "@/components/signal-network";
 
 export function ScrollIntro() {
   const intro = useRef<HTMLElement>(null);
-  const cta = useRef<HTMLButtonElement>(null);
+  const cta = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = intro.current;
@@ -21,7 +22,7 @@ export function ScrollIntro() {
       const start = Math.min(height * 0.73, height - button.offsetHeight - 32);
       const end = height - button.offsetHeight - 18;
       button.style.setProperty("--cta-y", `${motion.matches ? end : start + (end - start) * state.cta}px`);
-      button.style.setProperty("--cta-scale", `${motion.matches ? 0.85 : 1 - state.cta * 0.15}`);
+      button.style.setProperty("--dock-progress", `${motion.matches ? 1 : Math.min(1, state.progress / .48)}`);
       section.style.setProperty("--intro-opacity", `${state.titleOpacity}`);
       section.style.setProperty("--intro-scale", `${1 + state.progress * 0.06}`);
       section.style.setProperty("--shell-opacity", `${state.shell}`);
@@ -51,8 +52,11 @@ export function ScrollIntro() {
     <>
       <section ref={intro} className="scroll-intro holo-intro" aria-labelledby="intro-title">
         <div className="holo-sticky">
+          <SignalNetwork />
           <div className="intro-title-layer">
-            <h1 id="intro-title" className="intro-headline">Track the <em>most profitable wallets</em> in memecoin trading.</h1>
+            <h1 id="intro-title" className="intro-headline typed-headline" aria-label="Track the most profitable wallets in memecoin trading.">
+              <span aria-hidden="true" className="typed-word">Track </span><span aria-hidden="true" className="typed-word">the </span><em><span aria-hidden="true" className="typed-word">most </span><span aria-hidden="true" className="typed-word">profitable </span><span aria-hidden="true" className="typed-word">wallets </span></em><span aria-hidden="true" className="typed-word">in </span><span aria-hidden="true" className="typed-word">memecoin </span><span aria-hidden="true" className="typed-word">trading.</span>
+            </h1>
           </div>
           <div className="holo-product">
             <div className="holo-heading"><span>WHALEWATCH / WALLET INTELLIGENCE</span><span className="product-live"><i /> SOLANA · LIVE · FREE</span></div>
@@ -81,9 +85,10 @@ export function ScrollIntro() {
           </div>
         </div>
       </section>
-      <Button ref={cta} type="button" size="lg" className="persistent-live-cta">
-        See live movements <ArrowUpRight aria-hidden="true" />
-      </Button>
+      <div ref={cta} className="persistent-live-dock">
+        <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true">CTA/01</span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
+        <Button type="button" size="lg" className="persistent-live-cta">See live movements <ArrowUpRight aria-hidden="true" /></Button>
+      </div>
     </>
   );
 }
