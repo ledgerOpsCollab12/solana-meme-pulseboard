@@ -18,3 +18,4 @@
 - [x] Full-width header bar with live-tracker button, subtle grid patches, new title, facts, protocol logo strip and card text edits.
 - [x] Make the hero "See live movements" button inert so it no longer opens the real program site; verify click behavior and layout.
 - [x] Replace the first solution video with the newly supplied recording, annotated with wallet counts, classifications, each column header and wallet value, and score explanation. Export frames and page source verified; automated Chromium cannot decode this H.264 recording, so in-page playback remains unverified.
+- [ ] Repeat the annotations on the improved October 30 6:37 recording and use the edited video in place of the first hero preview beside the main headline.
