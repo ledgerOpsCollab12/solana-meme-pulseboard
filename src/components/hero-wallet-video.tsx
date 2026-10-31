@@ -1,5 +1,5 @@
-import heroWebm from "@/assets/hero-wallet-annotated-v4.webm.asset.json";
-import heroMp4 from "@/assets/hero-wallet-annotated-v4.mp4.asset.json";
+import heroWebm from "@/assets/hero-wallet-annotated-v5.webm.asset.json";
+import heroMp4 from "@/assets/hero-wallet-annotated-v5.mp4.asset.json";
 
 export function HeroWalletVideo() {
   return (
