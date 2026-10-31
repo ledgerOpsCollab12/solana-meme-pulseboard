@@ -260,7 +260,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
 /* Scroll-led opening and the recorded product stage. */
-.landing-main { padding-bottom: 120px; }
+.landing-main { padding-bottom: 120px; overflow-x: clip; }
 .scroll-intro { min-height: 100svh; display: flex; align-items: flex-start; justify-content: center; padding: 23svh 0 180px; }
 .intro-headline { max-width: 1150px; font-size: 5rem; line-height: 1.08; font-weight: 700; letter-spacing: 0; text-align: center; opacity: var(--intro-opacity, 1); transform: translateY(var(--intro-shift, 0)); will-change: transform, opacity; }
 .intro-headline em { font-style: normal; color: var(--primary); }
