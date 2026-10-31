@@ -6,7 +6,7 @@ import { PROGRAM_URL } from "@/lib/request-schema";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
 import { WalletPreview } from "@/components/wallet-preview";
 import { Button } from "@/components/ui/button";
-import solution01Video from "@/assets/solution-01.mp4.asset.json";
+import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
