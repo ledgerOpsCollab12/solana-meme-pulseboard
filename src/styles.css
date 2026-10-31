@@ -440,7 +440,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 
 .problem-billboard { position: relative; height: 400svh; --billboard-stage: 0; }
 .billboard-scene { position: sticky; top: 0; height: 100svh; min-height: 660px; padding: 62px 0 32px; }
-.billboard-heading { width: 49%; max-width: 620px; }
+.billboard-heading { width: 44%; max-width: 620px; }
 .billboard-heading h2 { margin-top: 22px; font-size: 3rem; line-height: 1.08; letter-spacing: 0; }
 .billboard-heading p { max-width: 460px; font-size: 1.1rem; line-height: 1.6; color: var(--muted-foreground); margin-top: 22px; }
 .billboard-machine { position: absolute; right: 0; bottom: 42px; width: 53%; }
@@ -465,6 +465,19 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .billboard-pagination { display: flex; gap: 6px; margin-right: auto; }
 .billboard-pagination i { width: 24px; height: 3px; background: var(--border); transition: background .4s; }
 .billboard-pagination i.is-active { background: var(--primary); }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .holo-sticky { height: max(100svh, 820px); }
+  .holo-intro { height: calc(max(100svh, 820px) + 120svh); }
+  .persistent-live-dock { gap: 16px; padding: 18px; }
+  .live-dock-index { display: none; }
+  .live-dock-copy h3 { font-size: 1.1rem; }
+  .live-dock-copy p { font-size: .75rem; }
+  .persistent-live-dock .persistent-live-cta { padding-inline: 16px; font-size: .9rem; }
+  .billboard-scene { min-height: 850px; padding-top: 32px; }
+  .billboard-heading { width: 100%; max-width: 600px; }
+  .billboard-heading h2 { font-size: 2.5rem; }
+  .billboard-machine { width: 100%; bottom: 24px; }
+}
 @media (min-width: 768px) and (max-height: 740px) {
   .billboard-heading h2 { font-size: 2.5rem; }
   .billboard-heading p { font-size: 1rem; max-width: 400px; }
