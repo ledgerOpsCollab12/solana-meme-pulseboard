@@ -19,10 +19,10 @@ export function ScrollIntro() {
       const height = window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const state = getIntroProgress(window.scrollY - top, section.offsetHeight - height);
+      button.style.setProperty("--dock-progress", `${motion.matches ? 1 : Math.min(1, state.progress / .48)}`);
       const start = Math.min(height * 0.73, height - button.offsetHeight - 32);
       const end = height - button.offsetHeight - 18;
       button.style.setProperty("--cta-y", `${motion.matches ? end : start + (end - start) * state.cta}px`);
-      button.style.setProperty("--dock-progress", `${motion.matches ? 1 : Math.min(1, state.progress / .48)}`);
       section.style.setProperty("--intro-opacity", `${state.titleOpacity}`);
       section.style.setProperty("--intro-scale", `${1 + state.progress * 0.06}`);
       section.style.setProperty("--shell-opacity", `${state.shell}`);
