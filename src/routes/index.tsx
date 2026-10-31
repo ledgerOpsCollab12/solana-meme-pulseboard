@@ -4,7 +4,7 @@ import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
-import { WalletPreview } from "@/components/wallet-preview";
+import { HeroWalletVideo } from "@/components/hero-wallet-video";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
 
@@ -135,7 +135,7 @@ function Index() {
             <div><strong>$0</strong><span>Free access</span></div>
           </div>
         </div>
-        <WalletPreview />
+        <HeroWalletVideo />
       </section>
 
       <CtaStrip idx="CTA/01" title="The wallets are moving right now." text="Every second you read, top wallets are entering positions. Watch them live." />
