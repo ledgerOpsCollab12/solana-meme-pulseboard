@@ -21,3 +21,4 @@
 - [x] Repeat the annotations on the improved October 30 6:37 recording and replace the hero preview beside the main headline; preserve original audio, verify autoplay/time progression and mobile layout with no overflow or runtime errors. Includes the cursor's REGULAR classification stop; final column highlights are brief to preserve the recording's timing.
 - [ ] Add the requested wallet-metrics caption to the edited hero video when column names appear.
 - [x] Expand the introductory copy to the full first screen and place the main video full-width below it, before all remaining content; verify desktop/mobile layout with no overflow.
+- [ ] Replace the opening with only a large headline and CTA, animate the headline out while the same inert CTA moves into a persistent bottom position, then reveal the subtitle, framed video and facts; verify scrolling and reduced motion.
