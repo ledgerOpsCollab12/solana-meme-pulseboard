@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HeroWalletVideo } from "@/components/hero-wallet-video";
 import { getIntroProgress } from "@/lib/intro-progress";
 import { SignalNetwork } from "@/components/signal-network";
+import { ProtocolMarquee } from "@/components/protocol-marquee";
 
 export function ScrollIntro() {
   const intro = useRef<HTMLElement>(null);
@@ -16,13 +17,14 @@ export function ScrollIntro() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     const update = () => {
-      const height = window.innerHeight;
+      const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const state = getIntroProgress(window.scrollY - top, section.offsetHeight - height);
-      button.style.setProperty("--dock-progress", `${motion.matches ? 1 : Math.min(1, state.progress / .48)}`);
-      const start = Math.min(height * 0.73, height - button.offsetHeight - 32);
-      const end = height - button.offsetHeight - 18;
-      button.style.setProperty("--cta-y", `${motion.matches ? end : start + (end - start) * state.cta}px`);
+      const start = Math.min(window.innerHeight * 0.73, window.innerHeight - button.offsetHeight - 32);
+      const slot = section.querySelector<HTMLElement>(".intro-cta-slot");
+      const scene = section.querySelector<HTMLElement>(".holo-sticky");
+      const end = slot && scene ? slot.getBoundingClientRect().top - scene.getBoundingClientRect().top : start;
+      button.style.setProperty("--cta-y", `${start + (end - start) * state.cta}px`);
       section.style.setProperty("--intro-opacity", `${state.titleOpacity}`);
       section.style.setProperty("--intro-scale", `${1 + state.progress * 0.06}`);
       section.style.setProperty("--shell-opacity", `${state.shell}`);
@@ -76,18 +78,22 @@ export function ScrollIntro() {
                 <div className="product-frame-bottom"><span>SOLANA / WALLET METRICS</span><span>WHALEWATCH</span></div>
               </div>
             </div>
-            <div className="ef-facts holo-facts">
+            <div className="intro-cta-slot" aria-hidden="true" />
+          </div>
+          <div ref={cta} className="persistent-live-dock">
+            <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true">CTA/01</span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
+            <Button type="button" size="lg" className="persistent-live-cta">See live movements <ArrowUpRight aria-hidden="true" /></Button>
+          </div>
+        </div>
+      </section>
+      <div className="intro-evidence">
+            <div className="ef-facts intro-facts">
               <div><strong>100%</strong><span>Data coverage</span></div>
               <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
               <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
               <div><strong>$0</strong><span>Free access</span></div>
             </div>
-          </div>
-        </div>
-      </section>
-      <div ref={cta} className="persistent-live-dock">
-        <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true">CTA/01</span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
-        <Button type="button" size="lg" className="persistent-live-cta">See live movements <ArrowUpRight aria-hidden="true" /></Button>
+        <ProtocolMarquee />
       </div>
     </>
   );
