@@ -5,6 +5,7 @@ import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
 import { HeroWalletVideo } from "@/components/hero-wallet-video";
+import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
 
@@ -107,7 +108,8 @@ function Index() {
   useReveal();
 
   return (
-    <main className="mx-auto max-w-[1360px] px-5 py-6 lg:px-10">
+    <main className="landing-main mx-auto max-w-[1360px] px-5 lg:px-10">
+      <ScrollIntro />
       <nav className="site-nav">
         <div className="site-nav-actions">
           <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
@@ -117,28 +119,24 @@ function Index() {
         </div>
       </nav>
 
-      <section className="hero-layout">
+      <section className="product-reveal">
         <div className="hero-copy">
           <span className="ef-tag"><span className="h-2 w-2 rounded-full bg-gain animate-live" /> <b>WW/00</b> Live · Solana · Free</span>
-          <h1 className="ef-h1 mt-6">Track the <em>most profitable wallets</em> in memecoin trading.</h1>
           <p className="hero-description mt-6 text-base leading-relaxed text-muted-foreground">
             Access to a leaderboard of the highest-PnL wallets isn’t enough. Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves. We give you insights and tools so a trader with limited resources can build a realistic strategy.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button type="button" className="ef-btn">See live movements <ArrowUpRight /></button>
-            <a className="ef-btn ef-btn-ghost" href="#api-access">API access</a>
-          </div>
+        </div>
+        <div className="product-video-frame" aria-label="WhaleWatch product recording">
+          <div className="product-frame-top"><span className="product-frame-dots" aria-hidden="true"><i /><i /><i /></span><span>WHALEWATCH / WALLET INTELLIGENCE</span><span className="product-live"><i /> LIVE DATA</span></div>
+          <HeroWalletVideo />
+          <div className="product-frame-bottom"><span>SOLANA / WALLET METRICS</span><span>01 — QUALITY & CLASSIFICATION</span></div>
+        </div>
           <div className="ef-facts">
             <div><strong>100%</strong><span>Data coverage</span></div>
             <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
             <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
             <div><strong>$0</strong><span>Free access</span></div>
           </div>
-        </div>
-      </section>
-
-      <section className="hero-video-band" aria-label="WhaleWatch product recording">
-        <HeroWalletVideo />
       </section>
 
       <CtaStrip idx="CTA/01" title="The wallets are moving right now." text="Every second you read, top wallets are entering positions. Watch them live." />
