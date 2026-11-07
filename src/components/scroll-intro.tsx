@@ -60,7 +60,7 @@ export function ScrollIntro() {
           <div className="intro-title-layer">
             <span className="panoramic-signature">WHALEWATCH <span>/</span> SOLANA</span>
             <h1 id="intro-title" className="intro-headline typed-headline" aria-label="Track the most profitable wallets in memecoin trading.">
-              <span aria-hidden="true" className="typed-word">Track </span><span aria-hidden="true" className="typed-word">the </span><em><span aria-hidden="true" className="typed-word">most </span><span aria-hidden="true" className="typed-word">profitable </span><span aria-hidden="true" className="typed-word">wallets </span></em><span aria-hidden="true" className="typed-word">in </span><span aria-hidden="true" className="typed-word">memecoin </span><span aria-hidden="true" className="typed-word">trading.</span>
+              <span className="headline-line"><span aria-hidden="true" className="typed-word">Track the most</span></span><em className="headline-line"><span aria-hidden="true" className="typed-word">profitable wallets</span></em><span className="headline-line"><span aria-hidden="true" className="typed-word">in memecoin</span></span><span className="headline-line"><span aria-hidden="true" className="typed-word">trading.</span></span>
             </h1>
           </div>
           <div className="holo-product">
@@ -76,12 +76,21 @@ export function ScrollIntro() {
                 </div>
               </div>
               <div className="product-video-frame holo-window" aria-label="WhaleWatch product recording">
-                <div className="product-frame-top"><span className="product-frame-dots" aria-hidden="true"><i /><i /><i /></span><span>01 / QUALITY & CLASSIFICATION</span><span className="product-live"><i /> LIVE DATA</span></div>
+                <div className="product-frame-top"><span>WHALEWATCH / WALLET INTELLIGENCE</span><span className="product-live"><i /> LIVE ON SOLANA</span></div>
                 <div className="holo-video"><HeroWalletVideo /></div>
                 <div className="product-frame-bottom"><span>SOLANA / WALLET METRICS</span><span>WHALEWATCH</span></div>
               </div>
             </div>
             <div className="intro-cta-slot" aria-hidden="true" />
+            <div className="intro-evidence">
+              <div className="ef-facts intro-facts">
+                <div><strong>100%</strong><span>Data coverage</span></div>
+                <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
+                <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
+                <div><strong>$0</strong><span>Free access</span></div>
+              </div>
+              <ProtocolMarquee />
+            </div>
           </div>
           <div ref={cta} className="persistent-live-dock">
             <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true"><i /></span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
@@ -89,15 +98,6 @@ export function ScrollIntro() {
           </div>
         </div>
       </section>
-      <div className="intro-evidence">
-            <div className="ef-facts intro-facts">
-              <div><strong>100%</strong><span>Data coverage</span></div>
-              <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
-              <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
-              <div><strong>$0</strong><span>Free access</span></div>
-            </div>
-        <ProtocolMarquee />
-      </div>
     </>
   );
 }
