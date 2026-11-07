@@ -27,6 +27,8 @@ export function ScrollIntro() {
       button.style.setProperty("--cta-y", `${start + (end - start) * state.cta}px`);
       section.style.setProperty("--intro-opacity", `${state.titleOpacity}`);
       section.style.setProperty("--intro-scale", `${1 + state.progress * 0.06}`);
+      section.style.setProperty("--title-blur", `${state.titleBlur}px`);
+      section.style.setProperty("--product-blur", `${state.productBlur}px`);
       section.style.setProperty("--shell-opacity", `${state.shell}`);
       section.style.setProperty("--content-opacity", `${state.content}`);
       section.style.setProperty("--facts-opacity", `${state.facts}`);
@@ -52,10 +54,11 @@ export function ScrollIntro() {
 
   return (
     <>
-      <section ref={intro} className="scroll-intro holo-intro" aria-labelledby="intro-title">
+      <section ref={intro} className="scroll-intro holo-intro panoramic-intro" aria-labelledby="intro-title">
         <div className="holo-sticky">
           <SignalNetwork />
           <div className="intro-title-layer">
+            <span className="panoramic-signature">WHALEWATCH <span>/</span> SOLANA</span>
             <h1 id="intro-title" className="intro-headline typed-headline" aria-label="Track the most profitable wallets in memecoin trading.">
               <span aria-hidden="true" className="typed-word">Track </span><span aria-hidden="true" className="typed-word">the </span><em><span aria-hidden="true" className="typed-word">most </span><span aria-hidden="true" className="typed-word">profitable </span><span aria-hidden="true" className="typed-word">wallets </span></em><span aria-hidden="true" className="typed-word">in </span><span aria-hidden="true" className="typed-word">memecoin </span><span aria-hidden="true" className="typed-word">trading.</span>
             </h1>
@@ -81,7 +84,7 @@ export function ScrollIntro() {
             <div className="intro-cta-slot" aria-hidden="true" />
           </div>
           <div ref={cta} className="persistent-live-dock">
-            <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true">CTA/01</span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
+            <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true"><i /></span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
             <Button type="button" size="lg" className="persistent-live-cta">See live movements <ArrowUpRight aria-hidden="true" /></Button>
           </div>
         </div>

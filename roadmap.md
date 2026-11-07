@@ -27,3 +27,5 @@
 - [x] Move the full intro CTA below the product, followed by the facts and protocol animation.
 - [x] Replace the four problem cards with a scroll-led billboard beside a narrower section heading; align numbers and titles.
 - [x] Verify card progression, CTA placement, reduced motion and layout.
+- [x] Apply the approved panoramic-glass opening with edge-only signals and a blurred title dissolving into the product behind it.
+- [x] Verify the same-viewport reveal, original video, inert CTA, desktop/mobile layout and reduced motion.

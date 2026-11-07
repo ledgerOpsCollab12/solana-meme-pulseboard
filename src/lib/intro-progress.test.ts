@@ -8,8 +8,17 @@ describe("holographic intro progression", () => {
   it("reveals the shell before video content and metrics", () => {
     const stage = getIntroProgress(240, 800);
     expect(stage.shell).toBeGreaterThan(0);
-    expect(stage.content).toBe(0);
+    expect(stage.content).toBeGreaterThan(0);
     expect(stage.facts).toBe(0);
+  });
+  it("diffuses the title while the product appears behind it in the same stage", () => {
+    const stage = getIntroProgress(280, 800);
+    expect(stage.titleOpacity).toBeGreaterThan(0);
+    expect(stage.titleOpacity).toBeLessThan(1);
+    expect(stage.titleBlur).toBeGreaterThan(0);
+    expect(stage.content).toBeGreaterThan(0);
+    expect(stage.productBlur).toBeGreaterThan(0);
+    expect(getIntroProgress(800, 800).productBlur).toBe(0);
   });
   it("finishes with the title hidden and all product stages visible", () => {
     expect(getIntroProgress(800, 800)).toMatchObject({ titleOpacity: 0, shell: 1, content: 1, facts: 1, cta: 1 });
