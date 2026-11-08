@@ -27,4 +27,12 @@ describe("holographic intro progression", () => {
     expect(getIntroProgress(-100, 800).progress).toBe(0);
     expect(getIntroProgress(1000, 0).progress).toBe(1);
   });
+  it("keeps the optical handoff visible over a longer scroll journey", () => {
+    const stage = getIntroProgress(400, 1449);
+    expect(stage.titleOpacity).toBeGreaterThan(0.4);
+    expect(stage.content).toBeGreaterThan(0);
+    expect(stage.content).toBeLessThan(0.1);
+    expect(stage.cta).toBeLessThan(0.25);
+    expect(getIntroProgress(1200, 1449)).toMatchObject({ titleOpacity: 0, content: 1, productBlur: 0 });
+  });
 });
