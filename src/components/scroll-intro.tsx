@@ -45,7 +45,7 @@ export function ScrollIntro() {
       section.style.setProperty("--shell-opacity", `${state.shell}`);
       section.style.setProperty("--content-opacity", `${state.content}`);
       section.style.setProperty("--facts-opacity", `${state.facts}`);
-      section.style.setProperty("--cta-reveal", `${state.content}`);
+      section.style.setProperty("--cta-reveal", `${state.shell}`);
       section.style.setProperty("--window-scale", `${0.93 + state.shell * 0.07}`);
       const product = section.querySelector<HTMLElement>(".holo-product");
       if (product) product.inert = !motion.matches && state.content < 0.85;
