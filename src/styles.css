@@ -965,3 +965,94 @@ body { overflow-x: clip; }
 .horizon-journey:not([data-intro-live]) .optical-composition .holo-copy::before { display: none; }
 .horizon-journey:not([data-intro-live]) .integrated-interface { transform: none; }
 .horizon-journey:not([data-intro-live]) .optical-product .tour-footer { position: relative; top: auto; margin-top: 16px; }
+
+/* Interactive guide stays inside the approved floating product frame. */
+.interactive-wallet-tour .replica-panel { position: relative; }
+.simulation-guide-band { position: relative; z-index: 5; flex: none; padding: 8px 22px 12px; border-bottom: 1px solid var(--replica-border); background: var(--replica-surface); color: var(--replica-text); }
+.simulation-guide-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.simulation-guide-heading > span { font-family: var(--font-mono); font-size: 9px; color: var(--replica-annotation); display: flex; gap: 10px; align-items: center; }
+.simulation-guide-heading i { width: 4px; height: 4px; border-radius: 50%; background: var(--replica-green); }
+.simulation-guide-band .tour-controls button { width: 28px; height: 28px; color: var(--replica-text); }
+.simulation-guide-band .tour-controls svg { width: 13px; height: 13px; }
+.simulation-guide-message { font-family: var(--font-horizon); font-size: 15px; line-height: 1.5; min-height: 45px; max-width: 880px; padding-top: 3px; }
+.simulation-guide-band progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; appearance: none; border: 0; background: var(--replica-border); }
+.simulation-guide-band progress::-webkit-progress-bar { background: var(--replica-border); }
+.simulation-guide-band progress::-webkit-progress-value { background: var(--replica-annotation); }
+.simulation-guide-band progress::-moz-progress-bar { background: var(--replica-annotation); }
+.interactive-wallet-tour .replica-filters { flex-wrap: wrap; gap: 10px 18px; }
+.interactive-wallet-tour .replica-filters > div > div { position: relative; }
+.interactive-wallet-tour .replica-filters button { height: 27px; min-width: 30px; padding: 4px 8px; font-size: 10px; color: var(--replica-muted); border-radius: 4px; }
+.interactive-wallet-tour .replica-filters button:hover, .interactive-wallet-tour .replica-filters button.selected { background: var(--replica-hover); color: var(--replica-text); }
+.simulation-active-filters::after { content: ""; position: absolute; pointer-events: none; inset: -3px; border-radius: 8px; border: 1px solid var(--replica-annotation); animation: simulation-control-pulse 2.5s ease-in-out infinite; }
+@keyframes simulation-control-pulse { 0%, 100% { opacity: .35; } 50% { opacity: .95; } }
+.simulation-target { position: relative; }
+.simulation-target::after { content: ""; position: absolute; inset: -4px; border: 1px solid var(--replica-annotation); border-radius: 8px; pointer-events: none; }
+.interactive-wallet-tour .replica-identity button { height: auto; padding: 0; font-size: 12px; font-family: var(--font-mono); color: var(--replica-text); font-weight: 600; }
+.interactive-wallet-tour .replica-identity button:hover { background: var(--replica-hover); }
+.interactive-wallet-tour .replica-table th { position: sticky; top: 0; z-index: 1; background: var(--replica-surface); }
+.interactive-wallet-tour .replica-table th.replica-trader-cell { z-index: 3; }
+.interactive-wallet-tour .replica-bell { display: inline-flex; width: 26px; height: 26px; color: var(--replica-text); flex: none; }
+.simulation-table-status { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-top: 7px; font-family: var(--font-mono); color: var(--replica-muted); font-size: 9px; min-height: 16px; }
+.simulation-table-status svg { width: 22px; height: 16px; color: var(--replica-annotation); }
+.simulation-unrecorded { position: sticky; left: 0; padding: 28px 18px; color: var(--replica-muted); font-size: 13px; }
+.simulation-connectors { z-index: 6; }
+.simulation-connectors path { stroke: var(--replica-annotation); stroke-width: 1; opacity: .75; }
+.simulation-panel-layer { position: absolute; inset: 46px 0 0; z-index: 4; }
+.simulation-panel-backdrop { position: absolute; inset: 0; background: color-mix(in oklab, var(--replica-background) 60%, transparent); backdrop-filter: blur(3px); }
+.simulation-wallet-drawer { position: absolute; right: 0; top: 0; bottom: 0; width: 42%; min-width: 300px; display: flex; flex-direction: column; background: var(--replica-surface); border-left: 1px solid var(--replica-border); color: var(--replica-text); }
+.simulation-wallet-drawer header { position: relative; padding: 14px 18px; border-bottom: 1px solid var(--replica-border); flex: none; }
+.simulation-wallet-drawer header > span { color: var(--replica-muted); font-size: 9px; }
+.simulation-wallet-drawer header > strong { display: block; overflow-wrap: anywhere; font-size: 12px; line-height: 1.5; margin-top: 8px; padding-right: 24px; }
+.simulation-wallet-drawer header button { position: absolute; top: 5px; right: 8px; color: var(--replica-text); }
+.simulation-drawer-content { overflow: auto; padding: 14px 18px; }
+.simulation-tracked-wallet { padding-block: 8px 16px; border-bottom: 1px solid var(--replica-border); margin-bottom: 18px; }
+.simulation-tracked-wallet small { color: var(--replica-muted); font-size: 9px; }
+.simulation-tracked-wallet p { font-family: var(--font-mono); font-size: 12px; margin-block: 8px; }
+.simulation-tracked-wallet button { background: var(--replica-surface); color: var(--replica-green); border-color: var(--replica-green); height: 30px; font-size: 11px; }
+.simulation-drawer-content h4 { display: flex; justify-content: space-between; font-size: 12px; }
+.simulation-drawer-content h4 small { color: var(--replica-muted); }
+.simulation-history-row { display: flex; justify-content: space-between; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--replica-border); font-size: 10px; }
+.simulation-history-row span, .simulation-history-row small { display: block; color: var(--replica-muted); margin-top: 4px; }
+.simulation-alerts { position: absolute; inset: 104px 16px 12px; background: var(--replica-surface); border: 1px solid var(--replica-border); border-radius: 8px; display: flex; flex-direction: column; color: var(--replica-text); }
+.simulation-alerts header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; flex: none; }
+.simulation-alerts header h4 { font-size: 13px; }
+.simulation-alerts header small { font-size: 10px; color: var(--replica-muted); }
+.simulation-alerts header button { color: var(--replica-text); width: 28px; height: 28px; }
+.simulation-alert-tabs { display: flex; justify-content: space-around; gap: 8px; padding: 8px 12px; border-block: 1px solid var(--replica-border); font-size: 8px; color: var(--replica-muted); }
+.simulation-alert-tabs span:first-child { color: var(--replica-green); }
+.simulation-alert-columns { display: grid; grid-template-columns: 29% 71%; flex: 1; min-height: 0; }
+.simulation-alert-columns > aside { border-right: 1px solid var(--replica-border); padding: 12px; }
+.simulation-alert-columns small { color: var(--replica-muted); font-size: 9px; }
+.simulation-selected-wallet { margin-top: 16px; padding-block: 10px; color: var(--replica-green); font-size: 10px; }
+.simulation-selected-wallet small { display: block; margin-top: 5px; }
+.simulation-alert-feed { overflow: auto; padding: 12px; }
+.simulation-alert-row { display: flex; justify-content: space-between; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--replica-border); font-size: 11px; }
+.simulation-alert-row > div { min-width: 0; }
+.simulation-alert-row > div:last-child { text-align: right; }
+.simulation-alert-row b { color: var(--replica-red); font-size: 9px; }
+.simulation-alert-row span, .simulation-alert-row small { display: block; margin-top: 8px; font-size: 10px; color: var(--replica-muted); }
+.simulation-finished { position: absolute; inset: 0; z-index: 8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 32px; background: color-mix(in oklab, var(--replica-background) 72%, transparent); backdrop-filter: blur(8px); text-align: center; }
+.simulation-finished p { font-family: var(--font-horizon); font-size: 28px; max-width: 600px; line-height: 1.4; }
+.simulation-finished button { color: var(--replica-text); background: var(--replica-surface); border-color: var(--replica-border); }
+.persistent-live-dock[data-tour-complete="true"] .persistent-live-cta { outline: 2px solid var(--horizon-signal); outline-offset: 4px; animation: simulation-control-pulse 2.5s ease-in-out infinite; }
+@media (max-width: 767px) {
+  .simulation-guide-band { padding-inline: 12px; }
+  .simulation-guide-message { font-size: 12px; line-height: 1.45; min-height: 66px; }
+  .simulation-guide-heading > span { font-size: 7px; gap: 5px; }
+  .interactive-wallet-tour .replica-filters > div:first-child > div { overflow: visible; flex-wrap: wrap; }
+  .interactive-wallet-tour .replica-filters button { padding: 3px 6px; font-size: 9px; height: 25px; }
+  .interactive-wallet-tour .replica-nav-tabs, .interactive-wallet-tour .replica-nav > svg { display: none; }
+  .interactive-wallet-tour .replica-nav > strong { margin-right: auto; }
+  .simulation-wallet-drawer { width: 100%; min-width: 0; }
+  .simulation-alerts { inset-inline: 6px; }
+  .simulation-alert-columns { grid-template-columns: 100%; }
+  .simulation-alert-columns > aside { display: none; }
+  .simulation-alert-tabs { font-size: 6px; gap: 3px; }
+  .simulation-alert-row { gap: 6px; font-size: 9px; }
+  .simulation-alert-row span, .simulation-alert-row small { font-size: 8px; }
+  .simulation-table-status { font-size: 7px; }
+  .simulation-finished p { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .simulation-active-filters::after, .persistent-live-dock[data-tour-complete="true"] .persistent-live-cta { animation: none; }
+}
