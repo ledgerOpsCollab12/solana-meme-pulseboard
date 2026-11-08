@@ -37,3 +37,5 @@
 - [x] Verify scroll sequence, animation, inert CTA and desktop/mobile layouts.
 - [x] Recover the opening and product reveal when the embedded preview pauses a pending animation frame; verify title-only opening, livestream, CTA expansion and video.
 - [x] Lengthen the opening scroll transition moderately and verify the title, CTA and video handoff; offer three video-section layout proposals without applying one.
+- [ ] Prepare and approve a reference-led strategy for the integrated-glass animated interface, with exact recorded data and external annotations.
+- [ ] Replace only the main recording presentation with the first animated replica; verify reference fidelity, annotation order, horizontal tracking and desktop/mobile layout after strategy approval.
