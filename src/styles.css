@@ -997,7 +997,7 @@ body { overflow-x: clip; }
 .simulation-unrecorded { position: sticky; left: 0; padding: 28px 18px; color: var(--replica-muted); font-size: 13px; }
 .simulation-connectors { z-index: 6; }
 .simulation-connectors path { stroke: var(--replica-annotation); stroke-width: 1; opacity: .75; }
-.simulation-panel-layer { position: absolute; inset: 46px 0 0; z-index: 4; }
+.simulation-panel-layer { position: absolute; inset: 140px 0 0; z-index: 4; }
 .simulation-panel-backdrop { position: absolute; inset: 0; background: color-mix(in oklab, var(--replica-background) 60%, transparent); backdrop-filter: blur(3px); }
 .simulation-wallet-drawer { position: absolute; right: 0; top: 0; bottom: 0; width: 42%; min-width: 300px; display: flex; flex-direction: column; background: var(--replica-surface); border-left: 1px solid var(--replica-border); color: var(--replica-text); }
 .simulation-wallet-drawer header { position: relative; padding: 14px 18px; border-bottom: 1px solid var(--replica-border); flex: none; }
@@ -1013,7 +1013,7 @@ body { overflow-x: clip; }
 .simulation-drawer-content h4 small { color: var(--replica-muted); }
 .simulation-history-row { display: flex; justify-content: space-between; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--replica-border); font-size: 10px; }
 .simulation-history-row span, .simulation-history-row small { display: block; color: var(--replica-muted); margin-top: 4px; }
-.simulation-alerts { position: absolute; inset: 104px 16px 12px; background: var(--replica-surface); border: 1px solid var(--replica-border); border-radius: 8px; display: flex; flex-direction: column; color: var(--replica-text); }
+.simulation-alerts { position: absolute; inset: 8px 16px 12px; background: var(--replica-surface); border: 1px solid var(--replica-border); border-radius: 8px; display: flex; flex-direction: column; color: var(--replica-text); }
 .simulation-alerts header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; flex: none; }
 .simulation-alerts header h4 { font-size: 13px; }
 .simulation-alerts header small { font-size: 10px; color: var(--replica-muted); }
@@ -1044,6 +1044,7 @@ body { overflow-x: clip; }
   .interactive-wallet-tour .replica-nav-tabs, .interactive-wallet-tour .replica-nav > svg { display: none; }
   .interactive-wallet-tour .replica-nav > strong { margin-right: auto; }
   .simulation-wallet-drawer { width: 100%; min-width: 0; }
+  .simulation-panel-layer { top: 165px; }
   .simulation-alerts { inset-inline: 6px; }
   .simulation-alert-columns { grid-template-columns: 100%; }
   .simulation-alert-columns > aside { display: none; }
@@ -1052,6 +1053,10 @@ body { overflow-x: clip; }
   .simulation-alert-row span, .simulation-alert-row small { font-size: 8px; }
   .simulation-table-status { font-size: 7px; }
   .simulation-finished p { font-size: 22px; }
+  .interactive-wallet-tour[data-tour-stage="coverage"] .replica-body { overflow: auto; flex-shrink: 1; }
+  .interactive-wallet-tour:not([data-tour-stage="coverage"]) .replica-title { display: none; }
+  .interactive-wallet-tour .replica-performance p { display: none; }
+  .interactive-wallet-tour .replica-table-scroll { min-height: 100px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .simulation-active-filters::after, .persistent-live-dock[data-tour-complete="true"] .persistent-live-cta { animation: none; }

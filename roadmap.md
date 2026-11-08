@@ -42,8 +42,10 @@
 - [x] Enlarge the left-corner product copy over a fading optical veil, center the interface on scroll and move the full CTA below the scene; verify and provide a mockup from the actual page. The new recording and its instructions remain user-supplied, not replaced or invented.
 - [x] Restore the same transforming CTA in the product scene; align the interface to the top/right edges, raise the optical copy and reserve roadway space below; verify scrolling and mobile layout.
 - [x] Integrate approved mockup 06 in the existing product scene: left optical copy, floating upper-right interface, original roadway and transforming CTA; verified opening, reveal, tour controls, reduced motion and mobile layout.
-- [ ] Record the approved version as the baseline and retain both November 8 source recordings.
-- [ ] Extract and verify filter datasets and wallet-detail/alert references; reproduce no more than 30 recorded wallets per selection without invented values.
-- [ ] Add interactive filters, horizontal/vertical browsing, recorded wallet detail and simulated tracking/notifications while the guide continues.
-- [ ] Replace the tour with the requested guided sequence, integrated annotations, available-control pulses and final CTA emphasis; preserve the approved opening and composition.
-- [ ] Present design directions for identifying the guided simulation; verify reference fidelity, interaction, timeline and desktop/mobile/reduced-motion behavior.
+- [x] Record the approved version as baseline commit 3e29319a746be2ffd3e01c2dbc09fd02de889e26 and retain both November 8 source recordings.
+- [x] Extract reference frames and verify partial snapshots for all six P&L periods, 1H Win Rate/ROI/Score/Invested, wallet history and alerts. Missing cells remain explicit and unseen combinations never substitute another dataset.
+- [x] Add interactive filters, horizontal/vertical browsing, the 5gp2JS wallet history and local simulated tracking/notifications while the guide continues.
+- [x] Replace the tour with the requested guided sequence, integrated annotations, available-control pulses and final inert CTA emphasis; preserve the approved opening and composition.
+- [x] Present three design directions and apply the selected integrated strip; verify interactions, timeline, no invented results, desktop/mobile and reduced motion.
+- [ ] Complete the first 30 rows and missing columns per recorded filter, including Trades/Best Trade snapshots. Blocker: current transcription is partial (3–5 verified rows per snapshot); exact complete data requires a readable table export or static captures per selection. No unrecorded period/metric combinations are fabricated.
+- [ ] Complete recorded open positions and other Wallet Alerts tabs. Blocker: only the selected wallet's Registered Activity and tracked alert feed were verified; missing tab content must be supplied or verified before replication.

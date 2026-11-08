@@ -21,10 +21,12 @@ export function getGuidedTour(elapsed: number) {
   let start = 0;
   for (let index = 0; index < GUIDE_STAGES.length; index++) {
     const stage = GUIDE_STAGES[index];
+    if (!stage) continue;
     if (Math.max(0, elapsed) < start + stage.duration || stage.finished) return { stage, index, start, progress: Math.min(1, Math.max(0, elapsed) / GUIDED_TOUR_DURATION) };
     start += stage.duration;
   }
-  return { stage: GUIDE_STAGES[GUIDE_STAGES.length - 1], index: GUIDE_STAGES.length - 1, start, progress: 1 };
+  const stage: GuideStage = { id: "complete", duration: 0, message: "View the live tracker to see all functionalities and real-time data.", targets: [], finished: true };
+  return { stage, index: GUIDE_STAGES.length - 1, start, progress: 1 };
 }
 export function nextGuidedStep(elapsed: number) {
   const current = getGuidedTour(elapsed);

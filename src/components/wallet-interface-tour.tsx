@@ -73,6 +73,7 @@ export function WalletInterfaceTour() {
   useEffect(() => {
     const root = host.current;
     if (!root) return;
+    if (panel && !stage.panel) { setConnectors([]); return; }
     const dock = root.closest(".holo-sticky")?.querySelector(".persistent-live-dock");
     dock?.setAttribute("data-tour-complete", String(Boolean(stage.finished)));
     const draw = () => {

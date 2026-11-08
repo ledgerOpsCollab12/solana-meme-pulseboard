@@ -8,8 +8,8 @@ describe("interactive recorded simulation", () => {
   });
   it("never substitutes another dataset for an unrecorded combination", () => {
     expect(getRecordedSnapshot("ALL", "Win Rate")).toBeUndefined();
-    expect(getRecordedSnapshot("1H", "P&L")?.rows[0].wallet).toBe("C2vVrg...f8HF");
-    expect(getRecordedSnapshot("1H", "Win Rate")?.rows[0].values[1]).toBe("100.0%");
+    expect(getRecordedSnapshot("1H", "P&L")?.rows[0]?.wallet).toBe("C2vVrg...f8HF");
+    expect(getRecordedSnapshot("1H", "Win Rate")?.rows[0]?.values[1]).toBe("100.0%");
   });
   it("uses the requested wallet and literal transaction quantities", () => {
     expect(GUIDED_WALLET_ADDRESS.startsWith("5gp2JS")).toBe(true);
