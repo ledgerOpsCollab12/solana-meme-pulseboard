@@ -11,7 +11,7 @@
 
 - Keep the reference-based product preview in a separate browser-safe component, with its rotation interval and stage progression in a tested helper, so presentation stays independent of live market data.
 - Keep the recorded hero video in a separate browser-safe component with WebM first and MP4 fallback, so playback remains compatible without coupling it to live market data.
-- Keep the illustrative signal network in a browser-safe canvas component with semantic-token colors, deterministic paths, visibility-aware animation and reduced-motion support; it must remain independent of real wallet activity.
+- Keep the illustrative data horizon in a browser-safe canvas component with semantic-token colors, deterministic perspective paths, visibility-aware animation and reduced-motion support; it must remain independent of real wallet activity.
 - Keep the scroll-led intro, overlapping title diffusion/product sharpening and single CTA that settles into the product scene in a browser-safe component with a tested progression helper, animation-frame updates and a non-sticky reduced-motion layout, so the same-viewport reveal remains accessible without duplicated controls.
 - Keep the scroll-led problem billboards in a browser-safe component with tested stage selection and a static reduced-motion layout, so each problem remains readable independently of live market data.
 - Pre-optimize the preview's UI dependencies alongside the template's React dependencies to avoid late dependency discovery mixing React module instances in an already-open preview.

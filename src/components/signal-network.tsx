@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// An illustrative, deterministic signal field. It never requests wallet data.
+// Perspective signal landscape: illustrative only, with no market-data requests.
 export function SignalNetwork() {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -8,94 +8,97 @@ export function SignalNetwork() {
     const context = element?.getContext("2d");
     if (!element || !context) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
+    const tokens = getComputedStyle(document.documentElement);
+    const color = (name: string) => tokens.getPropertyValue(name).trim();
     let width = 0;
     let height = 0;
-    const tokens = getComputedStyle(document.documentElement);
-    const ink = tokens.getPropertyValue("--signal-line").trim();
-    const primary = tokens.getPropertyValue("--primary").trim();
-    const gain = tokens.getPropertyValue("--gain").trim();
-    const text = tokens.getPropertyValue("--muted-foreground").trim();
-    const points = Array.from({ length: 24 }, (_, i) => {
-      const side = i % 2;
-      const row = Math.floor(i / 2);
-      return { x: side ? .94 + ((row * 7) % 5) / 100 : .02 + ((row * 7) % 5) / 100, y: .08 + row * .069 };
-    });
-    const render = (timestamp: number) => {
+    let frame = 0;
+    let visible = true;
+    const lanes = Array.from({ length: 35 }, (_, i) => (i - 17) / 9);
+    const project = (lane: number, depth: number) => {
+      const perspective = depth * depth;
+      return { x: width * .5 + lane * width * .64 * perspective, y: height * .55 + perspective * height * .65 };
+    };
+    const render = (stamp: number) => {
       context.clearRect(0, 0, width, height);
-      const time = motion.matches ? 0 : timestamp / 1000;
-      const hub = { x: width * .97, y: height * .61 };
-      context.lineWidth = .7;
-      points.forEach((point, i) => {
-        const x = point.x * width;
-        const y = point.y * height;
-        const neighbor = points[i + 2];
-        context.strokeStyle = ink;
+      const time = motion.matches ? 0 : stamp / 1000;
+      const sky = context.createLinearGradient(0, 0, 0, height);
+      sky.addColorStop(0, color("--horizon-sky"));
+      sky.addColorStop(.52, color("--horizon-light"));
+      sky.addColorStop(1, color("--horizon-ground"));
+      context.fillStyle = sky;
+      context.fillRect(0, 0, width, height);
+      // Several faint distant planes establish depth without decorative objects.
+      for (let layer = 0; layer < 4; layer++) {
+        context.strokeStyle = color("--horizon-mist");
+        context.lineWidth = 1;
         context.beginPath();
-        context.moveTo(x, y);
-        if (neighbor) {
-          context.lineTo(x, (y + neighbor.y * height) / 2);
-          context.lineTo(neighbor.x * width, neighbor.y * height);
+        for (let x = 0; x <= width; x += 8) {
+          const y = height * (.51 + layer * .012) + Math.sin(x / width * 5 + layer * .7) * height * .01;
+          if (x === 0) context.moveTo(x, y); else context.lineTo(x, y);
         }
         context.stroke();
-        context.fillStyle = i % 4 === 0 ? gain : primary;
-        context.globalAlpha = .35;
-        context.fillRect(x - 2, y - 2, 4, 4);
-        context.globalAlpha = 1;
-        if (i % 3 !== 0) return;
-        const target = { x, y: Math.min(height * .92, y + height * .18) };
-        const bend = { x: sideX(point.x, width), y: y + height * .09 };
-        context.beginPath();
-        context.moveTo(x, y);
-        context.lineTo(bend.x, bend.y);
-        context.lineTo(target.x, target.y);
-        context.stroke();
-        const progress = (time * .18 + i * .117) % 1;
-        const sx = progress < .75 ? x + (bend.x - x) * progress / .75 : bend.x + (target.x - bend.x) * (progress - .75) / .25;
-        const sy = progress < .75 ? y + (bend.y - y) * progress / .75 : bend.y + (target.y - bend.y) * (progress - .75) / .25;
-        context.fillStyle = i % 2 ? primary : gain;
-        context.fillRect(sx - 2, sy - 2, 4, 4);
-      });
-      // A precision capture gate, not a decorative glowing orb.
-      context.strokeStyle = primary;
-      context.globalAlpha = .25;
-      context.strokeRect(hub.x - 5, hub.y - 5, 10, 10);
-      context.globalAlpha = 1;
-      context.font = "10px 'JetBrains Mono', monospace";
-      context.textAlign = "center";
-      context.fillStyle = text;
-      if (width > 700) {
-        const cycle = Math.floor(time / 2) % 3;
-        ["SIGNAL DETECTED", "PATTERN CLASSIFIED", "MOVEMENT INDEXED"].forEach((label, i) => {
-          context.globalAlpha = i === cycle ? .65 : .22;
-          context.textAlign = i % 2 ? "right" : "left";
-          const x = i % 2 ? width * .985 : width * .015;
-          context.fillText(`${String(i + 1).padStart(2, "0")} / ${label}`, x, height * (.54 + i * .08));
-        });
-        context.globalAlpha = 1;
       }
-      if (!motion.matches && element.getBoundingClientRect().bottom > 0) frame = requestAnimationFrame(render);
+      lanes.forEach((lane, i) => {
+        context.lineWidth = .7;
+        context.strokeStyle = color("--horizon-line");
+        context.beginPath();
+        for (let step = 0; step <= 40; step++) {
+          const point = project(lane, .06 + step / 40 * .94);
+          if (step === 0) context.moveTo(point.x, point.y); else context.lineTo(point.x, point.y);
+        }
+        context.stroke();
+        for (let signal = 0; signal < 2; signal++) {
+          const depth = .09 + ((time * .045 + i * .137 + signal * .5) % .91);
+          const point = project(lane, depth);
+          const tail = project(lane, Math.max(.02, depth - .035));
+          context.globalAlpha = Math.min(.8, depth * .8);
+          context.strokeStyle = i % 4 === 0 ? color("--gain") : color("--horizon-signal");
+          context.lineWidth = .8 + depth;
+          context.beginPath(); context.moveTo(tail.x, tail.y); context.lineTo(point.x, point.y); context.stroke();
+          context.fillStyle = context.strokeStyle;
+          const size = .8 + depth * 2;
+          context.fillRect(point.x - size / 2, point.y - size / 2, size, size);
+          if (i % 6 === 0 && depth > .52) {
+            context.lineWidth = .6;
+            context.strokeRect(point.x - 5 * depth, point.y - 5 * depth, 10 * depth, 10 * depth);
+          }
+        }
+      });
+      context.globalAlpha = 1;
+      // Moving cross-depth traces, increasingly spaced towards the viewer.
+      context.strokeStyle = color("--horizon-crossline");
+      context.lineWidth = .6;
+      for (let row = 0; row < 15; row++) {
+        const depth = .08 + ((row / 15 + time * .012) % .92);
+        const left = project(-2, depth); const right = project(2, depth);
+        context.beginPath(); context.moveTo(left.x, left.y); context.lineTo(right.x, right.y); context.stroke();
+      }
+      if (!motion.matches && visible && !document.hidden) frame = requestAnimationFrame(render);
     };
-    function sideX(x: number, w: number) { return w * (x < .5 ? .015 : .985); }
+    const restart = () => {
+      cancelAnimationFrame(frame);
+      if (visible && !document.hidden) render(performance.now());
+    };
     const resize = () => {
-      cancelAnimationFrame(frame);
-      width = element.clientWidth;
-      height = element.clientHeight;
+      width = element.clientWidth; height = element.clientHeight;
       const ratio = Math.min(window.devicePixelRatio, 2);
-      element.width = width * ratio;
-      element.height = height * ratio;
+      element.width = width * ratio; element.height = height * ratio;
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      render(performance.now());
+      restart();
     };
-    const observer = new IntersectionObserver(([entry]) => {
-      cancelAnimationFrame(frame);
-      if (entry?.isIntersecting) render(performance.now());
-    });
+    const observer = new IntersectionObserver(([entry]) => { visible = entry?.isIntersecting ?? false; restart(); });
     observer.observe(element);
     resize();
     window.addEventListener("resize", resize);
-    motion.addEventListener("change", resize);
-    return () => { cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener("resize", resize); motion.removeEventListener("change", resize); };
+    document.addEventListener("visibilitychange", restart);
+    motion.addEventListener("change", restart);
+    return () => {
+      cancelAnimationFrame(frame); observer.disconnect();
+      window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", restart);
+      motion.removeEventListener("change", restart);
+    };
   }, []);
   return <canvas ref={canvas} className="signal-network" aria-hidden="true" />;
 }

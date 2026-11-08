@@ -30,3 +30,4 @@
 - [x] Apply the approved panoramic-glass opening with edge-only signals and a blurred title dissolving into the product behind it.
 - [x] Verify the same-viewport reveal, original video, inert CTA, desktop/mobile layout and reduced motion.
 - [x] Correct the mockup composition: four-line opening title, left-corner promotional copy, full-width recording frame and same-scene CTA, facts and protocol strip; verify desktop/mobile and preserved playback.
+- [x] Build the data horizon with perspective signals, a centered restrained headline and only one opening button; verify animation, reveal and mobile layout.

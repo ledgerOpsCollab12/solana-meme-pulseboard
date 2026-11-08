@@ -32,6 +32,7 @@ export function ScrollIntro() {
       section.style.setProperty("--shell-opacity", `${state.shell}`);
       section.style.setProperty("--content-opacity", `${state.content}`);
       section.style.setProperty("--facts-opacity", `${state.facts}`);
+      section.style.setProperty("--cta-reveal", `${state.content}`);
       section.style.setProperty("--window-scale", `${0.93 + state.shell * 0.07}`);
       const product = section.querySelector<HTMLElement>(".holo-product");
       if (product) product.inert = !motion.matches && state.content < 0.85;
@@ -54,13 +55,12 @@ export function ScrollIntro() {
 
   return (
     <>
-      <section ref={intro} className="scroll-intro holo-intro panoramic-intro" aria-labelledby="intro-title">
+      <section ref={intro} className="scroll-intro holo-intro panoramic-intro horizon-intro" aria-labelledby="intro-title">
         <div className="holo-sticky">
           <SignalNetwork />
           <div className="intro-title-layer">
-            <span className="panoramic-signature">WHALEWATCH <span>/</span> SOLANA</span>
             <h1 id="intro-title" className="intro-headline typed-headline" aria-label="Track the most profitable wallets in memecoin trading.">
-              <span className="headline-line"><span aria-hidden="true" className="typed-word">Track the most</span></span><em className="headline-line"><span aria-hidden="true" className="typed-word">profitable wallets</span></em><span className="headline-line"><span aria-hidden="true" className="typed-word">in memecoin</span></span><span className="headline-line"><span aria-hidden="true" className="typed-word">trading.</span></span>
+              <span className="headline-line"><span aria-hidden="true" className="typed-word">Track the most</span></span><em className="headline-line"><span aria-hidden="true" className="typed-word">profitable wallets</span></em><span className="headline-line"><span aria-hidden="true" className="typed-word">in memecoin trading.</span></span>
             </h1>
           </div>
           <div className="holo-product">

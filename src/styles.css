@@ -604,3 +604,34 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
   .panoramic-intro .intro-evidence { opacity: 1; }
   .panoramic-intro .persistent-live-dock { margin-bottom: 140px; }
 }
+
+/* An open optical landscape, not a flat sheet with edge decoration. */
+:root {
+  --font-horizon: "Manrope", sans-serif;
+  --horizon-sky: oklch(.96 .016 250);
+  --horizon-light: oklch(.998 .002 245);
+  --horizon-ground: oklch(.95 .019 250);
+  --horizon-mist: oklch(.80 .025 250 / .12);
+  --horizon-line: oklch(.60 .055 255 / .14);
+  --horizon-crossline: oklch(.64 .045 250 / .12);
+  --horizon-signal: oklch(.55 .15 259);
+  --horizon-ink: oklch(.19 .007 260);
+}
+.horizon-intro .signal-network { z-index: -1; opacity: 1; mask-image: none; height: 100%; }
+.horizon-intro .intro-title-layer { justify-content: center; padding: 0 24px 24svh; }
+.horizon-intro .intro-headline { max-width: 980px; font-family: var(--font-horizon); font-size: 4rem; line-height: 1.22; font-weight: 500; text-align: center; color: var(--horizon-ink); }
+.horizon-intro .intro-headline em { color: var(--horizon-signal); font-weight: 500; }
+.horizon-intro .persistent-live-dock { width: calc(250px + (min(100%, 1100px) - 250px) * var(--cta-reveal, 0)); padding: calc(18px * var(--cta-reveal, 0)) calc(22px * var(--cta-reveal, 0)); gap: calc(28px * var(--cta-reveal, 0)); border-color: color-mix(in oklab, var(--panoramic-edge) calc(var(--cta-reveal, 0) * 100%), transparent); background: color-mix(in oklab, var(--panoramic-glass) calc(var(--cta-reveal, 0) * 100%), transparent); backdrop-filter: none; }
+.horizon-intro .live-dock-copy { width: calc(100% * var(--cta-reveal, 0)); flex: auto; max-height: calc(140px * var(--cta-reveal, 0)); opacity: var(--cta-reveal, 0); overflow: hidden; }
+.horizon-intro .persistent-live-cta { background: var(--horizon-ink); font-family: var(--font-horizon); font-weight: 500; height: 56px; border-color: var(--horizon-ink); }
+@media (min-width: 1400px) { .horizon-intro .intro-headline { font-size: 4.5rem; } }
+@media (max-width: 1023px) and (min-width: 768px) { .horizon-intro .intro-headline { font-size: 3.5rem; } }
+@media (max-width: 767px) {
+  .horizon-intro .intro-title-layer { padding: 0 4px 38svh; }
+  .horizon-intro .intro-headline { font-size: 2rem; line-height: 1.28; }
+  .horizon-intro .persistent-live-dock { padding: calc(18px * var(--cta-reveal, 0)) calc(14px * var(--cta-reveal, 0)); gap: calc(16px * var(--cta-reveal, 0)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .horizon-intro .intro-title-layer { padding: 100px 4px 60px; }
+  .horizon-intro .persistent-live-dock { --cta-reveal: 1; }
+}
