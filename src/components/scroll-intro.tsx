@@ -46,8 +46,6 @@ export function ScrollIntro() {
       section.style.setProperty("--content-opacity", `${state.content}`);
       section.style.setProperty("--facts-opacity", `${state.facts}`);
       section.style.setProperty("--cta-reveal", `${state.content}`);
-       section.style.setProperty("--opening-cta-opacity", `${1 - state.content}`);
-       section.style.setProperty("--opening-cta-visibility", state.shell > 0.05 ? "hidden" : "visible");
       section.style.setProperty("--window-scale", `${0.93 + state.shell * 0.07}`);
       const product = section.querySelector<HTMLElement>(".holo-product");
       if (product) product.inert = !motion.matches && state.content < 0.85;
@@ -116,8 +114,8 @@ export function ScrollIntro() {
                 <WalletInterfaceTour />
               </div>
             </div>
-            <div className="intro-cta-slot" aria-hidden="true" />
           </div>
+          <div className="intro-cta-slot" aria-hidden="true" />
           <div ref={cta} className="persistent-live-dock">
             <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true"><i /></span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
             <Button type="button" size="lg" className="persistent-live-cta">See live movements <ArrowUpRight aria-hidden="true" /></Button>
@@ -125,10 +123,6 @@ export function ScrollIntro() {
         </div>
       </section>
       <div className="intro-evidence">
-        <div className="product-live-notice">
-          <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true"><i /></span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
-          <Button type="button" size="lg">See live movements <ArrowUpRight aria-hidden="true" /></Button>
-        </div>
         <div className="ef-facts intro-facts">
           <div><strong>100%</strong><span>Data coverage</span></div>
           <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
