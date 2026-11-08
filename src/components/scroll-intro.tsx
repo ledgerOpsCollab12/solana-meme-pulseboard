@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroWalletVideo } from "@/components/hero-wallet-video";
+import { WalletInterfaceTour } from "@/components/wallet-interface-tour";
 import { getIntroProgress } from "@/lib/intro-progress";
 import { SignalNetwork } from "@/components/signal-network";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
@@ -96,20 +96,18 @@ export function ScrollIntro() {
           </div>
           <div className="holo-product">
             <div className="holo-heading"><span>WHALEWATCH / WALLET INTELLIGENCE</span><span className="product-live"><i /> SOLANA · LIVE · FREE</span></div>
-            <div className="holo-composition">
+            <div className="holo-composition integrated-composition">
               <div className="holo-copy">
                 <span className="ef-tag"><b>BEYOND THE LEADERBOARD</b></span>
-                <h2>Don’t just <br />follow. <br /><em>Understand.</em></h2>
+                <h2>Don’t just follow. <em>Understand.</em></h2>
                 <div className="holo-glass">
                   <p>A leaderboard of the highest-PnL wallets isn’t enough.</p>
                   <p>Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves.</p>
                   <p>We give you insights and tools so a trader with limited resources can build a realistic strategy.</p>
                 </div>
               </div>
-              <div className="product-video-frame holo-window" aria-label="WhaleWatch product recording">
-                <div className="product-frame-top"><span>WHALEWATCH / WALLET INTELLIGENCE</span><span className="product-live"><i /> LIVE ON SOLANA</span></div>
-                <div className="holo-video"><HeroWalletVideo /></div>
-                <div className="product-frame-bottom"><span>SOLANA / WALLET METRICS</span><span>WHALEWATCH</span></div>
+              <div className="holo-video integrated-interface" aria-label="WhaleWatch animated product presentation">
+                <WalletInterfaceTour />
               </div>
             </div>
             <div className="intro-cta-slot" aria-hidden="true" />
