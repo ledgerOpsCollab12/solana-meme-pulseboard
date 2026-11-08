@@ -103,11 +103,9 @@ export function ScrollIntro() {
             <div className="holo-composition integrated-composition optical-composition">
               <div className="holo-copy">
                 <span className="ef-tag"><b>BEYOND THE LEADERBOARD</b></span>
-                <h2>Don’t just follow. <em>Understand.</em></h2>
+                <h2>We classify for you <em>all wallets trading memecoins.</em></h2>
                 <div className="holo-glass">
-                  <p>A leaderboard of the highest-PnL wallets isn’t enough.</p>
-                  <p>Most aren’t consistent, they’re bots you can’t keep up with, or they fake volume to profit off you copying their moves.</p>
-                  <p>We give you insights and tools so a trader with limited resources can build a realistic strategy.</p>
+                  <p>Go beyond the leaderboard. Analyze top-performing wallets by PnL, win rate, consistency, trading activity, and more. Get real-time alerts and tools to understand how each wallet trades.</p>
                 </div>
               </div>
               <div className="holo-video integrated-interface" aria-label="WhaleWatch animated product presentation">
