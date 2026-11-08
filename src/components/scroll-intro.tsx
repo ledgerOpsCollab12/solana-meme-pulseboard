@@ -5,6 +5,7 @@ import { HeroWalletVideo } from "@/components/hero-wallet-video";
 import { getIntroProgress } from "@/lib/intro-progress";
 import { SignalNetwork } from "@/components/signal-network";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
+import { getOpeningProgress } from "@/lib/opening-progress";
 
 export function ScrollIntro() {
   const intro = useRef<HTMLElement>(null);
@@ -16,7 +17,14 @@ export function ScrollIntro() {
     if (!section || !button) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    const started = performance.now();
+    const letters = section.querySelectorAll<HTMLElement>(".intro-letter");
     const update = () => {
+      const opening = getOpeningProgress(performance.now() - started, motion.matches);
+      section.style.setProperty("--opening-shift", `${opening.shift}svh`);
+      section.style.setProperty("--opening-blur", `${opening.blur}px`);
+      section.style.setProperty("--opening-scene", `${opening.scene}`);
+      letters.forEach((letter, i) => { letter.style.visibility = i < opening.letters ? "visible" : "hidden"; });
       const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const state = getIntroProgress(window.scrollY - top, section.offsetHeight - height);
@@ -39,6 +47,7 @@ export function ScrollIntro() {
       const title = section.querySelector<HTMLElement>(".intro-title-layer");
       if (title) title.inert = !motion.matches && state.titleOpacity === 0;
       frame = 0;
+      if (!opening.done) frame = requestAnimationFrame(update);
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     update();
@@ -58,9 +67,13 @@ export function ScrollIntro() {
       <section ref={intro} className="scroll-intro holo-intro panoramic-intro horizon-intro" aria-labelledby="intro-title">
         <div className="holo-sticky">
           <SignalNetwork />
+          <div className="horizon-livestream"><i aria-hidden="true" /> Livestream from Solana blockchain</div>
           <div className="intro-title-layer">
             <h1 id="intro-title" className="intro-headline typed-headline" aria-label="Track the most profitable wallets in memecoin trading.">
-              <span className="headline-line"><span aria-hidden="true" className="typed-word">Track the most</span></span><em className="headline-line"><span aria-hidden="true" className="typed-word">profitable wallets</span></em><span className="headline-line"><span aria-hidden="true" className="typed-word">in memecoin trading.</span></span>
+              {["Track the most", "profitable wallets", "in memecoin trading."].map((line, index) => {
+                const content = [...line + (index < 2 ? " " : "")].map((letter, i) => <span key={i} className="intro-letter">{letter}</span>);
+                return index === 1 ? <em key={line} className="headline-line" aria-hidden="true">{content}</em> : <span key={line} className="headline-line" aria-hidden="true">{content}</span>;
+              })}
             </h1>
           </div>
           <div className="holo-product">

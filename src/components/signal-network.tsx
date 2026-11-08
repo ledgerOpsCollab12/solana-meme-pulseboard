@@ -15,6 +15,12 @@ export function SignalNetwork() {
     let frame = 0;
     let visible = true;
     const lanes = Array.from({ length: 35 }, (_, i) => (i - 17) / 9);
+    const logos = ["pump.fun", "orca.so", "raydium.io", "meteora.ag", "fluxbeam.xyz", "moon.it", "heaven.xyz"].map((name) => {
+      const image = new Image();
+      image.src = `/protocols/${name}.png`;
+      image.onload = () => restart();
+      return image;
+    });
     const project = (lane: number, depth: number) => {
       const perspective = depth * depth;
       return { x: width * .5 + lane * width * .64 * perspective, y: height * .55 + perspective * height * .65 };
@@ -28,17 +34,6 @@ export function SignalNetwork() {
       sky.addColorStop(1, color("--horizon-ground"));
       context.fillStyle = sky;
       context.fillRect(0, 0, width, height);
-      // Several faint distant planes establish depth without decorative objects.
-      for (let layer = 0; layer < 4; layer++) {
-        context.strokeStyle = color("--horizon-mist");
-        context.lineWidth = 1;
-        context.beginPath();
-        for (let x = 0; x <= width; x += 8) {
-          const y = height * (.51 + layer * .012) + Math.sin(x / width * 5 + layer * .7) * height * .01;
-          if (x === 0) context.moveTo(x, y); else context.lineTo(x, y);
-        }
-        context.stroke();
-      }
       lanes.forEach((lane, i) => {
         context.lineWidth = .7;
         context.strokeStyle = color("--horizon-line");
@@ -65,15 +60,22 @@ export function SignalNetwork() {
           }
         }
       });
+      // Protocol marks share the signals' depth velocity and perspective.
+      logos.forEach((image, i) => {
+        if (!image.complete || !image.naturalWidth) return;
+        const lane = [-1.25, .85, -.5, 1.5, -.95, .35, 1.1][i] ?? 0;
+        const depth = .09 + ((time * .045 + i * .137) % .91);
+        const point = project(lane, depth);
+        const size = 8 + depth * depth * 38;
+        context.globalAlpha = Math.min(.9, depth * 1.2);
+        context.save();
+        context.beginPath();
+        context.roundRect(point.x - size / 2, point.y - size / 2, size, size, size * .2);
+        context.clip();
+        context.drawImage(image, point.x - size / 2, point.y - size / 2, size, size);
+        context.restore();
+      });
       context.globalAlpha = 1;
-      // Moving cross-depth traces, increasingly spaced towards the viewer.
-      context.strokeStyle = color("--horizon-crossline");
-      context.lineWidth = .6;
-      for (let row = 0; row < 15; row++) {
-        const depth = .08 + ((row / 15 + time * .012) % .92);
-        const left = project(-2, depth); const right = project(2, depth);
-        context.beginPath(); context.moveTo(left.x, left.y); context.lineTo(right.x, right.y); context.stroke();
-      }
       if (!motion.matches && visible && !document.hidden) frame = requestAnimationFrame(render);
     };
     const restart = () => {
@@ -95,6 +97,7 @@ export function SignalNetwork() {
     motion.addEventListener("change", restart);
     return () => {
       cancelAnimationFrame(frame); observer.disconnect();
+      logos.forEach((image) => { image.onload = null; });
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", restart);
       motion.removeEventListener("change", restart);
