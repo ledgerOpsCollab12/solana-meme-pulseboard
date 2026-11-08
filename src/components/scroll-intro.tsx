@@ -6,6 +6,7 @@ import { getIntroProgress } from "@/lib/intro-progress";
 import { SignalNetwork } from "@/components/signal-network";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
 import { getOpeningProgress } from "@/lib/opening-progress";
+import { createIntroAnimationDriver } from "@/lib/intro-animation-driver";
 
 export function ScrollIntro() {
   const intro = useRef<HTMLElement>(null);
@@ -16,13 +17,14 @@ export function ScrollIntro() {
     const button = cta.current;
     if (!section || !button) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
+    const journey = section.closest<HTMLElement>(".horizon-journey");
     const started = performance.now();
     const update = () => {
       const opening = getOpeningProgress(performance.now() - started, motion.matches);
       section.style.setProperty("--opening-shift", `${opening.shift}svh`);
       section.style.setProperty("--opening-blur", `${opening.blur}px`);
       section.style.setProperty("--opening-scene", `${opening.scene}`);
+      journey?.style.setProperty("--opening-scene", `${opening.scene}`);
       const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const state = getIntroProgress(window.scrollY - top, section.offsetHeight - height);
@@ -44,19 +46,34 @@ export function ScrollIntro() {
       if (product) product.inert = !motion.matches && state.content < 0.85;
       const title = section.querySelector<HTMLElement>(".intro-title-layer");
       if (title) title.inert = !motion.matches && state.titleOpacity === 0;
-      frame = 0;
-      if (!opening.done) frame = requestAnimationFrame(update);
+      return !opening.done;
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
-    update();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    motion.addEventListener("change", schedule);
+    const driver = createIntroAnimationDriver(update, {
+      request: (callback) => requestAnimationFrame(callback),
+      cancel: (id) => cancelAnimationFrame(id),
+    });
+    const refresh = () => driver.refresh();
+    const visible = () => { if (!document.hidden) refresh(); };
+    const observer = new ResizeObserver(refresh);
+    observer.observe(section);
+    const scene = section.querySelector<HTMLElement>(".holo-sticky");
+    if (scene) observer.observe(scene);
+    refresh();
+    window.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh);
+    window.addEventListener("pageshow", refresh);
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", visible);
+    motion.addEventListener("change", refresh);
     return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      motion.removeEventListener("change", schedule);
+      driver.stop();
+      observer.disconnect();
+      window.removeEventListener("scroll", refresh);
+      window.removeEventListener("resize", refresh);
+      window.removeEventListener("pageshow", refresh);
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", visible);
+      motion.removeEventListener("change", refresh);
     };
   }, []);
 

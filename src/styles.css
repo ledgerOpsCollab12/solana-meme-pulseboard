@@ -651,7 +651,7 @@ body { overflow-x: clip; }
 /* The product owns its screen; evidence and protocols follow in open bands. */
 .horizon-journey { position: relative; isolation: isolate; overflow: clip; width: 100vw; margin-left: calc(50% - 50vw); background: var(--horizon-sky); }
 .horizon-backdrop { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; z-index: -1; pointer-events: none; }
-.horizon-backdrop .signal-network { width: 100%; left: 0; height: 100%; opacity: 1; mask-image: none; }
+.horizon-backdrop .signal-network { width: 100%; left: 0; height: 100%; opacity: var(--opening-scene, 0); mask-image: none; transform: scale(calc(1.035 - var(--opening-scene, 0) * .035)); }
 .horizon-journey .horizon-intro { width: 100%; margin-left: 0; background: transparent; }
 .horizon-journey .intro-evidence { position: relative; padding: 42px 0 64px; }
 .horizon-journey .intro-facts { max-width: 1100px; margin: 0 auto 42px; border-block: 1px solid var(--panoramic-edge); padding: 32px 0; }

@@ -35,3 +35,4 @@
 - [x] Separate product/CTA from full-size evidence and protocol bands; converge road icons into the marquee on scroll.
 - [x] Show the complete opening title immediately; frame and pin the menu with Login beside the tracker.
 - [x] Verify scroll sequence, animation, inert CTA and desktop/mobile layouts.
+- [x] Recover the opening and product reveal when the embedded preview pauses a pending animation frame; verify title-only opening, livestream, CTA expansion and video.
