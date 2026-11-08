@@ -109,10 +109,13 @@ function Index() {
   return (
     <main className="landing-main mx-auto max-w-[1360px] px-5 lg:px-10">
       <ScrollIntro />
-      <nav className="site-nav">
+      <nav className="site-nav" aria-label="Main navigation">
         <div className="site-nav-actions">
           <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
-          <a className="ef-btn" href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Open the live tracker <ArrowUpRight /></a>
+          <div className="tracker-access">
+            <Button asChild className="nav-tracker"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Open the live tracker <ArrowUpRight /></a></Button>
+            <Button asChild className="nav-tracker"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Login <ArrowUpRight /></a></Button>
+          </div>
           <Button asChild variant="outline"><a href="#api-access"><Sparkles /> Request a tailored feature</a></Button>
           <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>
         </div>

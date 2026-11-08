@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { getOpeningProgress, OPENING_TITLE } from "./opening-progress";
 
 describe("reference-inspired opening", () => {
-  it("writes the existing title before the landscape emerges", () => {
-    expect(getOpeningProgress(0)).toMatchObject({ letters: 0, shift: 12, scene: 0 });
+  it("shows the complete title immediately before the landscape emerges", () => {
+    expect(getOpeningProgress(0)).toMatchObject({ letters: OPENING_TITLE.length, shift: 12, scene: 0 });
     expect(getOpeningProgress(1400)).toMatchObject({ letters: OPENING_TITLE.length, scene: 0 });
   });
   it("keeps the complete title while shifting and optically diffusing it", () => {

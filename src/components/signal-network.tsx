@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { getProtocolAssembly, PROTOCOLS } from "@/lib/protocol-assembly";
 
 // Perspective signal landscape: illustrative only, with no market-data requests.
 export function SignalNetwork() {
@@ -15,7 +16,10 @@ export function SignalNetwork() {
     let frame = 0;
     let visible = true;
     const lanes = Array.from({ length: 35 }, (_, i) => (i - 17) / 9);
-    const logos = ["pump.fun", "orca.so", "raydium.io", "meteora.ag", "fluxbeam.xyz", "moon.it", "heaven.xyz"].map((name) => {
+    const journey = element.closest<HTMLElement>(".horizon-journey");
+    const strip = journey?.querySelector<HTMLElement>(".marquee");
+    const targets = strip?.querySelectorAll<HTMLImageElement>(".marquee-item img");
+    const logos = PROTOCOLS.map(([, name]) => {
       const image = new Image();
       image.src = `/protocols/${name}.png`;
       image.onload = () => restart();
@@ -28,6 +32,9 @@ export function SignalNetwork() {
     const render = (stamp: number) => {
       context.clearRect(0, 0, width, height);
       const time = motion.matches ? 0 : stamp / 1000;
+      const assembly = getProtocolAssembly(strip?.getBoundingClientRect().top ?? height * 2, height, motion.matches);
+      strip?.style.setProperty("--protocol-assembly", `${assembly}`);
+      if (strip) strip.dataset['assembled'] = String(assembly === 1);
       const sky = context.createLinearGradient(0, 0, 0, height);
       sky.addColorStop(0, color("--horizon-sky"));
       sky.addColorStop(.52, color("--horizon-light"));
@@ -63,11 +70,17 @@ export function SignalNetwork() {
       // Protocol marks share the signals' depth velocity and perspective.
       logos.forEach((image, i) => {
         if (!image.complete || !image.naturalWidth) return;
-        const lane = [-1.25, .85, -.5, 1.5, -.95, .35, 1.1][i] ?? 0;
+        const lane = [-1.25, .85, -.5, 1.5, -.95, .35, 1.1, -.7, .6, -1.6, .2, 1.7][i] ?? 0;
         const depth = .09 + ((time * .045 + i * .137) % .91);
-        const point = project(lane, depth);
-        const size = 8 + depth * depth * 38;
-        context.globalAlpha = Math.min(.9, depth * 1.2);
+        const origin = project(lane, depth);
+        const target = targets?.[i]?.getBoundingClientRect();
+        const bounds = element.getBoundingClientRect();
+        const point = target ? {
+          x: origin.x + (target.left + target.width / 2 - bounds.left - origin.x) * assembly,
+          y: origin.y + (target.top + target.height / 2 - bounds.top - origin.y) * assembly,
+        } : origin;
+        const size = (8 + depth * depth * 38) * (1 - assembly) + 40 * assembly;
+        context.globalAlpha = Math.min(1, depth * 1.2 + assembly) * (1 - Math.max(0, (assembly - .9) * 10));
         context.save();
         context.beginPath();
         context.roundRect(point.x - size / 2, point.y - size / 2, size, size, size * .2);
@@ -93,12 +106,14 @@ export function SignalNetwork() {
     observer.observe(element);
     resize();
     window.addEventListener("resize", resize);
+    window.addEventListener("scroll", restart, { passive: true });
     document.addEventListener("visibilitychange", restart);
     motion.addEventListener("change", restart);
     return () => {
       cancelAnimationFrame(frame); observer.disconnect();
       logos.forEach((image) => { image.onload = null; });
       window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", restart);
       document.removeEventListener("visibilitychange", restart);
       motion.removeEventListener("change", restart);
     };

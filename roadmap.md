@@ -32,3 +32,6 @@
 - [x] Correct the mockup composition: four-line opening title, left-corner promotional copy, full-width recording frame and same-scene CTA, facts and protocol strip; verify desktop/mobile and preserved playback.
 - [x] Build the data horizon with perspective signals, a centered restrained headline and only one opening button; verify animation, reveal and mobile layout.
 - [x] Add the reference-inspired typed/optical opening, moving AMM icons without crosslines, top-left livestream label and edge-to-edge background; verify opening, scroll and reduced motion.
+- [x] Separate product/CTA from full-size evidence and protocol bands; converge road icons into the marquee on scroll.
+- [x] Show the complete opening title immediately; frame and pin the menu with Login beside the tracker.
+- [x] Verify scroll sequence, animation, inert CTA and desktop/mobile layouts.

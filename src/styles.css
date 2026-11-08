@@ -647,3 +647,57 @@ body { overflow-x: clip; }
   .horizon-intro .persistent-live-dock, .horizon-livestream { opacity: 1; }
   .horizon-intro .persistent-live-dock { --cta-reveal: 1; }
 }
+
+/* The product owns its screen; evidence and protocols follow in open bands. */
+.horizon-journey { position: relative; isolation: isolate; overflow: clip; width: 100vw; margin-left: calc(50% - 50vw); background: var(--horizon-sky); }
+.horizon-backdrop { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; z-index: -1; pointer-events: none; }
+.horizon-backdrop .signal-network { width: 100%; left: 0; height: 100%; opacity: 1; mask-image: none; }
+.horizon-journey .horizon-intro { width: 100%; margin-left: 0; background: transparent; }
+.horizon-journey .intro-evidence { position: relative; padding: 42px 0 64px; }
+.horizon-journey .intro-facts { max-width: 1100px; margin: 0 auto 42px; border-block: 1px solid var(--panoramic-edge); padding: 32px 0; }
+.horizon-journey .intro-facts strong { font-size: 1.6rem; margin-bottom: 8px; }
+.horizon-journey .intro-facts span { font-size: 11px; }
+.horizon-journey .marquee { width: 100%; margin: 0; padding: 32px 0; border-block: 1px solid var(--panoramic-edge); background: var(--panoramic-glass); }
+.horizon-journey .marquee-track { gap: 56px; animation-play-state: paused; }
+.horizon-journey .marquee[data-assembled="true"] .marquee-track { animation-play-state: running; }
+.horizon-journey .marquee:hover .marquee-track { animation-play-state: paused; }
+.horizon-journey .marquee-item { font-family: var(--font-sans); font-size: 16px; font-weight: 600; }
+.horizon-journey .marquee-item img { width: 40px; height: 40px; flex: none; opacity: clamp(0, calc((var(--protocol-assembly, 0) - .9) * 10), 1); }
+.horizon-journey .marquee-item > span { opacity: var(--protocol-assembly, 0); }
+.horizon-intro .holo-copy { max-width: 720px; }
+.horizon-intro .holo-copy h2 { font-size: 2.5rem; }
+.horizon-intro .holo-copy h2 br { display: none; }
+.horizon-intro .holo-glass p { font-size: .875rem; line-height: 1.5; }
+.horizon-intro .holo-glass p:first-child { font-size: 1rem; }
+.horizon-intro .holo-glass p + p { margin-top: 5px; }
+.landing-main .site-nav { position: sticky; top: 0; z-index: 60; padding: 12px 20px; background: var(--card); border-block: 1px solid var(--border); }
+.site-nav .site-nav-actions { width: fit-content; max-width: 100%; margin: auto; padding: 10px; border: 1px solid var(--panoramic-edge); border-radius: 6px; gap: 10px; }
+.tracker-access { display: flex; gap: 8px; }
+.site-nav .nav-tracker { background: var(--horizon-ink); color: var(--ink-foreground); border: 1px solid var(--horizon-ink); }
+.site-nav .nav-tracker:hover { background: var(--ink); }
+#api-access, #decoding { scroll-margin-top: 160px; }
+@media (max-width: 767px) {
+  .horizon-intro .holo-sticky { height: max(100svh, 820px); }
+  .horizon-intro { height: calc(max(100svh, 820px) + 120svh); }
+  .horizon-intro .holo-copy h2 { font-size: 2rem; }
+  .horizon-journey .intro-evidence { padding: 28px 0 40px; }
+  .horizon-journey .intro-facts { margin-inline: 20px; margin-bottom: 28px; }
+  .horizon-journey .intro-facts strong { font-size: 1.3rem; }
+  .horizon-journey .intro-facts span { font-size: 9px; }
+  .horizon-journey .marquee { padding-block: 28px; }
+  .horizon-journey .marquee-track { gap: 36px; }
+  .site-nav .site-nav-actions { padding: 8px; gap: 8px; }
+  .site-nav .site-nav-actions > a:first-child { width: 100%; }
+  .site-nav .site-nav-actions > a { font-size: 11px; padding-inline: 8px; }
+  .tracker-access { justify-content: center; width: 100%; }
+  .landing-main .site-nav { padding: 8px 12px; }
+  #api-access, #decoding { scroll-margin-top: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .horizon-intro, .horizon-intro .holo-sticky { height: auto; }
+  .horizon-backdrop { position: absolute; inset: 0; height: 100%; margin: 0; }
+  .horizon-backdrop .signal-network { height: 100%; }
+  .horizon-journey .marquee-item img, .horizon-journey .marquee-item > span { opacity: 1; }
+  .horizon-journey .marquee-track { animation: none; }
+  .horizon-intro .persistent-live-dock { margin-bottom: 24px; }
+}

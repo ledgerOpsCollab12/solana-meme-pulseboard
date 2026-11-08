@@ -18,13 +18,11 @@ export function ScrollIntro() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     const started = performance.now();
-    const letters = section.querySelectorAll<HTMLElement>(".intro-letter");
     const update = () => {
       const opening = getOpeningProgress(performance.now() - started, motion.matches);
       section.style.setProperty("--opening-shift", `${opening.shift}svh`);
       section.style.setProperty("--opening-blur", `${opening.blur}px`);
       section.style.setProperty("--opening-scene", `${opening.scene}`);
-      letters.forEach((letter, i) => { letter.style.visibility = i < opening.letters ? "visible" : "hidden"; });
       const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const state = getIntroProgress(window.scrollY - top, section.offsetHeight - height);
@@ -64,14 +62,15 @@ export function ScrollIntro() {
 
   return (
     <>
+      <div className="horizon-journey">
+      <div className="horizon-backdrop"><SignalNetwork /></div>
       <section ref={intro} className="scroll-intro holo-intro panoramic-intro horizon-intro" aria-labelledby="intro-title">
         <div className="holo-sticky">
-          <SignalNetwork />
           <div className="horizon-livestream"><i aria-hidden="true" /> Livestream from Solana blockchain</div>
           <div className="intro-title-layer">
-            <h1 id="intro-title" className="intro-headline typed-headline" aria-label="Track the most profitable wallets in memecoin trading.">
+            <h1 id="intro-title" className="intro-headline" aria-label="Track the most profitable wallets in memecoin trading.">
               {["Track the most", "profitable wallets", "in memecoin trading."].map((line, index) => {
-                const content = [...line + (index < 2 ? " " : "")].map((letter, i) => <span key={i} className="intro-letter">{letter}</span>);
+                const content = line;
                 return index === 1 ? <em key={line} className="headline-line" aria-hidden="true">{content}</em> : <span key={line} className="headline-line" aria-hidden="true">{content}</span>;
               })}
             </h1>
@@ -95,15 +94,6 @@ export function ScrollIntro() {
               </div>
             </div>
             <div className="intro-cta-slot" aria-hidden="true" />
-            <div className="intro-evidence">
-              <div className="ef-facts intro-facts">
-                <div><strong>100%</strong><span>Data coverage</span></div>
-                <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
-                <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
-                <div><strong>$0</strong><span>Free access</span></div>
-              </div>
-              <ProtocolMarquee />
-            </div>
           </div>
           <div ref={cta} className="persistent-live-dock">
             <div className="live-dock-copy"><span className="live-dock-index" aria-hidden="true"><i /></span><div><h3>The wallets are moving right now.</h3><p>Every second you read, top wallets are entering positions. Watch them live.</p></div></div>
@@ -111,6 +101,16 @@ export function ScrollIntro() {
           </div>
         </div>
       </section>
+      <div className="intro-evidence">
+        <div className="ef-facts intro-facts">
+          <div><strong>100%</strong><span>Data coverage</span></div>
+          <div><strong>Livestream</strong><span>From Solana blockchain</span></div>
+          <div><strong>12 AMMs</strong><span>Pump.fun → Orca</span></div>
+          <div><strong>$0</strong><span>Free access</span></div>
+        </div>
+        <ProtocolMarquee />
+      </div>
+      </div>
     </>
   );
 }
