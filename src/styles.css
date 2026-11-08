@@ -701,3 +701,23 @@ body { overflow-x: clip; }
   .horizon-journey .marquee-track { animation: none; }
   .horizon-intro .persistent-live-dock { margin-bottom: 24px; }
 }
+
+/* Until the intro script starts, show the complete opening instead of a title-only screen. */
+.horizon-journey:not([data-intro-live]) .horizon-intro,
+.horizon-journey:not([data-intro-live]) .holo-sticky { height: auto; }
+.horizon-journey:not([data-intro-live]) .holo-sticky { position: static; }
+.horizon-journey:not([data-intro-live]) .horizon-backdrop { position: absolute; inset: 0; height: 100%; margin: 0; }
+.horizon-journey:not([data-intro-live]) .signal-network { opacity: 1; transform: none; }
+.horizon-journey:not([data-intro-live]) .horizon-livestream { opacity: 1; }
+.horizon-journey:not([data-intro-live]) .intro-title-layer { position: relative; padding: 120px 20px 60px; opacity: 1; transform: none; filter: none; }
+.horizon-journey:not([data-intro-live]) .holo-product { position: relative; inset: auto; height: auto; margin-inline: auto; opacity: 1; filter: none; }
+.horizon-journey:not([data-intro-live]) .holo-heading,
+.horizon-journey:not([data-intro-live]) .holo-copy,
+.horizon-journey:not([data-intro-live]) .holo-video { opacity: 1; }
+.horizon-journey:not([data-intro-live]) .holo-window { transform: none; flex: none; }
+.horizon-journey:not([data-intro-live]) .holo-video video { height: auto; aspect-ratio: 320 / 181; }
+.horizon-journey:not([data-intro-live]) .intro-cta-slot { display: none; }
+.horizon-journey:not([data-intro-live]) .persistent-live-dock { --cta-reveal: 1; position: relative; left: auto; top: auto; transform: none; margin: 24px auto; opacity: 1; }
+.horizon-journey:not([data-intro-live]) .marquee-item img,
+.horizon-journey:not([data-intro-live]) .marquee-item > span { opacity: 1; }
+.horizon-journey:not([data-intro-live]) .marquee-track { animation-play-state: running; }

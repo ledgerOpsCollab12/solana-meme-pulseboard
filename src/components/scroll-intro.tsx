@@ -18,6 +18,7 @@ export function ScrollIntro() {
     if (!section || !button) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const journey = section.closest<HTMLElement>(".horizon-journey");
+    journey?.setAttribute("data-intro-live", "true");
     const started = performance.now();
     const update = () => {
       const opening = getOpeningProgress(performance.now() - started, motion.matches);
@@ -67,6 +68,7 @@ export function ScrollIntro() {
     motion.addEventListener("change", refresh);
     return () => {
       driver.stop();
+      journey?.removeAttribute("data-intro-live");
       observer.disconnect();
       window.removeEventListener("scroll", refresh);
       window.removeEventListener("resize", refresh);
