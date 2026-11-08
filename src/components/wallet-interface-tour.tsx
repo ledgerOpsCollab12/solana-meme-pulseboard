@@ -12,6 +12,7 @@ export function WalletInterfaceTour() {
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
   const [connector, setConnector] = useState("");
   const state = getWalletTour(time);
 
@@ -31,14 +32,17 @@ export function WalletInterfaceTour() {
       if (!element) return;
       const rect = element.getBoundingClientRect();
       setVisible(!element.closest(".holo-product")?.hasAttribute("inert") && rect.bottom > 0 && rect.top < window.innerHeight);
+      setReady(element.closest(".integrated-interface")?.getAttribute("data-presentation-ready") === "true");
     });
     const parent = element?.closest(".holo-product");
     if (parent) mutation.observe(parent, { attributes: true, attributeFilter: ["inert"] });
+    const presentation = element?.closest(".integrated-interface");
+    if (presentation) mutation.observe(presentation, { attributes: true, attributeFilter: ["data-presentation-ready"] });
     return () => { observer.disconnect(); mutation.disconnect(); media.removeEventListener("change", change); };
   }, []);
 
   useEffect(() => {
-    if (paused || reduced || !visible) return;
+    if (paused || reduced || !visible || !ready) return;
     let last = performance.now();
     const timer = window.setInterval(() => {
       const now = performance.now();
@@ -49,7 +53,7 @@ export function WalletInterfaceTour() {
       last = now;
     }, 100);
     return () => window.clearInterval(timer);
-  }, [paused, reduced, visible]);
+  }, [paused, reduced, visible, ready]);
 
   useEffect(() => {
     const root = host.current;

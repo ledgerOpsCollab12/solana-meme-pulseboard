@@ -874,3 +874,62 @@ body { overflow-x: clip; }
   .horizon-journey .horizon-intro:has(.integrated-interface), .horizon-intro:has(.integrated-interface) .holo-sticky { height: auto; }
   .replica-table-scroll { scroll-behavior: auto; }
 }
+
+/* One continuous interface behind a localized optical veil. */
+:root {
+  --product-veil: linear-gradient(90deg, var(--horizon-sky) 0%, color-mix(in oklab, var(--horizon-sky) 97%, transparent) 48%, color-mix(in oklab, var(--horizon-sky) 76%, transparent) 70%, transparent 100%);
+  --product-veil-mask: linear-gradient(90deg, var(--foreground) 0%, var(--foreground) 66%, transparent 100%);
+}
+.horizon-intro.optical-product-intro .holo-sticky { height: 100svh; min-height: 680px; }
+.horizon-journey .optical-product-intro { height: calc(max(100svh, 680px) + 240svh); }
+.optical-product-intro .holo-product.optical-product { inset: 0 32px; width: min(calc(100% - 64px), 1280px); max-width: 1280px; padding: 32px 0; justify-content: center; filter: none; }
+.optical-product-intro .optical-composition { position: relative; width: 100%; display: block; }
+.optical-product-intro .optical-composition .holo-copy { position: absolute; left: 0; top: 12px; z-index: 6; width: 470px; max-width: 48%; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; padding: 30px 0; opacity: calc(var(--shell-opacity, 0) * (1 - var(--product-focus, 0))); transform: translateX(calc(var(--product-focus, 0) * -110px)); pointer-events: none; }
+.optical-product-intro .optical-composition .holo-copy::before { content: ""; position: absolute; z-index: 0; inset: -48px -160px -48px -80px; background: var(--product-veil); backdrop-filter: blur(22px); mask-image: var(--product-veil-mask); pointer-events: none; }
+.optical-product-intro .optical-composition .holo-copy > * { position: relative; z-index: 1; }
+.horizon-intro.optical-product-intro .optical-composition .holo-copy h2 { max-width: 440px; font-family: var(--font-horizon); font-size: 3rem; line-height: 1.12; font-weight: 600; margin: 0; }
+.optical-product-intro .optical-composition .holo-copy h2 em { display: block; }
+.optical-product-intro .optical-composition .holo-glass { width: 100%; padding: 0; border: 0; background: transparent; backdrop-filter: none; box-shadow: none; }
+.optical-product-intro .holo-glass::after { display: none; }
+.horizon-intro.optical-product-intro .optical-composition .holo-glass p { font-size: 1.0625rem; line-height: 1.65; color: var(--foreground); }
+.horizon-intro.optical-product-intro .optical-composition .holo-glass p:first-child { font-size: 1.1875rem; line-height: 1.5; }
+.optical-product-intro .optical-composition .holo-glass p + p { margin-top: 16px; }
+.optical-product-intro .integrated-interface { opacity: var(--shell-opacity, 0); transform: translateX(calc(28px * (1 - var(--product-focus, 0)))) scale(calc(.94 + .06 * var(--product-focus, 0))); transform-origin: center; }
+.optical-product-intro .integrated-interface:not([data-presentation-ready="true"]) .tour-footer,
+.optical-product-intro .integrated-interface:not([data-presentation-ready="true"]) .tour-connector { visibility: hidden; }
+.optical-product-intro .integrated-interface:not([data-presentation-ready="true"]) .tour-circled::after { display: none; }
+.optical-product-intro .intro-cta-slot { display: none; }
+.horizon-intro.optical-product-intro .persistent-live-dock { width: 250px; padding: 0; border: 0; background: transparent; opacity: calc(var(--opening-scene, 0) * var(--opening-cta-opacity, 1)); visibility: var(--opening-cta-visibility, visible); pointer-events: none; }
+.optical-product-intro .persistent-live-dock .live-dock-copy { display: none; }
+.optical-product-intro .persistent-live-dock .persistent-live-cta { pointer-events: auto; }
+.product-live-notice { display: flex; align-items: center; justify-content: space-between; gap: 28px; width: min(calc(100% - 64px), 1100px); margin: 0 auto 48px; padding: 28px 32px; border-block: 1px solid var(--panoramic-edge); background: var(--panoramic-glass); }
+.product-live-notice .live-dock-copy { width: auto; max-width: none; opacity: 1; transform: none; }
+.product-live-notice > button { flex: none; background: var(--horizon-ink); color: var(--ink-foreground); }
+@media (max-width: 1000px) and (min-width: 768px) {
+  .horizon-intro.optical-product-intro .optical-composition .holo-copy h2 { font-size: 2.5rem; }
+  .horizon-intro.optical-product-intro .optical-composition .holo-glass p { font-size: .9375rem; }
+}
+@media (max-width: 767px) {
+  .horizon-intro.optical-product-intro .holo-sticky { height: max(100svh, 960px); }
+  .horizon-journey .optical-product-intro { height: calc(max(100svh, 960px) + 240svh); }
+  .optical-product-intro .holo-product.optical-product { inset-inline: 20px; width: calc(100% - 40px); padding-block: 40px; }
+  .optical-product-intro .optical-composition .holo-copy { width: 100%; max-width: 100%; top: 0; gap: 20px; padding: 16px 0; transform: translateY(calc(-80px * var(--product-focus, 0))); }
+  .horizon-intro.optical-product-intro .optical-composition .holo-copy h2 { font-size: 2.25rem; }
+  .horizon-intro.optical-product-intro .optical-composition .holo-glass p { font-size: 1rem; line-height: 1.6; }
+  .horizon-intro.optical-product-intro .optical-composition .holo-glass p:first-child { font-size: 1.125rem; }
+  .optical-product-intro .optical-composition .holo-copy::before { inset: -32px -24px -70px; background: var(--horizon-sky); mask-image: linear-gradient(var(--foreground) 65%, transparent); }
+  .optical-product-intro .integrated-interface { transform: translateY(calc(220px * (1 - var(--product-focus, 0)))); }
+  .product-live-notice { flex-direction: column; align-items: stretch; width: calc(100% - 40px); padding: 24px 0; }
+  .product-live-notice .live-dock-copy { display: flex; }
+  .product-live-notice > button { align-self: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .horizon-journey .optical-product-intro, .horizon-intro.optical-product-intro .holo-sticky { height: auto; min-height: 0; }
+  .optical-product-intro .optical-composition .holo-copy { position: relative; max-width: 100%; width: 560px; opacity: 1; transform: none; margin-bottom: 32px; }
+  .optical-product-intro .optical-composition .holo-copy::before { display: none; }
+  .optical-product-intro .integrated-interface { transform: none; }
+  .optical-product-intro .persistent-live-dock { display: none; }
+}
+.horizon-journey:not([data-intro-live]) .optical-composition .holo-copy { position: relative; opacity: 1; transform: none; max-width: 100%; margin-bottom: 32px; }
+.horizon-journey:not([data-intro-live]) .optical-composition .holo-copy::before { display: none; }
+.horizon-journey:not([data-intro-live]) .integrated-interface { transform: none; }

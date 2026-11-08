@@ -14,6 +14,7 @@
 - Keep the animated hero replica in a separate browser-safe component with source-transcribed immutable data and a tested timeline; anchor annotations to table cells and retain original recordings as reference, so the presentation never invents market activity.
 - Keep the illustrative data horizon in a browser-safe canvas component with semantic-token colors, deterministic perspective paths, visibility-aware animation and reduced-motion support; it must remain independent of real wallet activity.
 - Keep the complete-title optical opening and scroll-led intro in one browser-safe component with tested progression helpers and one CTA; use animation-frame updates and a static reduced-motion layout to preserve accessible scroll progression.
+- Gate the reference tour on the tested product-focus handoff so it starts only after the promotional veil has cleared and the interface is centered.
 - Share protocol identities and a tested scroll-assembly helper between the illustrative horizon and marquee; keep evidence in document flow after the product stage so the canvas can hand off icons without squeezing the video.
 - Keep the scroll-led problem billboards in a browser-safe component with tested stage selection and a static reduced-motion layout, so each problem remains readable independently of live market data.
 - Pre-optimize the preview's UI dependencies alongside the template's React dependencies to avoid late dependency discovery mixing React module instances in an already-open preview.
