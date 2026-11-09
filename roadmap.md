@@ -48,6 +48,6 @@
 - [x] Replace the tour with the requested guided sequence, integrated annotations, available-control pulses and final inert CTA emphasis; preserve the approved opening and composition.
 - [x] Present three design directions and apply the selected integrated strip; verify interactions, timeline, no invented results, desktop/mobile and reduced motion.
 - [x] Retire unfinished interactive snapshot expansion: user replaced the interactive replica with a narrated recording.
-- [ ] Annotate the new November 8 main recording, insert the short alert recording after tracking, and narrate all requested texts using the approved mature natural voice.
-- [ ] Replace only the product presentation with the finished video; preserve the opening/composition and illuminate the inert CTA and its strip at the ending.
-- [ ] Verify annotations, narration, playback and desktop/mobile layout.
+- [x] Annotate the new November 8 main recording, insert the short alert recording after tracking, and narrate all requested texts using the approved mature natural voice.
+- [x] Replace only the product presentation with the finished video; preserve the opening/composition and illuminate the inert CTA and its strip at the ending.
+- [x] Verify annotations across all scenes, narration audio levels, playback, mute/pause/restart, inert CTA emphasis and desktop/mobile layout.
