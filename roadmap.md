@@ -1,3 +1,4 @@
+- [x] Verify Upcoming navigation and recover stale dynamic route imports without reload loops; six tests passed and a deliberately failed route import recovered through the browser.
 - [x] Simplify footer links and nested bullets, link ZeroFeeX externally, add dedicated tokenization/DeFi pages, and keep social destinations unconfigured; verified desktop/mobile navigation.
 - [x] Add the reference-inspired footer and English About, API, ZeroFeeX, upcoming features, community and collaboration pages; verify navigation and private collaboration submissions.
 - [x] Translate the supplied headline and subtitle faithfully into English.
