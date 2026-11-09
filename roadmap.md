@@ -51,3 +51,4 @@
 - [x] Annotate the new November 8 main recording, insert the short alert recording after tracking, and narrate all requested texts using the approved mature natural voice.
 - [x] Replace only the product presentation with the finished video; preserve the opening/composition and illuminate the inert CTA and its strip at the ending.
 - [x] Verify annotations across all scenes, narration audio levels, playback, mute/pause/restart, inert CTA emphasis and desktop/mobile layout.
+- [x] Inspect the reported opening flash, oversized bright veil, video sidebars and narration gaps; prepare a coordinated revision strategy for review before replacing the recording.
