@@ -11,6 +11,7 @@
 
 - Keep the reference-based product preview in a separate browser-safe component, with its rotation interval and stage progression in a tested helper, so presentation stays independent of live market data.
 - Keep the recorded hero video in a separate browser-safe component with WebM first and MP4 fallback, tested visibility/handoff playback rules and a final-card timestamp that emphasizes the inert CTA; this preserves original recorded data and the approved scroll composition.
+- Size narrated recordings from their intrinsic aspect ratio within the available stage height, and keep the server-rendered opening identical to its initial animation state; this avoids empty sidebars and hydration flashes without cropping recorded data.
 - Keep the animated hero replica in a separate browser-safe component with source-transcribed immutable data and a tested timeline; anchor annotations to table cells and retain original recordings as reference, so the presentation never invents market activity.
 - Keep interactive reference snapshots keyed by exact recorded period/metric pairs with provenance and explicit missing values; never derive unseen filter results from partial leaderboards, so the guided simulation cannot fabricate market data.
 - Keep the guided simulation timeline independent of visitor selections, resetting them only on scene handoff; wallet tracking stays local and recorded, so interaction never creates live alerts or wallet activity.

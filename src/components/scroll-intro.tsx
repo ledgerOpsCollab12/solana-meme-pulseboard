@@ -32,7 +32,8 @@ export function ScrollIntro() {
       journey?.style.setProperty("--opening-scene", `${opening.scene}`);
       const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
-      const state = getIntroProgress(window.scrollY - top, section.offsetHeight - height);
+      const distance = section.offsetHeight - height;
+      const state = getIntroProgress(motion.matches ? distance : window.scrollY - top, distance);
        const focus = getProductFocus(state.progress);
        section.style.setProperty("--product-focus", `${focus.focus}`);
        section.querySelector(".integrated-interface")?.setAttribute("data-presentation-ready", String(motion.matches || focus.ready));

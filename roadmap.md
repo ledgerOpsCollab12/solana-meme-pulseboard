@@ -52,3 +52,5 @@
 - [x] Replace only the product presentation with the finished video; preserve the opening/composition and illuminate the inert CTA and its strip at the ending.
 - [x] Verify annotations across all scenes, narration audio levels, playback, mute/pause/restart, inert CTA emphasis and desktop/mobile layout.
 - [x] Inspect the reported opening flash, oversized bright veil, video sidebars and narration gaps; prepare a coordinated revision strategy for review before replacing the recording.
+- [x] Apply the approved matte localized veil, first-frame title-only opening and floating proportion-correct video frame; verified desktop/mobile, reduced motion and playback controls.
+- [ ] Re-edit original recordings with continuous approved narration, concise timing, stronger varied annotations and contextual zooms; verify and replace WebM/MP4 with corrected closing timestamp.

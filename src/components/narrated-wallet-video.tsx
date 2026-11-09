@@ -18,6 +18,11 @@ export function NarratedWalletVideo({ recording }: { recording: Recording }) {
     const element = host.current;
     const player = video.current;
     if (!element || !player) return;
+    // Metadata may already have loaded while the server-rendered video hydrated.
+    if (player.readyState >= 1) {
+      setDuration(player.duration);
+      if (player.videoHeight > 0) element.style.setProperty("--recording-aspect", String(player.videoWidth / player.videoHeight));
+    }
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
     const refresh = () => {
@@ -73,7 +78,12 @@ export function NarratedWalletVideo({ recording }: { recording: Recording }) {
   return <div ref={host} className="narrated-wallet-video">
     <video ref={video} className="narrated-wallet-recording" muted playsInline preload="metadata" poster={recording.poster}
       aria-label="WhaleWatch narrated wallet analysis recording" onTimeUpdate={updateTime}
-      onLoadedMetadata={() => setDuration(video.current?.duration ?? 0)} onPlay={() => setPaused(false)}
+      onLoadedMetadata={() => {
+        const player = video.current;
+        if (!player) return;
+        setDuration(player.duration);
+        if (player.videoHeight > 0) host.current?.style.setProperty("--recording-aspect", String(player.videoWidth / player.videoHeight));
+      }} onPlay={() => setPaused(false)}
       onPause={() => setPaused(true)} onVolumeChange={() => setMuted(video.current?.muted ?? true)} onEnded={updateTime}>
       <source src={recording.webm} type="video/webm" />
       <source src={recording.mp4} type="video/mp4" />
