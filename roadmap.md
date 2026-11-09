@@ -1,3 +1,4 @@
+- [x] Simplify footer links and nested bullets, link ZeroFeeX externally, add dedicated tokenization/DeFi pages, and keep social destinations unconfigured; verified desktop/mobile navigation.
 - [x] Add the reference-inspired footer and English About, API, ZeroFeeX, upcoming features, community and collaboration pages; verify navigation and private collaboration submissions.
 - [x] Translate the supplied headline and subtitle faithfully into English.
 - [x] Recreate the three reference interfaces beside the headline and rotate them in order every three seconds.

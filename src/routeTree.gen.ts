@@ -14,6 +14,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ApiRouteImport } from './routes/api'
 import { Route as CollaborationsRouteImport } from './routes/collaborations'
 import { Route as CommunityRouteImport } from './routes/community'
+import { Route as DefiDevelopmentRouteImport } from './routes/defi-development'
+import { Route as TokenizationRouteImport } from './routes/tokenization'
 import { Route as UpcomingRouteImport } from './routes/upcoming'
 import { Route as ZerofeexRouteImport } from './routes/zerofeex'
 
@@ -42,6 +44,16 @@ const CommunityRoute = CommunityRouteImport.update({
   path: '/community',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DefiDevelopmentRoute = DefiDevelopmentRouteImport.update({
+  id: '/defi-development',
+  path: '/defi-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TokenizationRoute = TokenizationRouteImport.update({
+  id: '/tokenization',
+  path: '/tokenization',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UpcomingRoute = UpcomingRouteImport.update({
   id: '/upcoming',
   path: '/upcoming',
@@ -59,6 +71,8 @@ export interface FileRoutesByFullPath {
   '/api': typeof ApiRoute
   '/collaborations': typeof CollaborationsRoute
   '/community': typeof CommunityRoute
+  '/defi-development': typeof DefiDevelopmentRoute
+  '/tokenization': typeof TokenizationRoute
   '/upcoming': typeof UpcomingRoute
   '/zerofeex': typeof ZerofeexRoute
 }
@@ -68,6 +82,8 @@ export interface FileRoutesByTo {
   '/api': typeof ApiRoute
   '/collaborations': typeof CollaborationsRoute
   '/community': typeof CommunityRoute
+  '/defi-development': typeof DefiDevelopmentRoute
+  '/tokenization': typeof TokenizationRoute
   '/upcoming': typeof UpcomingRoute
   '/zerofeex': typeof ZerofeexRoute
 }
@@ -78,6 +94,8 @@ export interface FileRoutesById {
   '/api': typeof ApiRoute
   '/collaborations': typeof CollaborationsRoute
   '/community': typeof CommunityRoute
+  '/defi-development': typeof DefiDevelopmentRoute
+  '/tokenization': typeof TokenizationRoute
   '/upcoming': typeof UpcomingRoute
   '/zerofeex': typeof ZerofeexRoute
 }
@@ -89,6 +107,8 @@ export interface FileRouteTypes {
     | '/api'
     | '/collaborations'
     | '/community'
+    | '/defi-development'
+    | '/tokenization'
     | '/upcoming'
     | '/zerofeex'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +118,8 @@ export interface FileRouteTypes {
     | '/api'
     | '/collaborations'
     | '/community'
+    | '/defi-development'
+    | '/tokenization'
     | '/upcoming'
     | '/zerofeex'
   id:
@@ -107,6 +129,8 @@ export interface FileRouteTypes {
     | '/api'
     | '/collaborations'
     | '/community'
+    | '/defi-development'
+    | '/tokenization'
     | '/upcoming'
     | '/zerofeex'
   fileRoutesById: FileRoutesById
@@ -117,6 +141,8 @@ export interface RootRouteChildren {
   ApiRoute: typeof ApiRoute
   CollaborationsRoute: typeof CollaborationsRoute
   CommunityRoute: typeof CommunityRoute
+  DefiDevelopmentRoute: typeof DefiDevelopmentRoute
+  TokenizationRoute: typeof TokenizationRoute
   UpcomingRoute: typeof UpcomingRoute
   ZerofeexRoute: typeof ZerofeexRoute
 }
@@ -158,6 +184,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CommunityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/defi-development': {
+      id: '/defi-development'
+      path: '/defi-development'
+      fullPath: '/defi-development'
+      preLoaderRoute: typeof DefiDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tokenization': {
+      id: '/tokenization'
+      path: '/tokenization'
+      fullPath: '/tokenization'
+      preLoaderRoute: typeof TokenizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/upcoming': {
       id: '/upcoming'
       path: '/upcoming'
@@ -181,6 +221,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiRoute: ApiRoute,
   CollaborationsRoute: CollaborationsRoute,
   CommunityRoute: CommunityRoute,
+  DefiDevelopmentRoute: DefiDevelopmentRoute,
+  TokenizationRoute: TokenizationRoute,
   UpcomingRoute: UpcomingRoute,
   ZerofeexRoute: ZerofeexRoute,
 }

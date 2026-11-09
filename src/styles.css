@@ -53,7 +53,10 @@
 .footer-brand > a { display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 600; }
 .footer-brand svg { color: var(--gain-bright); width: 30px; height: 30px; }
 .footer-signature { font: 10px var(--font-mono); color: var(--footer-muted); }
-.footer-columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
+.footer-columns { display: grid; grid-template-columns: 1fr 1.3fr 1fr 1fr 1fr; gap: 28px; }
+.footer-subitems { list-style: disc; padding-left: 16px; margin: 2px 0 0 8px; color: var(--footer-muted); font-size: 12px; }
+.footer-subitems li { padding: 5px 0; line-height: 1.6; }
+.footer-social-label { display: block; color: var(--footer-muted); font-size: 13px; padding: 6px 0; }
 .footer-columns h2 { font-size: 16px; font-weight: 600; margin-bottom: 18px; }
 .footer-columns a { display: flex; align-items: center; gap: 6px; width: fit-content; font-size: 13px; color: var(--footer-muted); padding: 6px 0; transition: color .2s; }
 .footer-columns a:hover, .footer-columns a:focus-visible { color: var(--gain-bright); }
