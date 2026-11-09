@@ -2,9 +2,12 @@ import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NarratedWalletVideo } from "@/components/narrated-wallet-video";
-import narratedMp4 from "@/assets/wallet-tour-dynamic-v3.mp4.asset.json";
-import narratedWebm from "@/assets/wallet-tour-dynamic-v3.webm.asset.json";
-import narratedPoster from "@/assets/wallet-tour-dynamic-v3-poster.jpg.asset.json";
+const NARRATED_RECORDING = {
+  mp4: "/__l5e/assets-v1/8646a5a3-330f-4189-a690-839b8195c9b3/wallet-tour-dynamic-nov09-v3.mp4",
+  webm: "/__l5e/assets-v1/912c8ca3-3034-4128-9061-a2272d34b438/wallet-tour-dynamic-v3.webm",
+  poster: "/__l5e/assets-v1/0aa1d116-3afc-4fcf-982d-c62512a29970/wallet-tour-dynamic-v3-poster.jpg",
+  endingStart: 54.97,
+} as const;
 import { getIntroProgress } from "@/lib/intro-progress";
 import { SignalNetwork } from "@/components/signal-network";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
@@ -113,7 +116,7 @@ export function ScrollIntro() {
                 </div>
               </div>
               <div className="holo-video integrated-interface" aria-label="WhaleWatch narrated product presentation">
-                <NarratedWalletVideo recording={{ mp4: narratedMp4.url, webm: narratedWebm.url, poster: narratedPoster.url, endingStart: 54.97 }} />
+                <NarratedWalletVideo recording={NARRATED_RECORDING} />
               </div>
             </div>
           </div>
