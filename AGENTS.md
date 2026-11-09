@@ -22,3 +22,4 @@
 - Keep the scroll-led problem billboards in a browser-safe component with tested stage selection and a static reduced-motion layout, so each problem remains readable independently of live market data.
 - Pre-optimize the preview's UI dependencies alongside the template's React dependencies to avoid late dependency discovery mixing React module instances in an already-open preview.
 - Landing request forms share a browser-safe Zod schema and a public server function that only inserts into private, service-role-only tables; visitors must never read submissions.
+- Footer destinations use distinct content routes with a shared editorial layout and metadata helper; unavailable external URLs stay explicitly unlinked to avoid invented destinations.

@@ -1,3 +1,4 @@
+- [x] Add the reference-inspired footer and English About, API, ZeroFeeX, upcoming features, community and collaboration pages; verify navigation and private collaboration submissions.
 - [x] Translate the supplied headline and subtitle faithfully into English.
 - [x] Recreate the three reference interfaces beside the headline and rotate them in order every three seconds.
 - [x] Verify the preview cycle and desktop/mobile layout.
@@ -54,4 +55,4 @@
 - [x] Inspect the reported opening flash, oversized bright veil, video sidebars and narration gaps; prepare a coordinated revision strategy for review before replacing the recording.
 - [x] Apply the approved matte localized veil, first-frame title-only opening and floating proportion-correct video frame; verified desktop/mobile, reduced motion and playback controls.
 - [x] Resume the original-recording edit, restore Charon narration, repair the failed alerts segment and export the 61.2-second MP4/WebM/poster with endingStart 54.97; review sampled frames, transcript and audio levels.
-- [ ] Validate the rendered draft's audible match to the v3 voice and full motion/embedded/mobile presentation; resolve brief unrelated-row overlap and missing close-range coverage arrow before replacing the current recording. Current recording remains unchanged; user review draft is saved in Files.
+- [x] Superseded by the user's approval of the recolored v3 recording and its subsequent integration; additional draft adjustments were not carried forward.

@@ -1,0 +1,11 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ContentPage, EditorialSection } from "@/components/content-page";
+import { contentHead } from "@/lib/content-head";
+export const Route = createFileRoute("/about")({ head: () => contentHead("About us", "Blockchain intelligence, business tokenization and custom software that connect projects with clients."), component: About });
+function About() {
+  return <ContentPage category="Company / About us" title="From onchain data to real businesses." intro="We bring blockchain intelligence, business design and software development together. WhaleWatch is one expression of that work: making profitable wallet behavior easier to understand.">
+    <EditorialSection index="01" title="Intelligence with purpose"><p>We collect data directly from the blockchain and turn it into tools people can use: wallet analysis, tailored dashboards, data visualizations and custom functions. Our work starts with the decision you need to make, not just the data available.</p></EditorialSection>
+    <EditorialSection id="tokenization" index="02" title="Tokenize a project. Build its business."><p>We help projects and businesses design a business model, structure their tokenization and connect with clients. The token is part of the model — not a substitute for a valuable product or a clear route to market.</p><ol className="editorial-steps"><li><strong>Business model</strong><span>Define the offering, customers and how the project creates value.</span></li><li><strong>Tokenization</strong><span>Design and develop the tokenized model around the project's needs.</span></li><li><strong>Client connection</strong><span>Connect the initiative with potential clients and commercial opportunities.</span></li></ol><p className="editorial-note">The legal structure and applicable requirements must be assessed for each project and jurisdiction.</p></EditorialSection>
+    <EditorialSection index="03" title="Build together"><p>We work with businesses and independent projects on data products, decentralized finance and custom software. Bring an existing initiative or a new problem worth solving.</p><a href="/collaborations" className="editorial-text-link">Explore collaborations →</a></EditorialSection>
+  </ContentPage>;
+}

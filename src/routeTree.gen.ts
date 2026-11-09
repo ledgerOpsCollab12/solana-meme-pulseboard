@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ApiRouteImport } from './routes/api'
+import { Route as CollaborationsRouteImport } from './routes/collaborations'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as UpcomingRouteImport } from './routes/upcoming'
+import { Route as ZerofeexRouteImport } from './routes/zerofeex'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiRoute = ApiRouteImport.update({
+  id: '/api',
+  path: '/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaborationsRoute = CollaborationsRouteImport.update({
+  id: '/collaborations',
+  path: '/collaborations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UpcomingRoute = UpcomingRouteImport.update({
+  id: '/upcoming',
+  path: '/upcoming',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZerofeexRoute = ZerofeexRouteImport.update({
+  id: '/zerofeex',
+  path: '/zerofeex',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/api': typeof ApiRoute
+  '/collaborations': typeof CollaborationsRoute
+  '/community': typeof CommunityRoute
+  '/upcoming': typeof UpcomingRoute
+  '/zerofeex': typeof ZerofeexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/api': typeof ApiRoute
+  '/collaborations': typeof CollaborationsRoute
+  '/community': typeof CommunityRoute
+  '/upcoming': typeof UpcomingRoute
+  '/zerofeex': typeof ZerofeexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/api': typeof ApiRoute
+  '/collaborations': typeof CollaborationsRoute
+  '/community': typeof CommunityRoute
+  '/upcoming': typeof UpcomingRoute
+  '/zerofeex': typeof ZerofeexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/api'
+    | '/collaborations'
+    | '/community'
+    | '/upcoming'
+    | '/zerofeex'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/api'
+    | '/collaborations'
+    | '/community'
+    | '/upcoming'
+    | '/zerofeex'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/api'
+    | '/collaborations'
+    | '/community'
+    | '/upcoming'
+    | '/zerofeex'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ApiRoute: typeof ApiRoute
+  CollaborationsRoute: typeof CollaborationsRoute
+  CommunityRoute: typeof CommunityRoute
+  UpcomingRoute: typeof UpcomingRoute
+  ZerofeexRoute: typeof ZerofeexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api': {
+      id: '/api'
+      path: '/api'
+      fullPath: '/api'
+      preLoaderRoute: typeof ApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaborations': {
+      id: '/collaborations'
+      path: '/collaborations'
+      fullPath: '/collaborations'
+      preLoaderRoute: typeof CollaborationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/upcoming': {
+      id: '/upcoming'
+      path: '/upcoming'
+      fullPath: '/upcoming'
+      preLoaderRoute: typeof UpcomingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zerofeex': {
+      id: '/zerofeex'
+      path: '/zerofeex'
+      fullPath: '/zerofeex'
+      preLoaderRoute: typeof ZerofeexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ApiRoute: ApiRoute,
+  CollaborationsRoute: CollaborationsRoute,
+  CommunityRoute: CommunityRoute,
+  UpcomingRoute: UpcomingRoute,
+  ZerofeexRoute: ZerofeexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

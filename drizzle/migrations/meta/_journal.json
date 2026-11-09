@@ -15,6 +15,13 @@
       "when": 1792273014909,
       "tag": "0001_add_meeting_to_api_requests",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794264426207,
+      "tag": "0002_create_collaboration_requests",
+      "breakpoints": true
     }
   ]
 }

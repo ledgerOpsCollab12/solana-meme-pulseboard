@@ -14,4 +14,5 @@ describe("Landing requests", () => {
   it("accepts a meeting answer on API requests", () => expect(requestSchema.safeParse({ ...valid, meeting: "yes" }).success).toBe(true));
   it("rejects an unknown meeting answer", () => expect(requestSchema.safeParse({ ...valid, meeting: "maybe" }).success).toBe(false));
   it("keeps the meeting answer optional", () => expect(requestSchema.safeParse({ ...valid, kind: "recommendation" }).data?.meeting).toBeUndefined());
+  it("accepts collaboration requests", () => expect(requestSchema.safeParse({ ...valid, kind: "collaboration" }).success).toBe(true));
 });

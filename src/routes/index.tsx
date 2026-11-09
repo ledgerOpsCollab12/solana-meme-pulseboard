@@ -7,6 +7,7 @@ import { ProblemBillboard } from "@/components/problem-billboard";
 import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -174,9 +175,7 @@ function Index() {
 
       <div className="mt-10"><CtaStrip idx="CTA/05" title="Still reading? The wallets aren’t." text="Free, real-time, on Solana." /></div>
 
-      <footer className="mt-10 border-t pt-6 text-center text-xs text-muted-foreground">
-        Demo data. Not financial advice.
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
