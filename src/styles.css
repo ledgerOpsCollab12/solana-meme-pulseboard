@@ -1044,17 +1044,22 @@ body { overflow-x: clip; }
 
 /* Original narrated recording uses the approved floating frame, not a live replica. */
 .optical-product-intro .integrated-interface:has(.narrated-wallet-video) { container-type: size; display: flex; justify-content: center; align-items: flex-start; }
-.narrated-wallet-video { --recording-aspect: 1.48148148; position: relative; display: flex; flex-direction: column; width: min(100%, calc((100cqh - 44px) * var(--recording-aspect))); height: auto; min-height: 0; overflow: hidden; border: 1px solid var(--replica-border); border-radius: 8px; background: var(--recording-surface); box-shadow: var(--product-float-shadow); }
+.narrated-wallet-video { --recording-aspect: 1.48148148; position: relative; display: flex; flex-direction: column; width: min(100%, calc(100cqh * var(--recording-aspect))); height: auto; min-height: 0; overflow: hidden; border: 1px solid var(--replica-border); border-radius: 8px; background: var(--recording-surface); box-shadow: var(--product-float-shadow); }
 .panoramic-intro .holo-video .narrated-wallet-recording { display: block; flex: none; width: 100%; height: auto; aspect-ratio: var(--recording-aspect); object-fit: contain; background: var(--recording-surface); }
-.narrated-video-controls { flex: none; display: flex; align-items: center; gap: 8px; height: 44px; padding: 4px 10px; background: var(--replica-surface); color: var(--replica-text); border-top: 1px solid var(--replica-border); }
-.narrated-video-controls button { color: var(--replica-text); width: 32px; height: 32px; }
+/* Minimal floating controls: hidden until the visitor hovers or focuses the player. */
+.narrated-video-controls { position: absolute; left: 50%; bottom: 10px; transform: translate(-50%, 6px); display: flex; align-items: center; gap: 4px; width: min(calc(100% - 24px), 340px); padding: 4px 8px; border: 1px solid color-mix(in oklab, var(--replica-border) 70%, transparent); border-radius: 999px; background: color-mix(in oklab, var(--replica-surface) 82%, transparent); color: var(--replica-text); backdrop-filter: blur(10px); box-shadow: 0 6px 18px -10px color-mix(in oklab, var(--horizon-ink) 35%, transparent); opacity: 0; pointer-events: none; transition: opacity 180ms ease, transform 180ms ease; }
+.narrated-wallet-video:hover .narrated-video-controls,
+.narrated-wallet-video:focus-within .narrated-video-controls { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+@media (hover: none) { .narrated-video-controls { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; } }
+.narrated-video-controls button { color: var(--replica-text); width: 26px; height: 26px; border-radius: 999px; }
+.narrated-video-controls button svg { width: 14px; height: 14px; }
 .narrated-video-controls button:hover { background: var(--replica-hover); }
-.narrated-video-controls input { flex: 1; min-width: 20px; accent-color: var(--horizon-signal); }
+.narrated-video-controls input { flex: 1; min-width: 20px; height: 3px; accent-color: var(--horizon-signal); cursor: pointer; }
 .narrated-wallet-video:fullscreen { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
 .panoramic-intro .holo-video .narrated-wallet-video:fullscreen .narrated-wallet-recording { flex: 1; min-height: 0; height: 0; aspect-ratio: auto; }
 .horizon-intro.optical-product-intro .persistent-live-dock[data-tour-complete="true"] { border-color: var(--horizon-signal); outline: 1px solid var(--horizon-signal); outline-offset: 3px; box-shadow: 0 0 22px -6px var(--horizon-signal); }
 .horizon-intro.optical-product-intro .persistent-live-dock[data-tour-complete="true"] .persistent-live-cta { animation: none; outline: 2px solid var(--horizon-signal); outline-offset: 4px; box-shadow: 0 0 18px -5px var(--horizon-signal); }
-@media (max-width: 767px) { .narrated-video-controls { gap: 4px; padding-inline: 6px; } .narrated-video-controls button { width: 28px; height: 28px; } }
+@media (max-width: 767px) { .narrated-video-controls { gap: 2px; padding-inline: 6px; bottom: 6px; } .narrated-video-controls button { width: 24px; height: 24px; } }
 @media (prefers-reduced-motion: reduce) {
   .horizon-journey { --opening-scene: 1; }
   .horizon-intro { --opening-shift: 0svh; --shell-opacity: 1; --content-opacity: 1; }
