@@ -53,4 +53,5 @@
 - [x] Verify annotations across all scenes, narration audio levels, playback, mute/pause/restart, inert CTA emphasis and desktop/mobile layout.
 - [x] Inspect the reported opening flash, oversized bright veil, video sidebars and narration gaps; prepare a coordinated revision strategy for review before replacing the recording.
 - [x] Apply the approved matte localized veil, first-frame title-only opening and floating proportion-correct video frame; verified desktop/mobile, reduced motion and playback controls.
-- [ ] Resume the surviving original-recording edit under the approved plan, restore the approved Charon narrator (no voice substitutions), repair incomplete segments, and finish scene/motion/audio review. Export reviewed WebM/MP4/poster and true closing timestamp before replacing the current recording.
+- [x] Resume the original-recording edit, restore Charon narration, repair the failed alerts segment and export the 61.2-second MP4/WebM/poster with endingStart 54.97; review sampled frames, transcript and audio levels.
+- [ ] Validate the rendered draft's audible match to the v3 voice and full motion/embedded/mobile presentation; resolve brief unrelated-row overlap and missing close-range coverage arrow before replacing the current recording. Current recording remains unchanged; user review draft is saved in Files.
