@@ -47,5 +47,7 @@
 - [x] Add interactive filters, horizontal/vertical browsing, the 5gp2JS wallet history and local simulated tracking/notifications while the guide continues.
 - [x] Replace the tour with the requested guided sequence, integrated annotations, available-control pulses and final inert CTA emphasis; preserve the approved opening and composition.
 - [x] Present three design directions and apply the selected integrated strip; verify interactions, timeline, no invented results, desktop/mobile and reduced motion.
-- [ ] Complete the first 30 rows and missing columns per recorded filter, including Trades/Best Trade snapshots. Blocker: current transcription is partial (3–5 verified rows per snapshot); exact complete data requires a readable table export or static captures per selection. No unrecorded period/metric combinations are fabricated.
-- [ ] Complete recorded open positions and other Wallet Alerts tabs. Blocker: only the selected wallet's Registered Activity and tracked alert feed were verified; missing tab content must be supplied or verified before replication.
+- [x] Retire unfinished interactive snapshot expansion: user replaced the interactive replica with a narrated recording.
+- [ ] Annotate the new November 8 main recording, insert the short alert recording after tracking, and narrate all requested texts using the approved mature natural voice.
+- [ ] Replace only the product presentation with the finished video; preserve the opening/composition and illuminate the inert CTA and its strip at the ending.
+- [ ] Verify annotations, narration, playback and desktop/mobile layout.

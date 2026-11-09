@@ -1061,3 +1061,16 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .simulation-active-filters::after, .persistent-live-dock[data-tour-complete="true"] .persistent-live-cta { animation: none; }
 }
+
+/* Original narrated recording uses the approved floating frame, not a live replica. */
+.narrated-wallet-video { position: relative; display: flex; flex-direction: column; height: 100%; min-height: 0; overflow: hidden; border: 1px solid var(--replica-border); border-radius: 8px; background: var(--recording-surface); box-shadow: var(--product-float-shadow); }
+.panoramic-intro .holo-video .narrated-wallet-recording { flex: 1; min-height: 0; width: 100%; height: 100%; object-fit: contain; background: var(--recording-surface); }
+.narrated-video-controls { flex: none; display: flex; align-items: center; gap: 8px; height: 44px; padding: 4px 10px; background: var(--replica-surface); color: var(--replica-text); border-top: 1px solid var(--replica-border); }
+.narrated-video-controls button { color: var(--replica-text); width: 32px; height: 32px; }
+.narrated-video-controls button:hover { background: var(--replica-hover); }
+.narrated-video-controls input { flex: 1; min-width: 20px; accent-color: var(--horizon-signal); }
+.narrated-wallet-video:fullscreen { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
+.horizon-intro.optical-product-intro .persistent-live-dock[data-tour-complete="true"] { border-color: var(--horizon-signal); outline: 1px solid var(--horizon-signal); outline-offset: 3px; box-shadow: 0 0 22px -6px var(--horizon-signal); }
+.horizon-intro.optical-product-intro .persistent-live-dock[data-tour-complete="true"] .persistent-live-cta { animation: none; outline: 2px solid var(--horizon-signal); outline-offset: 4px; box-shadow: 0 0 18px -5px var(--horizon-signal); }
+@media (max-width: 767px) { .narrated-video-controls { gap: 4px; padding-inline: 6px; } .narrated-video-controls button { width: 28px; height: 28px; } }
+@media (prefers-reduced-motion: reduce) { .narrated-wallet-video { height: auto; aspect-ratio: auto; } .panoramic-intro .holo-video .narrated-wallet-recording { aspect-ratio: 16 / 11; height: auto; } }

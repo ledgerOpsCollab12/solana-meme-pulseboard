@@ -1,7 +1,10 @@
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { WalletInterfaceTour } from "@/components/wallet-interface-tour";
+import { NarratedWalletVideo } from "@/components/narrated-wallet-video";
+import narratedMp4 from "@/assets/wallet-tour-narrated-nov09.mp4.asset.json";
+import narratedWebm from "@/assets/wallet-tour-narrated-nov09.webm.asset.json";
+import narratedPoster from "@/assets/wallet-tour-poster-nov09.jpg.asset.json";
 import { getIntroProgress } from "@/lib/intro-progress";
 import { SignalNetwork } from "@/components/signal-network";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
@@ -108,8 +111,8 @@ export function ScrollIntro() {
                   <p>Go beyond the leaderboard. Analyze top-performing wallets by PnL, win rate, consistency, trading activity, and more. Get real-time alerts and tools to understand how each wallet trades.</p>
                 </div>
               </div>
-              <div className="holo-video integrated-interface" aria-label="WhaleWatch animated product presentation">
-                <WalletInterfaceTour />
+              <div className="holo-video integrated-interface" aria-label="WhaleWatch narrated product presentation">
+                <NarratedWalletVideo recording={{ mp4: narratedMp4.url, webm: narratedWebm.url, poster: narratedPoster.url, endingStart: 86.3 }} />
               </div>
             </div>
           </div>
