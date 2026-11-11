@@ -1163,7 +1163,10 @@ body { overflow-x: clip; }
 .up-hero { min-height: calc(100svh - 112px); padding: 70px 24px 60px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 .up-development { display:inline-flex; align-items:center; gap:9px; border:1px solid var(--border); border-radius:40px; padding:8px 14px; font:10px var(--font-mono); color:var(--muted-foreground); margin-bottom:36px; }
 .up-development i { width:5px; height:5px; border-radius:50%; background:var(--gain); }
-.up-hero h1 { font-size:64px; font-weight:600; line-height:1.13; max-width:1080px; text-wrap:balance; }
+.up-hero h1, .up-hero h2 { font-size:64px; font-weight:600; line-height:1.13; max-width:1080px; text-wrap:balance; }
+.up-embedded { width:100vw; margin-left:calc(50% - 50vw); padding-bottom:0; border-top:1px solid var(--border); }
+.up-embedded .up-flow-nav { top:170px; }
+.up-embedded .up-feature, .up-embedded .up-filter-intro { scroll-margin-top:170px; }
 .up-hero p { font-size:18px; line-height:1.75; max-width:640px; color:var(--muted-foreground); margin-top:30px; }
 .up-scroll-cue { margin-top:56px; color:var(--muted-foreground); font-size:11px; }
 .up-mobile-break { display:none; }
@@ -1340,13 +1343,13 @@ body { overflow-x: clip; }
 .up-final p { font-size:12px; color:var(--muted-foreground); margin-top:20px; }
 .up-footer-wrap { max-width:1280px; margin:auto; padding:0 40px; }
 .up-footer-wrap .ecosystem-footer { margin-top:0; }
-@media (min-width:1500px) { .up-hero h1 { font-size:72px; } }
-@media (max-width:1023px) { .up-flow-layout { grid-template-columns:minmax(0,.24fr) minmax(0,.76fr); gap:24px; } .up-flow-item { gap:10px; } .up-flow-item strong { font-size:15px; } .up-flow-item > span > span { font-size:10px; } .up-risk-body { grid-template-columns:1fr; } .up-hero h1 { font-size:52px; } .up-statement h2 { font-size:68px; } }
+@media (min-width:1500px) { .up-hero h1, .up-hero h2 { font-size:72px; } }
+@media (max-width:1023px) { .up-flow-layout { grid-template-columns:minmax(0,.24fr) minmax(0,.76fr); gap:24px; } .up-flow-item { gap:10px; } .up-flow-item strong { font-size:15px; } .up-flow-item > span > span { font-size:10px; } .up-risk-body { grid-template-columns:1fr; } .up-hero h1, .up-hero h2 { font-size:52px; } .up-statement h2 { font-size:68px; } }
 @media (max-width:767px) {
  .up-persistent-access { bottom:calc(16px + env(safe-area-inset-bottom)); right:20px; }
  .up-persistent-access > button { height:44px; font-size:12px; padding-inline:18px; }
  .up-header { padding:20px; } .up-header > a { font-size:16px; } .up-header > a:last-child { font-size:11px; }
- .up-hero { min-height:calc(100svh - 98px); padding:60px 20px; } .up-hero h1 { font-size:36px; line-height:1.2; } .up-hero p { font-size:15px; max-width:400px; } .up-development { margin-bottom:26px; } .up-mobile-break { display:block; } .up-scroll-cue { margin-top:40px; }
+ .up-hero { min-height:calc(100svh - 98px); padding:60px 20px; } .up-hero h1, .up-hero h2 { font-size:36px; line-height:1.2; } .up-hero p { font-size:15px; max-width:400px; } .up-development { margin-bottom:26px; } .up-mobile-break { display:block; } .up-scroll-cue { margin-top:40px; }
  .up-statement { min-height:100svh; } .up-statement h2 { font-size:42px; }
  .up-section { padding:70px 20px; } .up-section h2 { font-size:30px; } .up-three-columns { grid-template-columns:1fr; gap:16px; margin-top:32px; } .up-big-number { font-size:36px; margin-bottom:24px; } .up-why article { padding:24px; }
  .up-math-columns { grid-template-columns:1fr; gap:40px; } .up-math-columns > div:first-child { border-bottom:1px solid var(--border); padding-bottom:24px; } .up-conclusion { font-size:20px; margin-top:30px; }
@@ -1357,3 +1360,5 @@ body { overflow-x: clip; }
  .up-bot-grid { grid-template-columns:1fr; } .up-bot-grid > section:nth-child(odd) { border-right:0; } .up-bot-grid > section { padding:24px 16px; } .up-bot-status { padding:16px; gap:16px; } .up-bot-status > label { width:100%; } .up-preview-footer { padding:14px 16px; font-size:7px; gap:8px; } .up-foundations .up-three-columns { gap:32px; } .up-honest { padding:40px 20px; } .up-final { padding:80px 20px; } .up-final h2 { font-size:40px; } .up-footer-wrap { padding:0 20px; }
 }
 @media (prefers-reduced-motion:reduce) { .up-page *, .up-page *::before, .up-page *::after { scroll-behavior:auto; transition:none; } }
+
+@media (max-width:767px) { .up-embedded .up-flow-nav { top:160px; } .up-embedded .up-feature, .up-embedded .up-filter-intro { scroll-margin-top:260px; } }

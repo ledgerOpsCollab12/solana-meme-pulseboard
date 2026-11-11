@@ -8,6 +8,7 @@ import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
 import { SiteFooter } from "@/components/site-footer";
+import { UpcomingPage } from "@/components/upcoming/upcoming-page";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -163,6 +164,8 @@ function Index() {
 
         <div className="mt-10"><CtaStrip idx="CTA/04" title="Need the raw data?" text="Real-time API and tools built for your strategy." href="#api-access" label="Request API access" external={false} /></div>
       </section>
+
+      <UpcomingPage embedded />
 
       <section id="api-access" className="ef-card ef-form-section scroll-mt-8" aria-labelledby="api-title">
         <div><span className="ef-tag"><b>WW/03</b> API & custom</span><h2 id="api-title" className="mt-5 text-3xl font-bold leading-tight tracking-tight">Request API access or a tool tailored to your needs</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>

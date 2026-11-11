@@ -13,9 +13,19 @@ function Dots({ scattered = false }: { scattered?: boolean }) {
   return <svg viewBox="0 0 440 190" role="img" aria-label={scattered ? "High variance: data spread far from the average" : "Low variance: data clustered around the average"}><line x1="18" y1="95" x2="422" y2="95" className="up-average-line"/>{offsets.map((offset,index) => <circle key={index} cx={30+index*27} cy={95+offset} r="5" className="up-dot"/>)}</svg>;
 }
 function Steps({ items }: { items: [string, string][] }) { return <ol className="up-explanation-steps">{items.map(([title,text],index) => <li key={title}><span>{String(index+1).padStart(2,"0")}</span><div><strong>{title}</strong><p>{text}</p></div></li>)}</ol>; }
-export function UpcomingPage() {
+export function UpcomingPage({ embedded = false }: { embedded?: boolean }) {
+  const Wrapper = embedded ? "section" : "main";
+  const Heading = embedded ? "h2" : "h1";
+  const story = useRef<HTMLElement>(null);
+  const [storyVisible, setStoryVisible] = useState(!embedded);
   const [accessOpen, setAccessOpen] = useState(false);
   const [active,setActive] = useState(0); const area = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!embedded || !story.current) return;
+    const observer = new IntersectionObserver(([entry]) => setStoryVisible(Boolean(entry?.isIntersecting)), { rootMargin: "-15% 0px -15% 0px" });
+    observer.observe(story.current);
+    return () => observer.disconnect();
+  }, [embedded]);
   useEffect(() => {
     const node = area.current; if (!node) return;
     const sections = Array.from(node.querySelectorAll<HTMLElement>("[data-flow-step]"));
@@ -24,8 +34,8 @@ export function UpcomingPage() {
     window.addEventListener("scroll",update,{passive:true}); update();
     return () => { observer.disconnect(); window.removeEventListener("scroll",update); };
   },[]);
-  return <main className="up-page"><header className="content-header up-header"><Link to="/" className="content-brand"><Waves aria-hidden="true"/>WhaleWatch</Link><Button asChild variant="outline"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Live tracker <ArrowUpRight/></a></Button></header>
-    <section className="up-hero"><span className="up-development"><i/>IN DEVELOPMENT</span><h1>From “who's winning”<br/>to “who you can<br className="up-mobile-break"/> actually follow.”</h1><p>Leaderboards show you who made money. They don't tell you who will keep making it. We're building the tools that do.</p><Button variant="ghost" className="up-scroll-cue" onClick={() => document.getElementById("luck-skill")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Scroll to see how <ArrowDown/></Button></section>
+  return <Wrapper ref={story} id={embedded ? "upcoming-features" : undefined} aria-label={embedded ? "Upcoming features" : undefined} className={`up-page${embedded ? " up-embedded" : ""}`}>{!embedded && <header className="content-header up-header"><Link to="/" className="content-brand"><Waves aria-hidden="true"/>WhaleWatch</Link><Button asChild variant="outline"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Live tracker <ArrowUpRight/></a></Button></header>}
+    <section className="up-hero"><span className="up-development"><i/>{embedded ? "UPCOMING FEATURES / IN DEVELOPMENT" : "IN DEVELOPMENT"}</span><Heading>From “who's winning”<br/>to “who you can<br className="up-mobile-break"/> actually follow.”</Heading><p>Leaderboards show you who made money. They don't tell you who will keep making it. We're building the tools that do.</p><Button variant="ghost" className="up-scroll-cue" onClick={() => document.getElementById("luck-skill")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Scroll to see how <ArrowDown/></Button></section>
     <section className="up-statement" id="luck-skill"><h2>Luck is loud.<br/><span>Skill is consistent.</span></h2></section>
     <section className="up-section up-why"><p className="up-eyebrow">THE REASONING</p><h2>Why this works</h2><div className="up-three-columns">{[["Memecoins run on a handful of numbers.","Volume, liquidity, market cap, holders, token age. Everyone filters on the same few signals, so winning strategies end up being repeatable plays built on those numbers."],["The biggest winners run bots, and bots need patterns.","A wallet that wins big and often is usually automated. To automate a strategy, it has to follow a recognizable pattern. Patterns leave a trail on-chain."],["Consistency can be measured.","Two simple numbers tell the whole story. Keep reading."]].map(([title,text],index) => <article key={title}><span className="up-big-number">0{index+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <section className="up-section up-math"><div className="up-math-columns"><div><p className="up-eyebrow">01 / THE BASELINE</p><h2>Average</h2><p>What a wallet usually does.</p><Dots/></div><div><p className="up-eyebrow">02 / THE SPREAD</p><h2>Variance</h2><p>How much it strays from that.</p><div className="up-variance-plots"><div><Dots/><span>Low variance</span></div><div><Dots scattered/><span>High variance</span></div></div></div></div><p className="up-conclusion">Similar entry prices. Similar percentage gains. Similar trading frequency. Low variance reveals a recognizable strategy—not just a winning streak.</p></section>
@@ -37,8 +47,8 @@ export function UpcomingPage() {
     </div></div></section>
     <section className="up-section up-foundations"><h2>Built on real math, not hype</h2><div className="up-three-columns">{[{icon:Sigma,title:"Proven foundations.",text:"Averages, variance and probability theory: the same tools insurers and risk analysts use every day."},{icon:Blocks,title:"Real data.",text:"Every trade comes straight from the Solana blockchain. Nothing estimated, nothing hidden."},{icon:Hand,title:"Your call.",text:"We give you the numbers. You make the decisions."}].map(item => <div key={item.title}><item.icon/><h3>{item.title}</h3><p>{item.text}</p></div>)}</div></section>
     <section className="up-honest"><div><h2>The honest part</h2><p>Past behavior is not a guarantee. Wallets change strategies, markets shift, and every trade carries risk. Predictability lowers uncertainty; it doesn't remove it.</p><p><em>Not financial advice. Trading involves risk.</em></p></div></section>
-    <section className="up-final"><h2>Get ahead. Apply for early access.</h2><Button size="lg" onClick={() => setAccessOpen(true)}>Request priority access <ArrowUpRight/></Button><p>Leave your details so our team can contact you about early access.</p></section><div className="up-footer-wrap"><SiteFooter/></div>
-    <div className="up-persistent-access"><Button size="lg" onClick={() => setAccessOpen(true)}>Request priority access <ArrowUpRight/></Button></div>
+    <section className="up-final"><h2>Get ahead. Apply for early access.</h2><Button size="lg" onClick={() => setAccessOpen(true)}>Request priority access <ArrowUpRight/></Button><p>Leave your details so our team can contact you about early access.</p></section>{!embedded && <div className="up-footer-wrap"><SiteFooter/></div>}
+    {storyVisible && <div className="up-persistent-access"><Button size="lg" onClick={() => setAccessOpen(true)}>Request priority access <ArrowUpRight/></Button></div>}
     <Dialog open={accessOpen} onOpenChange={setAccessOpen}><DialogContent className="max-h-[90svh] overflow-y-auto"><DialogTitle>Apply for early access.</DialogTitle><DialogDescription>Tell us which tools you want to try. Leave your details so our team can review your request and contact you about access. These features are still in development.</DialogDescription><RequestForm kind="recommendation" purpose="early-access"/></DialogContent></Dialog>
-  </main>;
+  </Wrapper>;
 }

@@ -1,3 +1,4 @@
+- [x] Integrate the complete approved Upcoming story into the homepage; verified all three previews, one main heading/footer, unchanged opening, scoped access button, shared form, desktop/mobile layout and preserved footer destination; 20 tests pass.
 - [x] Apply the approved recognizable-pattern copy and add a persistent early-access button sharing the existing form; verified desktop/mobile, opening from six stages and a saved test submission (removed); 20 tests pass.
 - [x] Rebuild Upcoming features from the supplied eight-section PDF with sample-only Lab, Risk Profile and Follow Bot previews; verified desktop/mobile, sorting, filter provenance, step progression, controls and a real early-access request (test record removed); 20 tests pass.
 - [x] Verify Upcoming navigation and recover stale dynamic route imports without reload loops; six tests passed and a deliberately failed route import recovered through the browser.
