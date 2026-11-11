@@ -31,8 +31,6 @@ const PROBLEMS = [
   {
     n: "01",
     left: <>Every Solana trade. Every top wallet. <em>Proven on-chain.</em></>,
-    subtitle: "The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.",
-    lead: "Not who got lucky. Who wins consistently.",
     short: "Leaderboard",
     compare: [
       { label: "Traditional leaderboards", tone: "muted" as const, text: "Traditional leaderboards only show wallets that meet their entry rules. Many are there to get noticed and promote tokens, and their PnL usually comes from one lucky hit." },
@@ -41,21 +39,19 @@ const PROBLEMS = [
   },
   {
     n: "02",
-    left: "Proof of pnl",
-    big: true,
+    left: <>Proof of <em>PnL.</em></>,
     short: "Speed",
     description: "Verify the PnL of each wallet by checking the transactions on Solscan.",
   },
   {
     n: "03",
-    left: "Know if it’s a whale, a bot, or fake volume before you copy.",
+    left: <>Know if it’s a whale, a bot, or fake volume <em>before you copy.</em></>,
     short: "Behavior",
-    description: "Knowing how to follow a profitable account is what matters. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
+    description: <>Knowing how to follow a profitable account is what matters. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account.<br/><br/>With our data, monitor their movements to define your entry, exit and risk rules before you copy a single move.</>,
   },
   {
     n: "04",
-    left: <>Other trackers say it. <em>We pull every trade straight from the chain.</em></>,
-    title: "Existing wallet trackers lack memecoin logic",
+    left: <>Existing wallet trackers <em>lack memecoin logic.</em></>,
     short: "Memecoin logic",
     description: "Solana wallet trackers already exist, but none have the logic to track memecoin wallets correctly. Ours is the first tool designed specifically for this market.",
   },
