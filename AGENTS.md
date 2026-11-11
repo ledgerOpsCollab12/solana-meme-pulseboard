@@ -25,7 +25,7 @@
 - Footer destinations use distinct content routes with a shared editorial layout and metadata helper; unavailable external URLs stay explicitly unlinked to avoid invented destinations.
 - Recover stale dynamic route chunks with a tested, session-guarded single reload and a manual full-page retry; ordinary errors must not reload or loop.
 - Keep Upcoming feature mockups in browser-safe components with PDF-supplied sample data and tested selection helpers; previews must never imply live analysis, wallet connections or executed trades.
-- Upcoming's persistent and closing early-access buttons share one controlled dialog and the existing private request form, avoiding duplicate forms and keeping access available throughout the story.
+- Upcoming's persistent development-status/access dock and closing early-access button share one controlled dialog and the existing private request form, keeping planned-feature status explicit and access available throughout the story.
 - Reuse the complete Upcoming story in embedded and standalone modes; embedded mode omits page chrome and scopes its floating access button to the story so the approved homepage opening stays unchanged.
 - Keep the Tokenization story and static diagrams browser-safe, with document-supplied economics in a tested helper and project CTAs sharing the existing private request form; retained tokens must never be counted as sold capital.
 - Keep the homepage's four-tool journey in one browser-safe sticky scene with tested scroll phases, a static reduced-motion layout and measured menu clearance; API remains a separate notice and original tracker CTAs stay at their content handoffs, preserving the opening and recordings.

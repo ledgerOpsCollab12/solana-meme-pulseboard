@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getToolJourneyPhase, getToolPhaseOffset, WALLET_TOOLS } from "@/lib/tool-journey";
 
-export function EditorialSolutions({ videoUrl, alertsCta }: { videoUrl: string; alertsCta: ReactNode }) {
+export function EditorialSolutions({ videoUrl }: { videoUrl: string }) {
   const area = useRef<HTMLElement>(null);
   const recording = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState(0);
@@ -63,6 +63,7 @@ export function EditorialSolutions({ videoUrl, alertsCta }: { videoUrl: string; 
   return <section ref={area} className="tool-journey" aria-label="WhaleWatch solutions">
     <div className="tool-scene">
       <div className="tool-demonstration">
+        <p className="up-eyebrow tool-kicker">OUR SOLUTION</p>
         <h2 className="tool-heading">Four tools. <em>One clearer strategy.</em></h2>
         {WALLET_TOOLS.map((tool, index) => <article key={tool.n} hidden={!reduced && phase !== index} className="tool-state" aria-label={tool.label}>
           <p className="tool-caption"><span>{tool.n} / 04</span>{tool.label}</p>
@@ -72,7 +73,6 @@ export function EditorialSolutions({ videoUrl, alertsCta }: { videoUrl: string; 
             </div>
             <h3><span className="tool-bullet" aria-hidden="true"/><span>{tool.lines.map((line, i) => <span key={line} className={i === 2 ? "text-primary" : undefined}>{line}</span>)}</span></h3>
           </div>
-          {index === 2 && <div className="tool-alerts-cta">{alertsCta}</div>}
         </article>)}
       </div>
       <nav className="tool-progress" aria-label="Wallet tools">

@@ -78,7 +78,8 @@ function Index() {
       <div className="ed-home-story">
         <ProblemBillboard problems={PROBLEMS} />
         <div className="original-cta-position"><OriginalCtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
-        <EditorialSolutions videoUrl="/__l5e/assets-v1/aa0d30c1-4689-4ca5-bbc2-59d76c1dc250/solution-01-annotated.mp4" alertsCta={<OriginalCtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />} />
+        <EditorialSolutions videoUrl="/__l5e/assets-v1/aa0d30c1-4689-4ca5-bbc2-59d76c1dc250/solution-01-annotated.mp4" />
+        <div className="original-cta-position"><OriginalCtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" /></div>
         <aside id="api-notice" className="api-notice" aria-labelledby="api-notice-title">
           <div><p className="up-eyebrow">API & CUSTOM SOLUTIONS</p><h2 id="api-notice-title">Blockchain data<br/><em>on your terms.</em></h2><p>Direct blockchain data. The latency you need.<br/>API access, simple queries, and custom tools.</p></div>
           <Button asChild size="lg"><a href="#api-access">Request API access <ArrowUpRight/></a></Button>

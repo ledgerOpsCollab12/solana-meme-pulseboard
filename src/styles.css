@@ -1557,6 +1557,21 @@ body { overflow-x: clip; }
 .pb-tabs > button[aria-current="step"] strong { font-weight:600; }
 .pb-foot { display:flex; justify-content:space-between; font:10px var(--font-mono); color:var(--muted-foreground); padding-top:10px; flex:none; }
 .pb-foot svg { display:inline; width:12px; height:12px; }
+/* Development stays explicit alongside the access action throughout Upcoming. */
+.tool-kicker { margin-bottom:12px; }
+.up-development { font:600 18px var(--font-display); color:var(--primary); border-color:var(--primary); border-radius:6px; padding:14px 22px; gap:12px; }
+.up-development i { width:8px; height:8px; background:var(--primary); }
+.up-persistent-access { display:flex; align-items:center; gap:20px; padding:12px 14px 12px 20px; background:var(--card); border:1px solid var(--border); border-radius:6px; box-shadow:var(--panoramic-shadow); }
+.up-persistent-status { display:flex; flex-direction:column; gap:4px; color:var(--primary); }
+.up-persistent-status > span { font-size:12px; }
+.up-persistent-status > strong { font-size:18px; line-height:1.2; font-weight:600; }
+.up-persistent-access > button { box-shadow:none; }
+@media(max-width:767px) {
+ .up-development { font-size:14px; padding:12px 14px; }
+ .up-persistent-access { left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); gap:10px; padding:10px; justify-content:space-between; }
+ .up-persistent-status > span { font-size:10px; }.up-persistent-status > strong { font-size:14px; }.up-persistent-access > button { font-size:11px; padding-inline:10px; }
+ .tool-kicker { margin-bottom:8px; }
+}
 .tool-journey { height:400svh; }
 .tool-scene { padding-top:30px; }
 .tool-heading { font-size:48px; line-height:1.12; margin-bottom:18px; letter-spacing:0; }
