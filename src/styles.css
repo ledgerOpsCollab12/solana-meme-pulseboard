@@ -1155,7 +1155,9 @@ body { overflow-x: clip; }
 
 /* Upcoming: editorial story and explicitly illustrative product previews. */
 :root { --up-warning: oklch(.80 .12 83); --up-preview-accent: oklch(.78 .075 250); --up-preview-surface: oklch(.20 .008 250); --up-preview-border: oklch(.31 .01 250); }
-.up-page { background: var(--background); letter-spacing: 0; }
+.up-page { background: var(--background); letter-spacing: 0; padding-bottom:100px; }
+.up-persistent-access { position:fixed; bottom:24px; right:32px; z-index:40; }
+.up-persistent-access > button { height:48px; padding-inline:24px; box-shadow:var(--panoramic-shadow); border:1px solid var(--primary-foreground); }
 .up-page * { letter-spacing: 0; }
 .up-header { max-width: 1280px; margin: auto; padding: 24px 40px; border-bottom: 0; }
 .up-hero { min-height: calc(100svh - 112px); padding: 70px 24px 60px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
@@ -1341,6 +1343,8 @@ body { overflow-x: clip; }
 @media (min-width:1500px) { .up-hero h1 { font-size:72px; } }
 @media (max-width:1023px) { .up-flow-layout { grid-template-columns:minmax(0,.24fr) minmax(0,.76fr); gap:24px; } .up-flow-item { gap:10px; } .up-flow-item strong { font-size:15px; } .up-flow-item > span > span { font-size:10px; } .up-risk-body { grid-template-columns:1fr; } .up-hero h1 { font-size:52px; } .up-statement h2 { font-size:68px; } }
 @media (max-width:767px) {
+ .up-persistent-access { bottom:calc(16px + env(safe-area-inset-bottom)); right:20px; }
+ .up-persistent-access > button { height:44px; font-size:12px; padding-inline:18px; }
  .up-header { padding:20px; } .up-header > a { font-size:16px; } .up-header > a:last-child { font-size:11px; }
  .up-hero { min-height:calc(100svh - 98px); padding:60px 20px; } .up-hero h1 { font-size:36px; line-height:1.2; } .up-hero p { font-size:15px; max-width:400px; } .up-development { margin-bottom:26px; } .up-mobile-break { display:block; } .up-scroll-cue { margin-top:40px; }
  .up-statement { min-height:100svh; } .up-statement h2 { font-size:42px; }

@@ -25,3 +25,4 @@
 - Footer destinations use distinct content routes with a shared editorial layout and metadata helper; unavailable external URLs stay explicitly unlinked to avoid invented destinations.
 - Recover stale dynamic route chunks with a tested, session-guarded single reload and a manual full-page retry; ordinary errors must not reload or loop.
 - Keep Upcoming feature mockups in browser-safe components with PDF-supplied sample data and tested selection helpers; previews must never imply live analysis, wallet connections or executed trades.
+- Upcoming's persistent and closing early-access buttons share one controlled dialog and the existing private request form, avoiding duplicate forms and keeping access available throughout the story.
