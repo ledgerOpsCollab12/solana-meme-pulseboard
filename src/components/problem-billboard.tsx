@@ -3,9 +3,18 @@ import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBillboardStage } from "@/lib/billboard-progress";
 
-type Problem = { n: string; title?: string; lead?: string; description?: string; short: string; left?: ReactNode };
+type Problem = {
+  n: string;
+  short: string;
+  left?: ReactNode;
+  big?: boolean;
+  subtitle?: ReactNode;
+  title?: ReactNode;
+  lead?: ReactNode;
+  description?: ReactNode;
+};
 
-export function ProblemBillboard({ problems, headline }: { problems: Problem[]; headline: ReactNode }) {
+export function ProblemBillboard({ problems }: { problems: Problem[] }) {
   const section = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [reduced, setReduced] = useState(false);
@@ -37,19 +46,27 @@ export function ProblemBillboard({ problems, headline }: { problems: Problem[]; 
     window.scrollTo({ top: window.scrollY + element.getBoundingClientRect().top - navHeight() + (element.offsetHeight - scene.offsetHeight) * (stage + .1) / problems.length, behavior: reduced ? "instant" : "smooth" });
   };
 
+  const current = problems[active] ?? problems[0];
+  // A slide without its own left title gives the whole stage to its text.
+  const wide = !reduced && !current?.left;
+
   return (
-    <section ref={section} className="pb-journey" aria-labelledby="market-title">
+    <section ref={section} className="pb-journey" aria-label="Wallet intelligence — the problem">
       <div className="pb-scene">
-        <div className={"pb-main" + (!reduced && !problems[active]?.title && !problems[active]?.description ? " pb-main--solo" : "")}>
-          <div className="pb-heading">
-            <p className="up-eyebrow">WALLET INTELLIGENCE / THE PROBLEM</p>
-            <h2 id="market-title" key={reduced ? "static" : active}>{reduced ? headline : problems[active]?.left ?? headline}</h2>
-            <p>The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.</p>
-          </div>
+        <div className={"pb-main" + (wide ? " pb-main--wide" : "")}>
+          {reduced || !wide ? (
+            <div className={"pb-heading" + (!reduced && current?.big ? " pb-heading--big" : "")}>
+              <p className="up-eyebrow">WALLET INTELLIGENCE / THE PROBLEM</p>
+              {reduced ? null : <h2 key={active}>{current?.left}</h2>}
+              {reduced || !current?.subtitle ? null : <p>{current.subtitle}</p>}
+            </div>
+          ) : null}
           <div className="pb-problems">
             {problems.map((problem, index) => (
               <article key={problem.n} hidden={!reduced && index !== active}>
                 <p className="up-eyebrow">{problem.n} / 04</p>
+                {reduced && problem.left ? <h2 className="pb-static-title">{problem.left}</h2> : null}
+                {reduced && problem.subtitle ? <p className="pb-static-subtitle">{problem.subtitle}</p> : null}
                 {problem.title ? <h3>{problem.title}</h3> : null}
                 {problem.lead ? <p className="pb-lead">{problem.lead}</p> : null}
                 {problem.description ? <p className="pb-desc">{problem.description}</p> : null}

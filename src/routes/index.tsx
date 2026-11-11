@@ -27,12 +27,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const MARKET_HEADLINE = <>Know if it’s a whale, a bot, or fake volume <em>before you copy.</em></>;
-
 const PROBLEMS = [
   {
     n: "01",
-    title: "Every Solana trade. Every top wallet. Proven on-chain.",
+    left: <>Every Solana trade. Every top wallet. <em>Proven on-chain.</em></>,
+    subtitle: "The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.",
     lead: "Not who got lucky. Who wins consistently.",
     short: "Leaderboard",
     description: "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
@@ -40,11 +39,12 @@ const PROBLEMS = [
   {
     n: "02",
     left: "Proof of pnl",
+    big: true,
     short: "Speed",
+    description: "Verify the PnL of each wallet by checking the transactions on Solscan.",
   },
   {
     n: "03",
-    title: "Know who you're following",
     short: "Behavior",
     description: "Knowing how to follow a profitable account is what matters. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
   },
@@ -79,7 +79,7 @@ function Index() {
       </nav>
 
       <div className="ed-home-story">
-        <ProblemBillboard problems={PROBLEMS} headline={MARKET_HEADLINE} />
+        <ProblemBillboard problems={PROBLEMS} />
         <div className="original-cta-position"><OriginalCtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
         <EditorialSolutions videoUrl="/__l5e/assets-v1/aa0d30c1-4689-4ca5-bbc2-59d76c1dc250/solution-01-annotated.mp4" />
         <div className="original-cta-position"><OriginalCtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" /></div>
