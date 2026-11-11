@@ -27,3 +27,4 @@
 - Keep Upcoming feature mockups in browser-safe components with PDF-supplied sample data and tested selection helpers; previews must never imply live analysis, wallet connections or executed trades.
 - Upcoming's persistent and closing early-access buttons share one controlled dialog and the existing private request form, avoiding duplicate forms and keeping access available throughout the story.
 - Reuse the complete Upcoming story in embedded and standalone modes; embedded mode omits page chrome and scopes its floating access button to the story so the approved homepage opening stays unchanged.
+- Keep the Tokenization story and static diagrams browser-safe, with document-supplied economics in a tested helper and project CTAs sharing the existing private request form; retained tokens must never be counted as sold capital.

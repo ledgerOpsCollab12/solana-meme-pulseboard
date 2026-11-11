@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { requestSchema } from "@/lib/request-schema";
 import { submitRequest } from "@/lib/requests.functions";
 
-export function RequestForm({ kind, purpose }: { kind: "api" | "recommendation" | "collaboration"; purpose?: "early-access" }) {
+export function RequestForm({ kind, purpose, messageLabel, submitLabel }: { kind: "api" | "recommendation" | "collaboration"; purpose?: "early-access"; messageLabel?: string; submitLabel?: string }) {
   const send = useServerFn(submitRequest);
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -39,11 +39,11 @@ export function RequestForm({ kind, purpose }: { kind: "api" | "recommendation" 
     <div className="grid gap-5 sm:grid-cols-2">
       {(["name", "email"] as const).map(field => <div key={field} className="space-y-2"><Label htmlFor={`${kind}-${field}`}>{field === "name" ? "Name" : "Email"}</Label><Input id={`${kind}-${field}`} name={field} type={field === "email" ? "email" : "text"} autoComplete={field} maxLength={field === "name" ? 100 : 255} required aria-invalid={Boolean(errors[field])} aria-describedby={errors[field] ? `${kind}-${field}-error` : undefined} className="h-12 bg-background" />{errors[field] && <p id={`${kind}-${field}-error`} className="text-sm text-destructive">{errors[field]}</p>}</div>)}
     </div>
-    <div className="space-y-2"><Label htmlFor={`${kind}-message`}>{purpose === "early-access" ? "Which upcoming tools interest you?" : kind === "collaboration" ? "Your company or project, and what you would like to build" : kind === "api" ? "What data or custom tool do you need?" : "Your recommendation"}</Label><Textarea id={`${kind}-message`} name="message" maxLength={purpose === "early-access" ? 1967 : 2000} required rows={5} className="bg-background" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? `${kind}-message-error` : undefined} />{errors.message && <p id={`${kind}-message-error`} className="text-sm text-destructive">{errors.message}</p>}</div>
+    <div className="space-y-2"><Label htmlFor={`${kind}-message`}>{messageLabel ?? (purpose === "early-access" ? "Which upcoming tools interest you?" : kind === "collaboration" ? "Your company or project, and what you would like to build" : kind === "api" ? "What data or custom tool do you need?" : "Your recommendation")}</Label><Textarea id={`${kind}-message`} name="message" maxLength={purpose === "early-access" ? 1967 : 2000} required rows={5} className="bg-background" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? `${kind}-message-error` : undefined} />{errors.message && <p id={`${kind}-message-error`} className="text-sm text-destructive">{errors.message}</p>}</div>
     {kind === "api" && <fieldset className="grid gap-3 border border-border bg-card p-5"><legend className="px-1 text-sm font-semibold">Would you like us to contact you to arrange a meeting?</legend><div className="flex flex-wrap gap-6">{(["yes", "no"] as const).map(option => <label key={option} className="flex items-center gap-2 text-sm"><input type="radio" name="meeting" value={option} className="size-4 accent-primary" />{option === "yes" ? "Yes" : "No"}</label>)}</div></fieldset>}
     <div hidden aria-hidden="true"><input name="website" tabIndex={-1} autoComplete="off" /></div>
     {errors.form && <p role="alert" className="text-sm text-destructive">{errors.form}</p>}
-    <Button type="submit" disabled={pending} className="h-12 w-full sm:w-auto sm:px-8">{pending ? <Loader2 className="animate-spin" /> : <ArrowUpRight />}{pending ? "Sending…" : purpose === "early-access" ? "Send my access request" : kind === "collaboration" ? "Discuss a collaboration" : kind === "api" ? "Send request" : "Send recommendation"}</Button>
+    <Button type="submit" disabled={pending} className="h-12 w-full sm:w-auto sm:px-8">{pending ? <Loader2 className="animate-spin" /> : <ArrowUpRight />}{pending ? "Sending…" : submitLabel ?? (purpose === "early-access" ? "Send my access request" : kind === "collaboration" ? "Discuss a collaboration" : kind === "api" ? "Send request" : "Send recommendation")}</Button>
     {kind !== "collaboration" && purpose !== "early-access" && <div className="flex justify-center"><span className={buttonVariants({ variant: "outline", size: "sm", className: "cursor-default select-none text-muted-foreground" })}><Clock />Response time - 24 hours</span></div>}
   </form>;
 }
