@@ -12,6 +12,7 @@ type Problem = {
   title?: ReactNode;
   lead?: ReactNode;
   description?: ReactNode;
+  compare?: { label: string; text: string; tone: "muted" | "accent" }[];
 };
 
 export function ProblemBillboard({ problems }: { problems: Problem[] }) {
@@ -68,6 +69,16 @@ export function ProblemBillboard({ problems }: { problems: Problem[] }) {
                 {reduced && problem.subtitle ? <p className="pb-static-subtitle">{problem.subtitle}</p> : null}
                 {problem.title ? <h3>{problem.title}</h3> : null}
                 {problem.lead ? <p className="pb-lead">{problem.lead}</p> : null}
+                {problem.compare ? (
+                  <div className="pb-compare">
+                    {problem.compare.map((block) => (
+                      <div key={block.label} className={"pb-compare-block is-" + block.tone}>
+                        <p className="pb-compare-label">{block.label}</p>
+                        <p>{block.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
                 {problem.description ? <p className="pb-desc">{problem.description}</p> : null}
               </article>
             ))}

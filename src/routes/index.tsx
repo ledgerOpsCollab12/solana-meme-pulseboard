@@ -34,7 +34,10 @@ const PROBLEMS = [
     subtitle: "The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.",
     lead: "Not who got lucky. Who wins consistently.",
     short: "Leaderboard",
-    description: "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
+    compare: [
+      { label: "Traditional leaderboards", tone: "muted" as const, text: "Traditional leaderboards only show wallets that meet their entry rules. Many are there to get noticed and promote tokens, and their PnL usually comes from one lucky hit." },
+      { label: "Our leaderboard", tone: "accent" as const, text: "We analyze every active wallet on Solana and rank them by quality and PnL. No entry rules, no self-promotion: just who actually wins." },
+    ],
   },
   {
     n: "02",
