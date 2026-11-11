@@ -3,7 +3,7 @@ import { isRecordedVideoEnding, shouldPlayRecordedVideo } from "./recorded-video
 
 const playing = { ready: true, visible: true, hidden: false, reducedMotion: false, userPaused: false, ended: false };
 describe("narrated recording playback", () => {
-  it("does not start until the promotional veil has cleared", () => {
+  it("starts automatically once the product is readable, without a play click", () => {
     expect(shouldPlayRecordedVideo({ ...playing, ready: false })).toBe(false);
     expect(shouldPlayRecordedVideo(playing)).toBe(true);
   });

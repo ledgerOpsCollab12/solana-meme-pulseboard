@@ -17,7 +17,7 @@
 - Keep the guided simulation timeline independent of visitor selections, resetting them only on scene handoff; wallet tracking stays local and recorded, so interaction never creates live alerts or wallet activity.
 - Keep the illustrative data horizon in a browser-safe canvas component with semantic-token colors, deterministic perspective paths, visibility-aware animation and reduced-motion support; it must remain independent of real wallet activity.
 - Keep the complete-title optical opening and scroll-led intro in one browser-safe component with tested progression helpers and one CTA; use animation-frame updates and a static reduced-motion layout to preserve accessible scroll progression.
-- Gate the reference tour on the tested product-focus handoff so it starts only after the promotional veil has cleared and the interface is centered.
+- Gate recording autoplay on readable product visibility, with offscreen/tab suspension and manual-pause/reduced-motion guards; the side-by-side presentation must play without waiting for its full-width scroll handoff.
 - Share protocol identities and a tested scroll-assembly helper between the illustrative horizon and marquee; keep evidence in document flow after the product stage so the canvas can hand off icons without squeezing the video.
 - Keep the scroll-led problem stage in a browser-safe component with tested stage selection, sticky-menu clearance and a static reduced-motion layout, so each problem remains readable independently of live market data.
 - Pre-optimize the preview's UI dependencies alongside the template's React dependencies to avoid late dependency discovery mixing React module instances in an already-open preview.

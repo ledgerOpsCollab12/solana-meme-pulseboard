@@ -39,7 +39,7 @@ export function ScrollIntro() {
       const state = getIntroProgress(motion.matches ? distance : window.scrollY - top, distance);
        const focus = getProductFocus(state.progress);
        section.style.setProperty("--product-focus", `${focus.focus}`);
-       section.querySelector(".integrated-interface")?.setAttribute("data-presentation-ready", String(motion.matches || focus.ready));
+        section.querySelector(".integrated-interface")?.setAttribute("data-presentation-ready", String(motion.matches || state.content >= 0.5));
       const start = Math.min(window.innerHeight * 0.73, window.innerHeight - button.offsetHeight - 32);
       const slot = section.querySelector<HTMLElement>(".intro-cta-slot");
       const scene = section.querySelector<HTMLElement>(".holo-sticky");
@@ -55,7 +55,7 @@ export function ScrollIntro() {
       section.style.setProperty("--cta-reveal", `${state.shell}`);
       section.style.setProperty("--window-scale", `${0.93 + state.shell * 0.07}`);
       const product = section.querySelector<HTMLElement>(".holo-product");
-      if (product) product.inert = !motion.matches && state.content < 0.85;
+       if (product) product.inert = !motion.matches && state.content < 0.5;
       const title = section.querySelector<HTMLElement>(".intro-title-layer");
       if (title) title.inert = !motion.matches && state.titleOpacity === 0;
       return !opening.done;
@@ -112,7 +112,10 @@ export function ScrollIntro() {
                 <span className="ef-tag"><b>BEYOND THE LEADERBOARD</b></span>
                 <h2>We classify for you <em>all wallets trading memecoins.</em></h2>
                 <div className="holo-glass">
-                  <p>Go beyond the leaderboard. Analyze top-performing wallets by PnL, win rate, consistency, trading activity, and more. Get real-time alerts and tools to understand how each wallet trades.</p>
+                  <ul className="product-benefits">
+                    <li>Analyze top-performing wallets by PnL, win rate, consistency, trading activity, and more</li>
+                    <li>Get real time alerts and tools to understand how each wallet trades.</li>
+                  </ul>
                 </div>
               </div>
               <div className="holo-video integrated-interface" aria-label="WhaleWatch narrated product presentation">

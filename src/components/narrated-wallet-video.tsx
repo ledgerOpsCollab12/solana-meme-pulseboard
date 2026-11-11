@@ -76,7 +76,7 @@ export function NarratedWalletVideo({ recording }: { recording: Recording }) {
     player.muted = !player.muted; setMuted(player.muted);
   };
   return <div ref={host} className="narrated-wallet-video">
-    <video ref={video} className="narrated-wallet-recording" muted playsInline preload="metadata" poster={recording.poster}
+    <video ref={video} className="narrated-wallet-recording" autoPlay muted playsInline preload="auto" poster={recording.poster}
       aria-label="WhaleWatch narrated wallet analysis recording" onTimeUpdate={updateTime}
       onLoadedMetadata={() => {
         const player = video.current;
