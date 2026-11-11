@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
 import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
-import { ProblemBillboard } from "@/components/problem-billboard";
+import { EditorialSolutions } from "@/components/editorial-solutions";
 import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
@@ -84,29 +83,17 @@ const SOLUTIONS: Solution[] = [
   },
 ];
 
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll("[data-reveal]");
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("revealed"); io.unobserve(e.target); } });
-    }, { threshold: 0.25 });
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-}
-
 function CtaStrip({ idx, title, text, href = PROGRAM_URL, label = "Open the live tracker", external = true }: { idx: string; title: string; text: string; href?: string; label?: string; external?: boolean }) {
   return (
-    <aside className="ef-card ef-strip" data-reveal-plain>
-      <span className="ef-strip-idx">{idx}</span>
+    <aside className="ed-cta">
+      <span className="up-eyebrow">{idx}</span>
       <div><h3>{title}</h3><p>{text}</p></div>
-      <a className="ef-btn" href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{label} <ArrowUpRight /></a>
+      <Button asChild size="lg"><a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{label} <ArrowUpRight /></a></Button>
     </aside>
   );
 }
 
 function Index() {
-  useReveal();
 
   return (
     <main className="landing-main mx-auto max-w-[1360px] px-5 lg:px-10">
@@ -123,61 +110,32 @@ function Index() {
         </div>
       </nav>
 
-      <ProblemBillboard problems={PROBLEMS} />
-      <section className="overflow-x-clip pb-20" aria-label="WhaleWatch solutions">
-
-        <div className="mt-10"><CtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
-
-        <div className="ef-divider"><span className="ef-tag"><b>WW/02</b> Our solution</span></div>
-        <h2 className="ef-h2 text-center">Our solution</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">Five tools that turn raw wallet data into a strategy you can actually run.</p>
-
-        <div className="mt-12 flex flex-col gap-6">
-          {SOLUTIONS.map((s, i) => (
-            <div key={s.n} className="flex flex-col gap-6">
-              <article className="ef-card ef-solution" aria-label={`Our solution: ${s.title}`}>
-                <div className="ef-solution-copy">
-                  <span className="ef-solution-tag">MODULE S-{s.n}</span>
-                  <h4 className="mt-4 text-2xl font-bold leading-snug tracking-tight lg:text-[1.7rem]">{s.title}</h4>
-                  {s.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="mt-4 text-base leading-relaxed text-muted-foreground">{paragraph}</p>
-                  ))}
-                  {s.notice && (
-                    <p className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed">
-                      <span className="block font-mono text-xs text-accent">IN DEVELOPMENT</span>
-                      {s.notice}
-                    </p>
-                  )}
-                </div>
-                {s.n === "01" ? (
-                  <video className="ef-video overflow-hidden object-contain bg-card" src={solution01Video.url} autoPlay muted loop playsInline aria-label={`Video: ${s.title}`} />
-                ) : (
-                  <div className="ef-video" aria-label={`Video placeholder: ${s.title}`}>
-                    <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · S-{s.n}</span>
-                  </div>
-                )}
-              </article>
-              {i === 2 && <CtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />}
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10"><CtaStrip idx="CTA/04" title="Need the raw data?" text="Real-time API and tools built for your strategy." href="#api-access" label="Request API access" external={false} /></div>
+      <div className="ed-home-story">
+      <section className="ed-quality">
+        <p className="up-eyebrow">WALLET INTELLIGENCE</p>
+        <h2>The first software built<br/>for <em>quality wallet tracking.</em></h2>
+        <p>The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.</p>
+        <div className="ed-problems">{PROBLEMS.map(problem => <article key={problem.n}><p className="up-eyebrow">{problem.n} / THE PROBLEM</p><h3>{problem.title}</h3><p>{problem.description}</p></article>)}</div>
       </section>
+      <CtaStrip idx="THE NEXT STEP" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." />
+      <EditorialSolutions solutions={SOLUTIONS} videoUrl={solution01Video.url} />
+      <CtaStrip idx="REAL-TIME ALERTS" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />
+      <CtaStrip idx="BUILD WITH OUR DATA" title="Need the raw data?" text="Real-time API and tools built for your strategy." href="#api-access" label="Request API access" external={false} />
 
       <UpcomingPage embedded />
 
-      <section id="api-access" className="ef-card ef-form-section scroll-mt-8" aria-labelledby="api-title">
-        <div><span className="ef-tag"><b>WW/03</b> API & custom</span><h2 id="api-title" className="mt-5 text-3xl font-bold leading-tight tracking-tight">Request API access or a tool tailored to your needs</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>
+      <section id="api-access" className="ed-contact" aria-labelledby="api-title">
+        <div><p className="up-eyebrow">BUILD / API & CUSTOM</p><h2 id="api-title">Blockchain data<br/><em>on your terms.</em></h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">We provide real-time API access tailored to your needs. Whether you're building low-latency trading tools or need specific wallet and token data, we've got you covered. You can also request custom features built for your use case, and we'll work with you to find the best pricing.</p></div>
         <RequestForm kind="api" />
       </section>
-      <section id="decoding" className="ef-card ef-form-section mt-8 scroll-mt-8" aria-labelledby="decoding-title">
-        <div><span className="ef-tag"><b>WW/04</b> Community</span><h2 id="decoding-title" className="mt-5 text-3xl font-bold leading-tight tracking-tight">Decoding memecoin market for you</h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Most traders don't have the infrastructure to analyze wallet and token data the way they want. We're changing that by letting our community shape what we build. Every month, we'll develop a new feature based on your suggestions. Submit your ideas, and we'll select the best or most requested one. The winning feature will be announced here and shared with you by email.</p></div>
+      <section id="decoding" className="ed-contact" aria-labelledby="decoding-title">
+        <div><p className="up-eyebrow">COMMUNITY</p><h2 id="decoding-title">Decoding memecoin<br/><em>market for you.</em></h2><p className="mt-5 text-base leading-relaxed text-muted-foreground">Most traders don't have the infrastructure to analyze wallet and token data the way they want. We're changing that by letting our community shape what we build. Every month, we'll develop a new feature based on your suggestions. Submit your ideas, and we'll select the best or most requested one. The winning feature will be announced here and shared with you by email.</p></div>
         <RequestForm kind="recommendation" />
       </section>
 
       <div className="mt-10"><CtaStrip idx="CTA/05" title="Still reading? The wallets aren’t." text="Free, real-time, on Solana." /></div>
 
+      </div>
       <SiteFooter />
     </main>
   );
