@@ -35,21 +35,23 @@ export function SignalNetwork() {
       const assembly = getProtocolAssembly(strip?.getBoundingClientRect().top ?? height * 2, height, motion.matches);
       strip?.style.setProperty("--protocol-assembly", `${assembly}`);
       if (strip) strip.dataset['assembled'] = String(assembly === 1);
-      const sky = context.createLinearGradient(0, 0, 0, height);
-      sky.addColorStop(0, color("--horizon-sky"));
-      sky.addColorStop(.52, color("--horizon-light"));
-      sky.addColorStop(1, color("--horizon-ground"));
-      context.fillStyle = sky;
-      context.fillRect(0, 0, width, height);
+      // The canvas stays transparent: blue is confined to the perspective lanes.
+      const road = context.createLinearGradient(0, height * .55, 0, height);
+      road.addColorStop(0, "transparent");
+      road.addColorStop(.55, color("--horizon-line"));
+      road.addColorStop(1, color("--horizon-road-glow"));
       lanes.forEach((lane, i) => {
         context.lineWidth = .7;
-        context.strokeStyle = color("--horizon-line");
+        context.strokeStyle = road;
+        context.shadowColor = color("--horizon-road-glow");
+        context.shadowBlur = 5;
         context.beginPath();
         for (let step = 0; step <= 40; step++) {
           const point = project(lane, .06 + step / 40 * .94);
           if (step === 0) context.moveTo(point.x, point.y); else context.lineTo(point.x, point.y);
         }
         context.stroke();
+        context.shadowBlur = 0;
         for (let signal = 0; signal < 2; signal++) {
           const depth = .09 + ((time * .045 + i * .137 + signal * .5) % .91);
           const point = project(lane, depth);

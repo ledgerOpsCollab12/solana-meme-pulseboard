@@ -5,12 +5,12 @@ export const WALLET_TOOLS = [
   { n: "04", label: "Token understanding", lines: ["Find tokens", "profitable", "wallets hold."] },
 ] as const;
 
-/** The four tools share one titled stage; API remains outside the journey. */
+/** Three scroll transitions; the fourth releases directly into the next section. */
 export function getToolJourneyPhase(scroll: number, distance: number) {
   const progress = Math.max(0, Math.min(1, scroll / Math.max(1, distance)));
-  return Math.min(3, Math.floor(progress * 4));
+  return Math.min(3, Math.floor(progress * 3));
 }
 
 export function getToolPhaseOffset(phase: number, distance: number) {
-  return Math.max(0, Math.min(3, phase)) / 4 * Math.max(1, distance) + 1;
+  return Math.max(0, Math.min(3, phase)) / 3 * Math.max(1, distance) + 1;
 }

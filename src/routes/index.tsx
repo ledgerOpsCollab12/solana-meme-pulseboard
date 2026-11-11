@@ -68,7 +68,7 @@ function Index() {
           <Button asChild variant="outline"><a href="#decoding"><MessageSquare /> Decoding memecoin market for you</a></Button>
           <div className="tracker-access">
             <Button asChild className="nav-tracker"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Open the live tracker <ArrowUpRight /></a></Button>
-            <Button asChild className="nav-tracker"><a href={PROGRAM_URL} target="_blank" rel="noopener noreferrer">Login <ArrowUpRight /></a></Button>
+            <Button asChild variant="outline"><a href="#upcoming-features">Upcoming features <Sparkles /></a></Button>
           </div>
           <Button asChild variant="outline"><a href="#api-access"><Sparkles /> Request a tailored feature</a></Button>
           <Button asChild variant="outline"><a href="#api-access"><Code2 /> API access</a></Button>

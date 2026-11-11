@@ -26,7 +26,7 @@
 :root {
   --radius: 0.5rem;
   /* Deep Cobalt / Slate / Sage palette */
-  --background: oklch(0.984 0.003 247.86);       /* #F8FAFC soft mineral gray */
+  --background: oklch(1 0 0);                  /* white page, including opening */
   --foreground: oklch(0.208 0.042 265.75);       /* #0F172A slate night */
   --card: oklch(1 0 0);                          /* white cards over mineral bg */
   --primary: oklch(0.379 0.146 265.5);           /* #1E3A8A deep cobalt */
@@ -131,7 +131,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
-    background-image: radial-gradient(circle at 20% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 55%);
+    background-image: none;
   }
 }
 
@@ -279,7 +279,7 @@
 }
 body::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(color-mix(in oklab, var(--border) 70%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--border) 70%, transparent) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse 38% 420px at 85% 380px, #000, transparent 70%), radial-gradient(ellipse 30% 380px at 8% 1500px, #000, transparent 70%), radial-gradient(ellipse 34% 420px at 92% 3000px, #000, transparent 70%); mask-image: radial-gradient(ellipse 38% 420px at 85% 380px, #000, transparent 70%), radial-gradient(ellipse 30% 380px at 8% 1500px, #000, transparent 70%), radial-gradient(ellipse 34% 420px at 92% 3000px, #000, transparent 70%); }
 body { position: relative; }
-body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 70% 50% at 70% 0%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 70%), linear-gradient(color-mix(in oklab, var(--background) 86%, transparent), var(--background) 90%); }
+body::before { content: none; }
 
 .ef-card { position: relative; background: linear-gradient(180deg, var(--background), var(--surface)); border-radius: 14px; box-shadow: var(--shadow-card); isolation: isolate; }
 .ef-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: var(--shine); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: -1; }
@@ -698,6 +698,7 @@ body { overflow-x: clip; }
   --horizon-ground: oklch(.95 .019 250);
   --horizon-mist: oklch(.80 .025 250 / .12);
   --horizon-line: oklch(.60 .055 255 / .14);
+  --horizon-road-glow: oklch(.63 .15 255 / .24);
   --horizon-signal: oklch(.55 .15 259);
   --horizon-ink: oklch(.19 .007 260);
 }
@@ -1635,3 +1636,7 @@ body { overflow-x: clip; }
 .horizon-journey .intro-facts span { font-family:var(--font-display); text-transform:none; font-size:12px; }
 .horizon-journey .marquee { mask-image:none; }
 @media(max-width:767px) { .horizon-journey .intro-facts { height:132px; }.horizon-journey .intro-facts span { font-size:10px; } }
+
+/* The fourth state hands off immediately, with no trailing presentation slot. */
+.tool-journey + .original-cta-position { padding-top:0; }
+#upcoming-features { scroll-margin-top:var(--site-nav-height,100px); }
