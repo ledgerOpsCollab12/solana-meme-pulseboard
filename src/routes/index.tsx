@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
+import { ProblemBillboard } from "@/components/problem-billboard";
 import { EditorialSolutions } from "@/components/editorial-solutions";
 import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
@@ -30,21 +31,25 @@ const PROBLEMS = [
   {
     n: "01",
     title: "A leaderboard lies to you",
+    short: "Leaderboard",
     description: "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
   },
   {
     n: "02",
     title: "Arrive late and you lose",
+    short: "Speed",
     description: "Bots trade at speeds a trader with limited tools simply can't match.",
   },
   {
     n: "03",
     title: "Know who you're following",
+    short: "Behavior",
     description: "Knowing how to follow a profitable account is what matters. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
   },
   {
     n: "04",
     title: "Existing wallet trackers lack memecoin logic",
+    short: "Memecoin logic",
     description: "Solana wallet trackers already exist, but none have the logic to track memecoin wallets correctly. Ours is the first tool designed specifically for this market.",
   },
 ];
@@ -71,15 +76,7 @@ function Index() {
       </nav>
 
       <div className="ed-home-story">
-        <section className="ed-quality" aria-labelledby="market-title">
-          <p className="up-eyebrow">WALLET INTELLIGENCE</p>
-          <h2 id="market-title">The first software built<br className="hidden lg:block"/> for <em>quality wallet tracking.</em></h2>
-          <p>The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.</p>
-          <div className="ed-problems">{PROBLEMS.map(problem => <article key={problem.n}>
-            <p className="up-eyebrow">{problem.n} / THE PROBLEM</p>
-            <h3>{problem.title}</h3><p>{problem.description}</p>
-          </article>)}</div>
-        </section>
+        <ProblemBillboard problems={PROBLEMS} />
         <div className="original-cta-position"><OriginalCtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
         <EditorialSolutions videoUrl="/__l5e/assets-v1/aa0d30c1-4689-4ca5-bbc2-59d76c1dc250/solution-01-annotated.mp4" alertsCta={<OriginalCtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />} />
         <aside id="api-notice" className="api-notice" aria-labelledby="api-notice-title">

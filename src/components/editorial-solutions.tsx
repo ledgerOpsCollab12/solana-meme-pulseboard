@@ -50,7 +50,7 @@ export function EditorialSolutions({ videoUrl, alertsCta }: { videoUrl: string; 
   useEffect(() => {
     const video = recording.current;
     if (!video) return;
-    if (phase === 1 && inView && !reduced) void video.play().catch(() => {});
+    if (phase === 0 && inView && !reduced) void video.play().catch(() => {});
     else video.pause();
   }, [phase, inView, reduced]);
   const move = (next: number) => {
@@ -62,27 +62,22 @@ export function EditorialSolutions({ videoUrl, alertsCta }: { videoUrl: string; 
   };
   return <section ref={area} className="tool-journey" aria-label="WhaleWatch solutions">
     <div className="tool-scene">
-      <div className="tool-opening" hidden={!reduced && phase !== 0}>
-        <p className="up-eyebrow">OUR SOLUTION</p>
-        <h2>Four tools.<br/><em>One clearer strategy.</em></h2>
-        <p>Wallet quality · Behavior · Live alerts · Token understanding</p>
-      </div>
-      <div className="tool-demonstration" hidden={!reduced && phase === 0}>
-        <p className="tool-heading">Four tools. One clearer strategy.</p>
-        {WALLET_TOOLS.map((tool, index) => <article key={tool.n} hidden={!reduced && phase !== index + 1} className="tool-state" aria-label={tool.label}>
+      <div className="tool-demonstration">
+        <h2 className="tool-heading">Four tools. <em>One clearer strategy.</em></h2>
+        {WALLET_TOOLS.map((tool, index) => <article key={tool.n} hidden={!reduced && phase !== index} className="tool-state" aria-label={tool.label}>
           <p className="tool-caption"><span>{tool.n} / 04</span>{tool.label}</p>
           <div className="tool-focus">
-            <h3><span className="tool-bullet" aria-hidden="true"/><span>{tool.lines.map((line, i) => <span key={line} className={i === 2 ? "text-primary" : undefined}>{line}</span>)}</span></h3>
             <div className="tool-video">
               {index === 0 ? <video ref={recording} src={videoUrl} muted loop playsInline controls preload="metadata" aria-label="Video: Wallet quality filters"/> : <div className="tool-video-pending"><Video aria-hidden="true"/><span>Video coming soon</span></div>}
             </div>
+            <h3><span className="tool-bullet" aria-hidden="true"/><span>{tool.lines.map((line, i) => <span key={line} className={i === 2 ? "text-primary" : undefined}>{line}</span>)}</span></h3>
           </div>
           {index === 2 && <div className="tool-alerts-cta">{alertsCta}</div>}
         </article>)}
       </div>
       <nav className="tool-progress" aria-label="Wallet tools">
-        <div>{WALLET_TOOLS.map((tool, index) => <Button key={tool.n} variant="ghost" size="icon" title={tool.label} aria-label={`Show ${tool.label}`} aria-current={phase === index + 1 ? "step" : undefined} onClick={() => move(index + 1)}>{tool.n}</Button>)}</div>
-        <Button variant="ghost" size="icon" title={phase === 4 ? "Continue to API access" : "Next tool"} aria-label={phase === 4 ? "Continue to API access" : "Next tool"} onClick={() => phase === 4 ? document.getElementById("api-notice")?.scrollIntoView({ behavior: reduced ? "instant" : "smooth" }) : move(phase + 1)}><ArrowDown/></Button>
+        <div>{WALLET_TOOLS.map((tool, index) => <Button key={tool.n} variant="ghost" size="icon" title={tool.label} aria-label={`Show ${tool.label}`} aria-current={phase === index ? "step" : undefined} onClick={() => move(index)}>{tool.n}</Button>)}</div>
+        <Button variant="ghost" size="icon" title={phase === 3 ? "Continue to API access" : "Next tool"} aria-label={phase === 3 ? "Continue to API access" : "Next tool"} onClick={() => phase === 3 ? document.getElementById("api-notice")?.scrollIntoView({ behavior: reduced ? "instant" : "smooth" }) : move(phase + 1)}><ArrowDown/></Button>
       </nav>
     </div>
   </section>;

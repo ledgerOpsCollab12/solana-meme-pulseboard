@@ -1537,3 +1537,49 @@ body { overflow-x: clip; }
 @media(min-width:1024px) {
  .tool-video,.tool-state:has(.tool-alerts-cta) .tool-video { width:auto; max-width:100%; aspect-ratio:16/9; }
 }
+
+/* V3 problem stage and titled four-tool stage, both below the sticky menu. */
+.pb-journey { height:400svh; position:relative; margin-inline:40px; }
+.pb-scene { position:sticky; top:var(--site-nav-height,100px); height:calc(100svh - var(--site-nav-height,100px)); min-height:600px; display:flex; flex-direction:column; padding:48px 0 18px; background:var(--background); }
+.pb-main { flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; align-items:start; }
+.pb-heading { padding-right:64px; }
+.pb-heading h2 { font-size:52px; line-height:1.15; margin:32px 0 28px; }
+.pb-heading > p:last-child { color:var(--muted-foreground); font-size:19px; line-height:1.55; max-width:500px; }
+.pb-problems { border-left:1px solid var(--border); padding:18px 0 0 68px; min-height:100%; }
+.pb-problems h3 { font-size:36px; line-height:1.2; margin:32px 0 30px; }
+.pb-problems article > p:last-child { color:var(--muted-foreground); font-size:20px; line-height:1.55; }
+.pb-problems article[hidden] { display:none; }
+.pb-tabs { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border); margin-top:24px; flex:none; }
+.pb-tabs > button { height:auto; display:grid; justify-items:start; gap:12px; padding:22px 0 8px; border-radius:0; border-top:3px solid transparent; margin-top:-2px; color:var(--muted-foreground); background:transparent; }
+.pb-tabs > button span { font:12px var(--font-mono); }
+.pb-tabs > button strong { font-size:15px; font-weight:400; }
+.pb-tabs > button[aria-current="step"] { border-top-color:var(--primary); color:var(--primary); }
+.pb-tabs > button[aria-current="step"] strong { font-weight:600; }
+.pb-foot { display:flex; justify-content:space-between; font:10px var(--font-mono); color:var(--muted-foreground); padding-top:10px; flex:none; }
+.pb-foot svg { display:inline; width:12px; height:12px; }
+.tool-journey { height:400svh; }
+.tool-scene { padding-top:30px; }
+.tool-heading { font-size:48px; line-height:1.12; margin-bottom:18px; letter-spacing:0; }
+.tool-focus { flex:1; grid-template-columns:minmax(0,1.55fr) minmax(0,.75fr); gap:52px; margin:26px 0 20px; align-items:center; }
+.tool-state:not([hidden]) { display:flex; flex-direction:column; }
+.tool-demonstration { display:flex; flex-direction:column; }
+.tool-demonstration > .tool-state { flex:1; min-height:0; }
+@media(min-width:1024px) {
+ .tool-video,.tool-state:has(.tool-alerts-cta) .tool-video { width:100%; max-width:100%; height:auto; max-height:calc(100svh - var(--site-nav-height,100px) - 300px); aspect-ratio:16/9; justify-self:center; }
+ .tool-state:has(.tool-alerts-cta) .tool-video { max-height:calc(100svh - var(--site-nav-height,100px) - 420px); }
+}
+@media(max-width:1023px) {
+ .pb-journey { margin-inline:40px; }.pb-heading { padding-right:32px; }.pb-problems { padding-left:32px; }.pb-problems article > p:last-child { font-size:16px; }
+}
+@media(max-width:767px) {
+ .pb-journey { margin-inline:20px; }.pb-scene { min-height:640px; padding-top:22px; }.pb-main { grid-template-columns:1fr; gap:20px; }.pb-heading { padding:0; }.pb-heading h2 { font-size:32px; margin:14px 0; }.pb-heading > p:last-child { font-size:14px; }.pb-problems { border-left:0; border-top:1px solid var(--border); padding:16px 0 0; }.pb-problems h3 { font-size:24px; margin:12px 0; }.pb-problems article > p:last-child { font-size:14px; }.pb-tabs > button { padding-top:12px; }.pb-tabs > button strong { font-size:11px; }.pb-foot span:first-child { display:none; }
+ .tool-heading { font-size:30px; }.tool-focus { grid-template-columns:1fr; gap:18px; margin:16px 0; flex:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .pb-journey { height:auto; }.pb-scene { position:static; height:auto; }.pb-problems article { padding-bottom:36px; }.pb-tabs,.pb-foot { display:none; }
+}
+@media(min-width:1024px) {
+ .tool-video { width:min(100%,calc((100svh - var(--site-nav-height,100px) - 300px) * 16 / 9)); height:auto; max-height:none; }
+ .tool-state:has(.tool-alerts-cta) .tool-video { width:min(100%,calc((100svh - var(--site-nav-height,100px) - 420px) * 16 / 9)); height:auto; max-height:none; }
+ .tool-alerts-cta { margin-bottom:16px; }
+}
