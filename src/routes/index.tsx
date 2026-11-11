@@ -45,6 +45,7 @@ const PROBLEMS = [
   },
   {
     n: "03",
+    left: "Know if it’s a whale, a bot, or fake volume before you copy.",
     short: "Behavior",
     description: "Knowing how to follow a profitable account is what matters. Choosing the wrong moment to follow one — entering late or failing to sell in time — can cost you money even when you're copying a winning account. Some trade fast, others manipulate price or liquidity. Understand their patterns and define your entry, exit and risk rules before you copy a single move.",
   },

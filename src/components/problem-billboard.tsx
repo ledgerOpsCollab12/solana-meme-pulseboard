@@ -54,9 +54,8 @@ export function ProblemBillboard({ problems }: { problems: Problem[] }) {
     <section ref={section} className="pb-journey" aria-label="Wallet intelligence — the problem">
       <div className="pb-scene">
         <div className={"pb-main" + (wide ? " pb-main--wide" : "")}>
-          {reduced || !wide ? (
+          {!reduced && !wide ? (
             <div className={"pb-heading" + (!reduced && current?.big ? " pb-heading--big" : "")}>
-              <p className="up-eyebrow">WALLET INTELLIGENCE / THE PROBLEM</p>
               {reduced ? null : <h2 key={active}>{current?.left}</h2>}
               {reduced || !current?.subtitle ? null : <p>{current.subtitle}</p>}
             </div>
