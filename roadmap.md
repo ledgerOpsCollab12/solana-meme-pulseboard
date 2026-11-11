@@ -1,3 +1,4 @@
+- [x] Rebuild Upcoming features from the supplied eight-section PDF with sample-only Lab, Risk Profile and Follow Bot previews; verified desktop/mobile, sorting, filter provenance, step progression, controls and a real early-access request (test record removed); 20 tests pass.
 - [x] Verify Upcoming navigation and recover stale dynamic route imports without reload loops; six tests passed and a deliberately failed route import recovered through the browser.
 - [x] Simplify footer links and nested bullets, link ZeroFeeX externally, add dedicated tokenization/DeFi pages, and keep social destinations unconfigured; verified desktop/mobile navigation.
 - [x] Add the reference-inspired footer and English About, API, ZeroFeeX, upcoming features, community and collaboration pages; verify navigation and private collaboration submissions.
