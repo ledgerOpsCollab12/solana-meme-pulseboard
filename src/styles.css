@@ -1640,3 +1640,52 @@ body { overflow-x: clip; }
 /* The fourth state hands off immediately, with no trailing presentation slot. */
 .tool-journey + .original-cta-position { padding-top:0; }
 #upcoming-features { scroll-margin-top:var(--site-nav-height,100px); }
+
+/* Approved editorial product composition: copy above an unobstructed recording. */
+.horizon-intro.editorial-product-intro .holo-product.optical-product {
+  inset:44px max(40px,calc((100vw - 1280px) / 2)) 210px;
+  width:auto;
+}
+.editorial-product-intro .optical-composition { display:flex; flex-direction:column; }
+.editorial-product-intro .optical-composition .holo-copy {
+  position:relative; left:auto; top:auto; width:100%; max-width:none;
+  display:grid; grid-template-columns:1.1fr 1fr; gap:80px; align-items:center;
+  flex:none; height:calc(174px * (1 - var(--product-focus,0)));
+  overflow:hidden; transform:none;
+}
+.editorial-product-intro .optical-composition .holo-copy::before { display:none; }
+.horizon-intro.editorial-product-intro .optical-composition .holo-copy h2 {
+  font:600 48px/1.12 var(--font-display); max-width:620px;
+}
+.horizon-intro.editorial-product-intro .optical-composition .holo-glass p {
+  font:400 17px/1.75 var(--font-display); max-width:480px;
+}
+.editorial-product-intro .integrated-interface {
+  width:100%; height:auto; flex:1; min-height:0;
+  margin:calc(36px * (1 - var(--product-focus,0))) 0 0;
+}
+.horizon-intro.editorial-product-intro .intro-cta-slot { bottom:24px; }
+@media(min-width:768px) and (max-width:1279px) {
+  .editorial-product-intro .optical-composition .holo-copy { gap:40px; height:calc(170px * (1 - var(--product-focus,0))); }
+  .horizon-intro.editorial-product-intro .optical-composition .holo-copy h2 { font-size:40px; }
+  .horizon-intro.editorial-product-intro .optical-composition .holo-glass p { font-size:15px; line-height:1.6; }
+}
+@media(max-width:767px) {
+  .horizon-intro.editorial-product-intro .holo-sticky { height:max(100svh,900px); }
+  .horizon-journey .editorial-product-intro { height:calc(max(100svh,900px) + 240svh); }
+  .horizon-intro.editorial-product-intro .holo-product.optical-product { inset:54px 20px 248px; width:auto; }
+  .editorial-product-intro .optical-composition .holo-copy { grid-template-columns:1fr; gap:18px; align-content:start; height:calc(280px * (1 - var(--product-focus,0))); }
+  .horizon-intro.editorial-product-intro .optical-composition .holo-copy h2 { font-size:32px; }
+  .horizon-intro.editorial-product-intro .optical-composition .holo-glass p { font-size:15px; line-height:1.6; }
+  .editorial-product-intro .integrated-interface { margin-top:calc(24px * (1 - var(--product-focus,0))); }
+  .horizon-intro.editorial-product-intro .intro-cta-slot { bottom:20px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .horizon-journey .editorial-product-intro,.horizon-intro.editorial-product-intro .holo-sticky { height:auto; min-height:0; }
+  .horizon-intro.editorial-product-intro .holo-product.optical-product { position:relative; inset:auto; margin:0 auto; width:calc(100% - 80px); }
+  .editorial-product-intro .optical-composition .holo-copy { height:auto; overflow:visible; margin:0; opacity:1; }
+  .editorial-product-intro .integrated-interface { flex:none; height:auto; margin-top:36px; }
+}
+@media(prefers-reduced-motion:reduce) and (max-width:767px) {
+  .horizon-intro.editorial-product-intro .holo-product.optical-product { width:calc(100% - 40px); }
+}

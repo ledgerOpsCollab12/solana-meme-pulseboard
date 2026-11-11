@@ -94,7 +94,7 @@ export function ScrollIntro() {
     <>
       <div className="horizon-journey">
       <div className="horizon-backdrop"><SignalNetwork /></div>
-      <section ref={intro} className="scroll-intro holo-intro panoramic-intro horizon-intro optical-product-intro" aria-labelledby="intro-title">
+      <section ref={intro} className="scroll-intro holo-intro panoramic-intro horizon-intro optical-product-intro editorial-product-intro" aria-labelledby="intro-title">
         <div className="holo-sticky">
           <div className="horizon-livestream"><i aria-hidden="true" /> Livestream from Solana blockchain</div>
           <div className="intro-title-layer">
