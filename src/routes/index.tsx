@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Code2, MessageSquare, Sparkles } from "lucide-react";
 import { RequestForm } from "@/components/request-form";
 import { PROGRAM_URL } from "@/lib/request-schema";
-import { EditorialSolutions } from "@/components/editorial-solutions";
+import { ProblemBillboard } from "@/components/problem-billboard";
 import { ScrollIntro } from "@/components/scroll-intro";
 import { Button } from "@/components/ui/button";
 import solution01Video from "@/assets/solution-01-annotated.mp4.asset.json";
@@ -83,6 +83,10 @@ const SOLUTIONS: Solution[] = [
   },
 ];
 
+function OriginalCtaStrip({ idx, title, text, href = PROGRAM_URL, label = "Open the live tracker", external = true }: { idx: string; title: string; text: string; href?: string; label?: string; external?: boolean }) {
+  return <aside className="ef-card ef-strip"><span className="ef-strip-idx">{idx}</span><div><h3>{title}</h3><p>{text}</p></div><Button asChild className="ef-btn"><a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{label} <ArrowUpRight /></a></Button></aside>;
+}
+
 function CtaStrip({ idx, title, text, href = PROGRAM_URL, label = "Open the live tracker", external = true }: { idx: string; title: string; text: string; href?: string; label?: string; external?: boolean }) {
   return (
     <aside className="ed-cta">
@@ -110,18 +114,49 @@ function Index() {
         </div>
       </nav>
 
-      <div className="ed-home-story">
-      <section className="ed-quality">
-        <p className="up-eyebrow">WALLET INTELLIGENCE</p>
-        <h2>The first software built<br/>for <em>quality wallet tracking.</em></h2>
-        <p>The memecoin market moves billions of dollars a day and profitable wallets exist — what separates them from the losers is access to quality tools.</p>
-        <div className="ed-problems">{PROBLEMS.map(problem => <article key={problem.n}><p className="up-eyebrow">{problem.n} / THE PROBLEM</p><h3>{problem.title}</h3><p>{problem.description}</p></article>)}</div>
-      </section>
-      <CtaStrip idx="THE NEXT STEP" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." />
-      <EditorialSolutions solutions={SOLUTIONS} videoUrl={solution01Video.url} />
-      <CtaStrip idx="REAL-TIME ALERTS" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />
-      <CtaStrip idx="BUILD WITH OUR DATA" title="Need the raw data?" text="Real-time API and tools built for your strategy." href="#api-access" label="Request API access" external={false} />
+      <ProblemBillboard problems={PROBLEMS} />
+      <section className="overflow-x-clip pb-20" aria-label="WhaleWatch solutions">
 
+        <div className="mt-10"><OriginalCtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
+
+        <div className="ef-divider"><span className="ef-tag"><b>WW/02</b> Our solution</span></div>
+        <h2 className="ef-h2 text-center">Our solution</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">Five tools that turn raw wallet data into a strategy you can actually run.</p>
+
+        <div className="mt-12 flex flex-col gap-6">
+          {SOLUTIONS.map((s, i) => (
+            <div key={s.n} className="flex flex-col gap-6">
+              <article className="ef-card ef-solution" aria-label={`Our solution: ${s.title}`}>
+                <div className="ef-solution-copy">
+                  <span className="ef-solution-tag">MODULE S-{s.n}</span>
+                  <h4 className="mt-4 text-2xl font-bold leading-snug tracking-tight lg:text-[1.7rem]">{s.title}</h4>
+                  {s.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="mt-4 text-base leading-relaxed text-muted-foreground">{paragraph}</p>
+                  ))}
+                  {s.notice && (
+                    <p className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed">
+                      <span className="block font-mono text-xs text-accent">IN DEVELOPMENT</span>
+                      {s.notice}
+                    </p>
+                  )}
+                </div>
+                {s.n === "01" ? (
+                  <video className="ef-video overflow-hidden object-contain bg-card" src={solution01Video.url} autoPlay muted loop playsInline aria-label={`Video: ${s.title}`} />
+                ) : (
+                  <div className="ef-video" aria-label={`Video placeholder: ${s.title}`}>
+                    <span className="font-mono text-xs text-muted-foreground">▶ VIDEO · S-{s.n}</span>
+                  </div>
+                )}
+              </article>
+              {i === 2 && <OriginalCtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" />}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10"><OriginalCtaStrip idx="CTA/04" title="Need the raw data?" text="Real-time API and tools built for your strategy." href="#api-access" label="Request API access" external={false} /></div>
+      </section>
+
+      <div className="ed-home-story">
       <UpcomingPage embedded />
 
       <section id="api-access" className="ed-contact" aria-labelledby="api-title">
