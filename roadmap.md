@@ -75,3 +75,4 @@
 - [x] Apply the approved matte localized veil, first-frame title-only opening and floating proportion-correct video frame; verified desktop/mobile, reduced motion and playback controls.
 - [x] Resume the original-recording edit, restore Charon narration, repair the failed alerts segment and export the 61.2-second MP4/WebM/poster with endingStart 54.97; review sampled frames, transcript and audio levels.
 - [x] Superseded by the user's approval of the recolored v3 recording and its subsequent integration; additional draft adjustments were not carried forward.
+- [x] Replaced the problem-stage headline with the whale/bot/fake-volume statement, gave stage 2 its full-width "Proof of pnl" title and stage 4 its own left title, added the stage-1 lead line and removed stage-2 body text; verified desktop/mobile/reduced motion.

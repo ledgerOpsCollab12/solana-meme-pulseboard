@@ -27,18 +27,20 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const MARKET_HEADLINE = <>Know if it’s a whale, a bot, or fake volume <em>before you copy.</em></>;
+
 const PROBLEMS = [
   {
     n: "01",
-    title: "A leaderboard lies to you",
+    title: "Every Solana trade. Every top wallet. Proven on-chain.",
+    lead: "Not who got lucky. Who wins consistently.",
     short: "Leaderboard",
     description: "Anyone can hit a token that moons overnight. A huge gain proves nothing about consistency — and copying someone who simply got lucky is, almost always, losing money.",
   },
   {
     n: "02",
-    title: "Arrive late and you lose",
+    left: "Proof of pnl",
     short: "Speed",
-    description: "Bots trade at speeds a trader with limited tools simply can't match.",
   },
   {
     n: "03",
@@ -48,6 +50,7 @@ const PROBLEMS = [
   },
   {
     n: "04",
+    left: <>Other trackers say it. <em>We pull every trade straight from the chain.</em></>,
     title: "Existing wallet trackers lack memecoin logic",
     short: "Memecoin logic",
     description: "Solana wallet trackers already exist, but none have the logic to track memecoin wallets correctly. Ours is the first tool designed specifically for this market.",
@@ -76,7 +79,7 @@ function Index() {
       </nav>
 
       <div className="ed-home-story">
-        <ProblemBillboard problems={PROBLEMS} />
+        <ProblemBillboard problems={PROBLEMS} headline={MARKET_HEADLINE} />
         <div className="original-cta-position"><OriginalCtaStrip idx="CTA/02" title="Stop copying blind." text="Filter wallets by consistency, win rate and behavior before you follow a single trade." /></div>
         <EditorialSolutions videoUrl="/__l5e/assets-v1/aa0d30c1-4689-4ca5-bbc2-59d76c1dc250/solution-01-annotated.mp4" />
         <div className="original-cta-position"><OriginalCtaStrip idx="CTA/03" title="Get the alerts before the pump." text="Add profitable wallets to your panel and see every move as it happens." label="Start tracking free" /></div>
