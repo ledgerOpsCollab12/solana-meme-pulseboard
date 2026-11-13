@@ -1540,7 +1540,7 @@ body { overflow-x: clip; }
 }
 
 /* V3 problem stage and titled four-tool stage, both below the sticky menu. */
-.pb-journey { height:400svh; position:relative; margin-inline:40px; }
+.pb-journey { height:calc(max(600px,100svh - var(--site-nav-height,100px)) + 120svh); position:relative; margin-inline:40px; }
 .pb-scene { position:sticky; top:var(--site-nav-height,100px); height:calc(100svh - var(--site-nav-height,100px)); min-height:600px; display:flex; flex-direction:column; padding:48px 0 18px; background:var(--background); }
 .pb-main { flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,.35fr) minmax(0,.65fr); align-items:stretch; }
 .pb-heading { display:flex; flex-direction:column; justify-content:center; }
@@ -1571,7 +1571,7 @@ body { overflow-x: clip; }
 .pb-tabs { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border); margin-top:24px; flex:none; }
 .pb-tabs > button { height:auto; display:grid; justify-items:start; gap:12px; padding:22px 0 8px; border-radius:0; border-top:3px solid transparent; margin-top:-2px; color:var(--muted-foreground); background:transparent; }
 .pb-tabs > button span { font:12px var(--font-mono); }
-.pb-tabs > button strong { font-size:15px; font-weight:400; }
+.pb-tabs > button strong { font-size:15px; font-weight:400; white-space:normal; text-align:left; overflow-wrap:break-word; }
 .pb-tabs > button[aria-current="step"] { border-top-color:var(--primary); color:var(--primary); }
 .pb-tabs > button[aria-current="step"] strong { font-weight:600; }
 .pb-foot { display:flex; justify-content:space-between; font:10px var(--font-mono); color:var(--muted-foreground); padding-top:10px; flex:none; }
@@ -1607,6 +1607,7 @@ body { overflow-x: clip; }
 }
 @media(max-width:767px) {
  .pb-journey { margin-inline:20px; }.pb-scene { min-height:640px; padding-top:22px; }.pb-main { grid-template-columns:1fr; gap:20px; }.pb-heading { padding:0; }.pb-heading h2 { font-size:32px; margin:14px 0; border-right:0; padding-right:0; }.pb-compare-label { font-size:17px; }.pb-heading > p:last-child { font-size:14px; margin-top:0; }.pb-problems { border-left:0; border-top:1px solid var(--border); padding:16px 0 0; }.pb-problems h3 { font-size:24px; margin:12px 0; }.pb-desc { font-size:14px; }.pb-compare { gap:18px; }.pb-compare-block { padding-left:14px; }.pb-compare-block > p:last-child { font-size:14px; line-height:1.6; }.pb-lead { font-size:16px; }.pb-heading--big h2 { font-size:34px; margin:18px 0; }.pb-main--wide .pb-desc { font-size:16px; }.pb-static-title { font-size:24px; }.pb-static-subtitle { font-size:14px; }.pb-tabs > button { padding-top:12px; }.pb-tabs > button strong { font-size:11px; }.pb-foot span:first-child { display:none; }
+ .pb-journey { height:calc(max(640px,100svh - var(--site-nav-height,100px)) + 120svh); }.pb-tabs { gap:12px; }
  .tool-heading { font-size:30px; }.tool-focus { grid-template-columns:1fr; gap:18px; margin:16px 0; flex:none; }
 }
 @media(prefers-reduced-motion:reduce) {
@@ -1647,7 +1648,9 @@ body { overflow-x: clip; }
  .horizon-journey .intro-evidence { padding-top:4px; }.horizon-intro.optical-product-intro .intro-cta-slot { bottom:20px; }
  .footer-brand > a { font-size:28px; }.footer-columns a { font-size:13px; }
 }
-.tool-journey { height:340svh; }
+.tool-journey { height:calc(max(620px,100svh - var(--site-nav-height,100px)) + 120svh); }
+@media(min-width:1024px) and (max-height:850px) { .tool-journey { height:calc(max(560px,100svh - var(--site-nav-height,100px)) + 120svh); } }
+@media(max-width:767px) { .tool-journey { height:calc(max(610px,100svh - var(--site-nav-height,100px)) + 120svh); } }
 @media(prefers-reduced-motion:reduce) { .tool-journey { height:auto; } }
 .horizon-journey { --horizon-light:var(--background); --horizon-ground:var(--background); }
 .horizon-journey .intro-facts { height:100px; }
@@ -1670,6 +1673,7 @@ body { overflow-x: clip; }
   display:flex; flex-direction:column; gap:24px; align-items:flex-start;
   flex:none; height:auto;
   overflow:hidden; transform:none;
+  opacity:calc(var(--shell-opacity,0) * clamp(0,1 - var(--product-focus,0) * 3,1));
 }
 .editorial-product-intro .optical-composition .holo-copy::before { display:none; }
 .horizon-intro.editorial-product-intro .optical-composition .holo-copy h2 {

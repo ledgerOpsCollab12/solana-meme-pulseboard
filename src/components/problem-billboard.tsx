@@ -44,7 +44,7 @@ export function ProblemBillboard({ problems }: { problems: Problem[] }) {
     const element = section.current;
     const scene = element?.querySelector<HTMLElement>(".pb-scene");
     if (!element || !scene) return;
-    window.scrollTo({ top: window.scrollY + element.getBoundingClientRect().top - navHeight() + (element.offsetHeight - scene.offsetHeight) * (stage + .1) / problems.length, behavior: reduced ? "instant" : "smooth" });
+    window.scrollTo({ top: window.scrollY + element.getBoundingClientRect().top - navHeight() + (element.offsetHeight - scene.offsetHeight) * stage / Math.max(1, problems.length - 1) + 1, behavior: reduced ? "instant" : "smooth" });
   };
 
   const current = problems[active] ?? problems[0];

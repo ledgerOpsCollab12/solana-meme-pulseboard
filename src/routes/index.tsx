@@ -40,8 +40,8 @@ const PROBLEMS = [
   {
     n: "02",
     left: <>Proof of <em>PnL.</em></>,
-    short: "Speed",
-    description: "Verify the PnL of each wallet by checking the transactions on Solscan.",
+    short: "Proof of PnL",
+    description: "Verify the PnL and other wallet metric by checking the transactions on Solscan.",
   },
   {
     n: "03",
@@ -52,7 +52,7 @@ const PROBLEMS = [
   {
     n: "04",
     left: <>Existing wallet trackers <em>lack memecoin logic.</em></>,
-    short: "Memecoin logic",
+    short: "differentiators from other wallet trackers",
     description: "Solana wallet trackers already exist, but none have the logic to track memecoin wallets correctly. Ours is the first tool designed specifically for this market.",
   },
 ];

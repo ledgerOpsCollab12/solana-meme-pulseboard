@@ -8,7 +8,7 @@ const NARRATED_RECORDING = {
   poster: "/__l5e/assets-v1/0aa1d116-3afc-4fcf-982d-c62512a29970/wallet-tour-dynamic-v3-poster.jpg",
   endingStart: 54.97,
 } as const;
-import { getIntroProgress } from "@/lib/intro-progress";
+import { getForwardIntroProgress } from "@/lib/forward-intro";
 import { SignalNetwork } from "@/components/signal-network";
 import { ProtocolMarquee } from "@/components/protocol-marquee";
 import { getOpeningProgress } from "@/lib/opening-progress";
@@ -27,6 +27,7 @@ export function ScrollIntro() {
     const journey = section.closest<HTMLElement>(".horizon-journey");
     journey?.setAttribute("data-intro-live", "true");
     const started = performance.now();
+    let furthestProgress = 0;
     const update = () => {
       const opening = getOpeningProgress(performance.now() - started, motion.matches);
       section.style.setProperty("--opening-shift", `${opening.shift}svh`);
@@ -36,7 +37,8 @@ export function ScrollIntro() {
       const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const distance = section.offsetHeight - height;
-      const state = getIntroProgress(motion.matches ? distance : window.scrollY - top, distance);
+       const state = getForwardIntroProgress(motion.matches ? distance : window.scrollY - top, distance, furthestProgress);
+       furthestProgress = state.progress;
        const focus = getProductFocus(state.progress);
        section.style.setProperty("--product-focus", `${focus.focus}`);
         section.querySelector(".integrated-interface")?.setAttribute("data-presentation-ready", String(motion.matches || state.content >= 0.5));
