@@ -28,6 +28,7 @@ export function ScrollIntro() {
     journey?.setAttribute("data-intro-live", "true");
     const started = performance.now();
     let furthestProgress = 0;
+    let previousScroll = window.scrollY;
     const update = () => {
       const opening = getOpeningProgress(performance.now() - started, motion.matches);
       section.style.setProperty("--opening-shift", `${opening.shift}svh`);
@@ -37,7 +38,8 @@ export function ScrollIntro() {
       const height = section.querySelector<HTMLElement>(".holo-sticky")?.offsetHeight ?? window.innerHeight;
       const top = section.getBoundingClientRect().top + window.scrollY;
       const distance = section.offsetHeight - height;
-       const state = getForwardIntroProgress(motion.matches ? distance : window.scrollY - top, distance, furthestProgress);
+       const state = getForwardIntroProgress(motion.matches ? distance : window.scrollY - top, distance, furthestProgress, previousScroll - top);
+       previousScroll = window.scrollY;
        furthestProgress = state.progress;
        const focus = getProductFocus(state.progress);
        section.style.setProperty("--product-focus", `${focus.focus}`);

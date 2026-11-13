@@ -1,7 +1,9 @@
 import { getIntroProgress } from "./intro-progress";
 
-/** Preserve the furthest presentation reached until this component unmounts. */
-export function getForwardIntroProgress(scroll: number, distance: number, previous = 0) {
-  const next = getIntroProgress(scroll, distance);
-  return getIntroProgress(Math.max(previous, next.progress) * Math.max(1, distance), distance);
+/** Finish the reveal before the sticky release; upward return shows the final view immediately. */
+export function getForwardIntroProgress(scroll: number, distance: number, previous = 0, previousScroll = scroll) {
+  const safeDistance = Math.max(1, distance);
+  const next = getIntroProgress(scroll, safeDistance * 0.75);
+  const returning = scroll < previousScroll - 1 && previous > 0;
+  return getIntroProgress((returning ? 1 : Math.max(previous, next.progress)) * safeDistance, safeDistance);
 }
